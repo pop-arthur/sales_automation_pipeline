@@ -9,6 +9,9 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 def makePdf(fileName = "КП.pdf", title = "Комерческое предложение", items = [[1,"name","discription",123, 1]]):
+    if (len(items)<=0):
+        print("Items list is empty")
+        return
     styles = getSampleStyleSheet() # дефолтовые стили
     # the magic is here
     styles['Normal'].fontName='DejaVuSerif'
@@ -26,11 +29,16 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
     story.append(Paragraph(title, styles["Heading1"]))
     story.append(Paragraph('ООО "АЙДОС и КО"', styles["Normal"]))
     # таблица русская
+    column_widths = [60, 100, 150, 30, 30]
+    for item in items:
+        item[1] = Paragraph(item[1], styles["Normal"])
+        item[2] = ""
+        #item[2] = Paragraph(item[2], styles["Normal"])
     t = Table(
-        items
+        items, colWidths=column_widths
     )
-
-    t.setStyle(TableStyle([('ALIGN',(1,1),(-2,-2),'RIGHT'),
+    print(items)
+    t.setStyle(TableStyle([('ALIGN',(1,1),(-2,-2),'center'),
                         ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
                         ('BOX', (0,0), (-1,-1), 0.25, colors.black),
                         ]))
@@ -38,94 +46,30 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
 
     doc.build(story)
 def formPdfFromList(ids): #Формирование КП на вход idишники -> на выход pdf'ка
+    print(ids[0])
     items = []
     jsontext = loadJson()
     for i in range(len(ids)):
-        items.append(findInJson(ids[i], jsontext))
-    makePdf(items)
+        var = findInJson(ids[i], jsontext)
+        if var!=None:
+            toAppend = [var["id"], var["name"],var["description"], var["price"], var["quantity_in_stock"]]
+            items.append(toAppend)
+            print(var)
+    makePdf(items=items)
 def findInJson(findId, jsonText = None): #На вход: опционально json с продуктами и id для поиска -> на выход конкретный продукт из json'ая
     if (jsonText == None):
         jsonText = loadJson()
     dic = json.loads(jsonText)
     products = dic["products"]
-    for i in range(len(products)):
-        for prod in products:
-            if (prod["id"] == findId):
-                return prod
+    for product in dic.get('products', []):
+        if product['id'] == findId:
+            return product
+    return None
 def loadJson():
-    jsonText = """{
-    "group_id": 0,
-    "products": [
-    {
-      "id": 660913934,
-      "external_id": "string",
-      "name": "Вечернее платье",
-      "name_multilang": {
-        "ru": "Наименование товара на русском языке",
-        "kk": "Наименование товара на казахском языке"
-      },
-      "sku": "AA7775",
-      "keywords": "Платье, коктейльное платье",
-      "description": "Коктейльное платье или платье-коктейль — укороченное женское платье\nдля торжественных случаев без воротника и рукавов.\n",
-      "description_multilang": {
-        "ru": "Описание товара на русском языке",
-        "kk": "Описание товара на казахском языке"
-      },
-      "selling_type": "universal",
-      "presence": "available",
-      "regions": [
-        {
-          "id": 194014000,
-          "name": "region name",
-          "name_multilang": {
-            "ru": "Наименование региона на русском языке",
-            "kk": "Наименование региона на казахском языке"
-          }
-        }
-      ],
-      "price": 150,
-      "minimum_order_quantity": 0,
-      "discount": {
-        "value": 15,
-        "type": "percent",
-        "date_start": "22.03.2018",
-        "date_end": "22.04.2018"
-      },
-      "currency": "USD",
-      "group": {
-        "id": 2366571,
-        "name": "Корневая группа",
-        "name_multilang": {
-          "ru": "Название группы на русском языке",
-          "kk": "Название группы на казахском языке"
-        }
-      },
-      "category": {
-        "id": 35402,
-        "caption": "Платья женские"
-      },
-      "prices": [
-        {
-          "price": 100.75,
-          "minimum_order_quantity": 10
-        }
-      ],
-      "main_image": "https://my.example.com/media/images/1075345153_w200_h200_dress.jpg",
-      "images": [
-        {
-          "url": "https://my.example.com/media/images/1075345152_w200_h200_dress_front.png",
-          "thumbnail_url": "https://my.example.com/media/images/1075345152_w100_h100_dress_front.png",
-          "id": 1075345152
-        }
-      ],
-      "status": "on_display",
-      "quantity_in_stock": 123,
-      "measure_unit": "шт.",
-      "is_variation": False,
-      "variation_base_id": 123123123,
-      "variation_group_id": 321321
-    }
-    ]
-    }"""
+    file_path = "apiresp.json"
+    with open(file_path, 'r', encoding='utf-8') as file:
+      data = file.read().rstrip()
+    jsonText = data
+    jsonText = jsonText.replace("\n","")
     return jsonText
-findInJson(660913934)  
+formPdfFromList([115900610, 109158468])

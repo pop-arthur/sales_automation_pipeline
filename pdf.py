@@ -29,24 +29,36 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
     story.append(Paragraph(title, styles["Heading1"]))
     story.append(Paragraph('ООО "АЙДОС и КО"', styles["Normal"]))
     # таблица русская
-    column_widths = [60, 100, 150, 30, 30]
+    column_widths = [60, 150, 150, 40, 80]
     for item in items:
         item[1] = Paragraph(item[1], styles["Normal"])
-        item[2] = ""
-        #item[2] = Paragraph(item[2], styles["Normal"])
+        try:
+            item[2] = Paragraph(item[1], styles["Normal"])
+        except:
+          item[2] = Paragraph("-", styles["Normal"])
+          print("An exception occurred")
+        if (item[3] == None):
+            item[3] = Paragraph("-", styles["Normal"])
+        if (item[4] == None):
+            item[4] = Paragraph("-", styles["Normal"])
+    items.insert(0, ["id", Paragraph("Наименование", styles["Normal"]), Paragraph("Описание", styles["Normal"]),Paragraph("Цена", styles["Normal"]),Paragraph("Доступное количество", styles["Normal"])])
     t = Table(
         items, colWidths=column_widths
     )
-    print(items)
-    t.setStyle(TableStyle([('ALIGN',(1,1),(-2,-2),'center'),
+    t.setStyle(TableStyle([('ALIGN',(1,1),(-2,-2),'CENTER'),
                         ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
                         ('BOX', (0,0), (-1,-1), 0.25, colors.black),
                         ]))
     story.append(t)
-
+    story.append(Paragraph('Итого: ' + str(countItemsPrice(items)), styles["Normal"]))
     doc.build(story)
+def countItemsPrice(items):
+    price = 0
+    for item in items:
+        if (len(item) == 5 and not isinstance(item[3], Paragraph) and not isinstance(item[4], Paragraph) and item[0] != "id"):
+          price += item[3]*items[4]
+    return price
 def formPdfFromList(ids): #Формирование КП на вход idишники -> на выход pdf'ка
-    print(ids[0])
     items = []
     jsontext = loadJson()
     for i in range(len(ids)):
@@ -54,7 +66,6 @@ def formPdfFromList(ids): #Формирование КП на вход idишн�
         if var!=None:
             toAppend = [var["id"], var["name"],var["description"], var["price"], var["quantity_in_stock"]]
             items.append(toAppend)
-            print(var)
     makePdf(items=items)
 def findInJson(findId, jsonText = None): #На вход: опционально json с продуктами и id для поиска -> на выход конкретный продукт из json'ая
     if (jsonText == None):
@@ -72,4 +83,5 @@ def loadJson():
     jsonText = data
     jsonText = jsonText.replace("\n","")
     return jsonText
-formPdfFromList([115900610, 109158468])
+if __name__ == "__main__":
+  formPdfFromList([115900610, 109158468]) #test code. #delete before production

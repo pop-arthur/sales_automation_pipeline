@@ -37,93 +37,95 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
     story.append(t)
 
     doc.build(story)
-def formPdfFromList(ids):
+def formPdfFromList(ids): #Формирование КП на вход idишники -> на выход pdf'ка
     items = []
+    jsontext = loadJson()
     for i in range(len(ids)):
-        items.append(findInJson(ids[i]))
+        items.append(findInJson(ids[i], jsontext))
     makePdf(items)
-def findInJson(jsonText, findId):
+def findInJson(findId, jsonText = None): #На вход: опционально json с продуктами и id для поиска -> на выход конкретный продукт из json'ая
+    if (jsonText == None):
+        jsonText = loadJson()
     dic = json.loads(jsonText)
     products = dic["products"]
     for i in range(len(products)):
-        if (products["id"] == findId):
-            return products["id"]
-
-content = None
-with open('apiresp.json', 'r') as content_file:
-    content = content_file.read()
-formPdfFromList(content)
-#{
-#   "group_id": 0,
-#   "products": [
-#     {
-#       "id": 660913934,
-#       "external_id": "string",
-#       "name": "Вечернее платье",
-#       "name_multilang": {
-#         "ru": "Наименование товара на русском языке",
-#         "kk": "Наименование товара на казахском языке"
-#       },
-#       "sku": "AA7775",
-#       "keywords": "Платье, коктейльное платье",
-#       "description": "Коктейльное платье или платье-коктейль — укороченное женское платье\nдля торжественных случаев без воротника и рукавов.\n",
-#       "description_multilang": {
-#         "ru": "Описание товара на русском языке",
-#         "kk": "Описание товара на казахском языке"
-#       },
-#       "selling_type": "universal",
-#       "presence": "available",
-#       "regions": [
-#         {
-#           "id": 194014000,
-#           "name": "region name",
-#           "name_multilang": {
-#             "ru": "Наименование региона на русском языке",
-#             "kk": "Наименование региона на казахском языке"
-#           }
-#         }
-#       ],
-#       "price": 150,
-#       "minimum_order_quantity": 0,
-#       "discount": {
-#         "value": 15,
-#         "type": "percent",
-#         "date_start": "22.03.2018",
-#         "date_end": "22.04.2018"
-#       },
-#       "currency": "USD",
-#       "group": {
-#         "id": 2366571,
-#         "name": "Корневая группа",
-#         "name_multilang": {
-#           "ru": "Название группы на русском языке",
-#           "kk": "Название группы на казахском языке"
-#         }
-#       },
-#       "category": {
-#         "id": 35402,
-#         "caption": "Платья женские"
-#       },
-#       "prices": [
-#         {
-#           "price": 100.75,
-#           "minimum_order_quantity": 10
-#         }
-#       ],
-#       "main_image": "https://my.example.com/media/images/1075345153_w200_h200_dress.jpg",
-#       "images": [
-#         {
-#           "url": "https://my.example.com/media/images/1075345152_w200_h200_dress_front.png",
-#           "thumbnail_url": "https://my.example.com/media/images/1075345152_w100_h100_dress_front.png",
-#           "id": 1075345152
-#         }
-#       ],
-#       "status": "on_display",
-#       "quantity_in_stock": 123,
-#       "measure_unit": "шт.",
-#       "is_variation": false,
-#       "variation_base_id": 123123123,
-#       "variation_group_id": 321321
-#     }
-#   ]
-# }
+        for prod in products:
+            if (prod["id"] == findId):
+                return prod
+def loadJson():
+    jsonText = """{
+    "group_id": 0,
+    "products": [
+    {
+      "id": 660913934,
+      "external_id": "string",
+      "name": "Вечернее платье",
+      "name_multilang": {
+        "ru": "Наименование товара на русском языке",
+        "kk": "Наименование товара на казахском языке"
+      },
+      "sku": "AA7775",
+      "keywords": "Платье, коктейльное платье",
+      "description": "Коктейльное платье или платье-коктейль — укороченное женское платье\nдля торжественных случаев без воротника и рукавов.\n",
+      "description_multilang": {
+        "ru": "Описание товара на русском языке",
+        "kk": "Описание товара на казахском языке"
+      },
+      "selling_type": "universal",
+      "presence": "available",
+      "regions": [
+        {
+          "id": 194014000,
+          "name": "region name",
+          "name_multilang": {
+            "ru": "Наименование региона на русском языке",
+            "kk": "Наименование региона на казахском языке"
+          }
+        }
+      ],
+      "price": 150,
+      "minimum_order_quantity": 0,
+      "discount": {
+        "value": 15,
+        "type": "percent",
+        "date_start": "22.03.2018",
+        "date_end": "22.04.2018"
+      },
+      "currency": "USD",
+      "group": {
+        "id": 2366571,
+        "name": "Корневая группа",
+        "name_multilang": {
+          "ru": "Название группы на русском языке",
+          "kk": "Название группы на казахском языке"
+        }
+      },
+      "category": {
+        "id": 35402,
+        "caption": "Платья женские"
+      },
+      "prices": [
+        {
+          "price": 100.75,
+          "minimum_order_quantity": 10
+        }
+      ],
+      "main_image": "https://my.example.com/media/images/1075345153_w200_h200_dress.jpg",
+      "images": [
+        {
+          "url": "https://my.example.com/media/images/1075345152_w200_h200_dress_front.png",
+          "thumbnail_url": "https://my.example.com/media/images/1075345152_w100_h100_dress_front.png",
+          "id": 1075345152
+        }
+      ],
+      "status": "on_display",
+      "quantity_in_stock": 123,
+      "measure_unit": "шт.",
+      "is_variation": False,
+      "variation_base_id": 123123123,
+      "variation_group_id": 321321
+    }
+    ]
+    }"""
+    return jsonText
+findInJson(660913934)  

@@ -32,12 +32,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     input.addEventListener("focus", function() {
         if (input.value === "Password") {
+            input.type = "password"
             input.value = "";
         }
     });
 
     input.addEventListener("blur", function() {
         if (input.value === "") {
+            input.type = "text"
             input.value = "Password";
         }
     });

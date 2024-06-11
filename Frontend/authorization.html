@@ -13,11 +13,23 @@
   </div>
   <form id="loginForm" action="/login" method="get">
 
-    <input id="username1" type="text"/>
+    <label>
+      <input id="username1" type="text" class="input"/>
+    </label>
 
-    <input id="password1" name="password" type="password"/>
+    <label>
+      <input id="password1" name="password" type="password" class="input"/>
+    </label>
 
-  <button type="submit" id="loginButton">Login</button>
+    <div class="remember-block">
+      <label>
+        <input type="checkbox" class="input-box">
+      </label>
+      Remember me
+    </div>
+
+    <button type="submit" id="loginButton">Login</button>
+
   </form>
 </div>
 <script src="authorization.js"></script>

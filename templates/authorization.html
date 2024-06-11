@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/styles/authorization/authorization.css">
+  <title>Authorization</title>
+</head>
+<body>
+<div class="login-container">
+  <div class="heading">
+    Welcome!
+  </div>
+  <h2>{{ message }}</h2>
+  <form id="loginForm" action="/login" method="post">
+
+    <input id="username1" type="text" name="username"/>
+
+    <input id="password1" name="password" type="password"/>
+
+  <button type="submit" id="loginButton">Login</button>
+  </form>
+</div>
+<script src="../static/js/authorization.js"></script>
+</body>
+</html>

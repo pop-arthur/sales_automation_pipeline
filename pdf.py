@@ -45,7 +45,7 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
 
     # текст
     story.append(Paragraph(title, styles["Heading1"]))
-    story.append(Paragraph('ООО "АЙДОС и КО"', styles["Normal"]))
+    story.append(Paragraph('ООО "Название"', styles["Normal"]))
     # таблица русская
     column_widths = [60, 150, 150, 40, 80]
     for item in items:

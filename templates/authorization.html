@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authorization</title>
+  <style>
+    body {
+      font-family: "Ebrima", sans-serif;
+      background-color: #18002d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background-color: #9f9f9f;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    .heading {
+      display: inline;
+      font-weight: bold;
+      font-family: "Ebrima", sans-serif;
+      font-size: 35px;
+      text-align: center;
+    }
+
+    label {
+      display: inline;
+      text-align: left;
+      font-family: "Roboto", sans-serif;
+      margin-bottom: 4px;
+
+    }
+
+    input {
+      background-color: #9f9f9f;
+      margin-bottom: 7px;
+      width: 96%;
+      height: 35%;
+      padding: 8px;
+      border: 1px solid #303134;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    input:focus {
+      box-shadow: 0 0 5px 2px #303134;
+    }
+
+    form {
+      display: grid;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #303134;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+<div class="login-container">
+  <div class="heading">
+    Welcome!
+  </div>
+  <h3> {{ message }} </h3>
+  <form id="loginForm" action="/login" method="post">
+
+    <label for="username1">Username:</label>
+
+    <input id="username1" type="text" name="username"/>
+
+    <label for="password1">Password:</label>
+
+    <input id="password1" name="password" type="password"/>
+
+  <button type="submit" id="loginButton">Login</button>
+  </form>
+</div>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    const username = document.getElementById('username1').value;
+    const password = document.getElementById('password1').value;
+
+    if (username === '' || password === '') {
+      alert('Please fill in both fields');
+      event.preventDefault();
+    }
+  });
+</script>
+</body>
+</html>

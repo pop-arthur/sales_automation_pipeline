@@ -9,7 +9,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import csv
 
-def makeCSV(fileName = "КП.pdf", items=[[1,"name","discription",123, 1]]): #дулаем csv из листа items
+def makeCSV(fileName = "КП.pdf", items=[[1,"name","discription",123, 1]]): #делаем csv из листа items
   items.insert(0, ["id","Имя","Описание","Цена","Доступное количество"])
   try:
     with open(fileName.replace(".pdf",".csv"), 'w') as f:
@@ -24,6 +24,7 @@ def makeCSV(fileName = "КП.pdf", items=[[1,"name","discription",123, 1]]): #д
           writer.writerow(row)
   except:
      print("Probably your file is opened. Please close it and try one more time")
+
 
 def makePdf(fileName = "КП.pdf", title = "Комерческое предложение", items = [[1,"name","discription",123, 1]]):
     if (len(items)<=0):
@@ -69,12 +70,16 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
     story.append(t)
     story.append(Paragraph('Итого: ' + str(countItemsPrice(items)), styles["Normal"]))
     doc.build(story)
+
+
 def countItemsPrice(items): #подсчёт цены всех товаров
     price = 0
     for item in items:
         if (len(item) == 5 and not isinstance(item[3], Paragraph) and not isinstance(item[4], Paragraph) and item[0] != "id"):
           price += item[3]*items[4]
     return price
+
+
 def formFilesFromList(ids): #Формирование КП на вход idишники -> на выход pdf'ка и csv
     items = []
     jsontext = loadJson()
@@ -86,6 +91,8 @@ def formFilesFromList(ids): #Формирование КП на вход idиш�
     itForCSV = items.copy()
     makeCSV(items=itForCSV)
     makePdf(items=items)
+
+
 def findInJson(findId, jsonText = None): #На вход: опционально json с продуктами и id для поиска -> на выход конкретный продукт из json'ая
     if (jsonText == None):
         jsonText = loadJson()
@@ -95,6 +102,8 @@ def findInJson(findId, jsonText = None): #На вход: опционально 
         if product['id'] == findId:
             return product
     return None
+
+
 def loadJson(): #достаём json из файла
     file_path = "apiresp.json"
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -102,5 +111,7 @@ def loadJson(): #достаём json из файла
     jsonText = data
     jsonText = jsonText.replace("\n","")
     return jsonText
+
+
 if __name__ == "__main__":
   formFilesFromList([115900610, 109158468]) #test code. #delete before production

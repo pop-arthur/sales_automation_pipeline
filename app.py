@@ -26,7 +26,7 @@ def index(message=""):
 
 @app.route('/cart')
 def cart():
-    return render_template("cart.html")
+    return render_template("main.html")
 
 
 @app.route('/login', methods=['POST'])

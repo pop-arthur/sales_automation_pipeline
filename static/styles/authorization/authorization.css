@@ -29,7 +29,7 @@ body {
     margin-top: 5px;
 }
 
-.input {
+input {
     background-color: white;
     color: rgb(128, 128, 128);
     margin-bottom: 7px;

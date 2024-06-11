@@ -9,7 +9,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import csv
 
-def makeCSV(fileName = "КП.pdf", items=[[1,"name","discription",123, 1]]):
+def makeCSV(fileName = "КП.pdf", items=[[1,"name","discription",123, 1]]): #дулаем csv из листа items
   items.insert(0, ["id","Имя","Описание","Цена","Доступное количество"])
   try:
     with open(fileName.replace(".pdf",".csv"), 'w') as f:

@@ -2,7 +2,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const username = document.getElementById('username1').value;
     const password = document.getElementById('password1').value;
 
-    if (username === '' || password === '') {
+    if (username === 'Username' || password === 'Password') {
         alert('Please fill in both fields');
         event.preventDefault();
     }

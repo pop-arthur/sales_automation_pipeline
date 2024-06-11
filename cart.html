@@ -1,0 +1,254 @@
+<style>
+  .cart-container {
+    background-color: #18002d;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -3px;
+    padding: 27px 37px 15px;
+  }
+  @media (max-width: 991px) {
+    .cart-container {
+      padding: 0 20px;
+    }
+  }
+  .cart-header {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    gap: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  @media (max-width: 991px) {
+    .cart-header {
+      max-width: 100%;
+      flex-wrap: wrap;
+      white-space: initial;
+    }
+  }
+  .cart-title {
+    color: #fff;
+    align-self: end;
+    margin-top: 38px;
+    flex-grow: 1;
+    flex-basis: auto;
+    font: 100px Rounded Mplus 1c Bold, -apple-system, Roboto, Helvetica, sans-serif;
+  }
+  @media (max-width: 991px) {
+    .cart-title {
+      font-size: 40px;
+    }
+  }
+  .back-button-container {
+    border-radius: 30px;
+    box-shadow: 0px 4px 40px 0px #f7bb47;
+    background-color: #d9d9d9;
+    align-self: start;
+    display: flex;
+    gap: 20px;
+    font-size: 30px;
+    color: #000;
+    justify-content: space-between;
+    padding: 1px 16px;
+  }
+  @media (max-width: 991px) {
+    .back-button-container {
+      white-space: initial;
+    }
+  }
+  .back-button {
+    font-family: Rounded Mplus 1c Bold, -apple-system, Roboto, Helvetica, sans-serif;
+    margin: auto 0;
+  }
+  .profile-image {
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 44px;
+  }
+  .main-content {
+    align-self: center;
+    margin-top: 79px;
+    width: 100%;
+    max-width: 958px;
+  }
+  @media (max-width: 991px) {
+    .main-content {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+  .content-wrapper {
+    gap: 20px;
+    display: flex;
+  }
+  @media (max-width: 991px) {
+    .content-wrapper {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0px;
+    }
+  }
+  .form-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 62%;
+    margin-left: 0px;
+  }
+  @media (max-width: 991px) {
+    .form-column {
+      width: 100%;
+    }
+  }
+  .product-list {
+    border-radius: 30px;
+    background-color: #d9d9d9;
+    width: 560px;
+    max-width: 100%;
+    height: 567px;
+    margin: 0 auto;
+  }
+  @media (max-width: 991px) {
+    .product-list {
+      margin-top: 40px;
+    }
+  }
+  .info-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 38%;
+    margin-left: 20px;
+  }
+  @media (max-width: 991px) {
+    .info-column {
+      width: 100%;
+    }
+  }
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+  }
+  @media (max-width: 991px) {
+    .info-container {
+      margin-top: 40px;
+    }
+  }
+  .full-name {
+    font-family: Rounded Mplus 1c Bold, -apple-system, Roboto, Helvetica, sans-serif;
+    border-radius: 30px;
+    background-color: #d9d9d9;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 13px 94px 13px 133px;
+  }
+  @media (max-width: 991px) {
+    .full-name {
+      white-space: initial;
+    }
+  }
+  .phone-number {
+    font-family: Rounded Mplus 1c Bold, -apple-system, Roboto, Helvetica, sans-serif;
+    text-align: left;
+    border-radius: 30px;
+    background-color: #d9d9d9;
+    margin-top: 25px;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 10px 0 10px 125px;
+  }
+  @media (max-width: 991px) {
+    .phone-number {
+      white-space: initial;
+    }
+  }
+  .email {
+    font-family: Rounded Mplus 1c Bold, -apple-system, Roboto, Helvetica, sans-serif;
+    text-align: left;
+    border-radius: 30px;
+    background-color: #d9d9d9;
+    margin-top: 26px;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 13px 0 13px 128px;
+  }
+  @media (max-width: 991px) {
+    .email {
+      white-space: initial;
+    }
+  }
+  .summary-container {
+    align-self: end;
+    display: flex;
+    margin-top: 150px;
+    width: 225px;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: start;
+    color: #fff;
+  }
+  @media (max-width: 991px) {
+    .summary-container {
+      margin-top: 40px;
+    }
+  }
+  .total-label {
+    font-family: Rounded Mplus 1c Bold, -apple-system, Roboto, Helvetica, sans-serif;
+    margin-left: 15px;
+  }
+  @media (max-width: 991px) {
+    .total-label {
+      margin-left: 10px;
+    }
+  }
+  .total-amount {
+    font-family: Rounded Mplus 1c Bold, -apple-system, Roboto, Helvetica, sans-serif;
+    align-self: stretch;
+    margin-top: 27px;
+  }
+  .form-pdf-button {
+    font-family: Rounded Mplus 1c Bold, -apple-system, Roboto, Helvetica, sans-serif;
+    align-items: start;
+    border-radius: 30px;
+    box-shadow: 0px 4px 40px 0px #f7bb47;
+    background-color: #d9d9d9;
+    width: 100%;
+    color: #000;
+    justify-content: center;
+    margin: 39px 0 0 10px;
+    padding: 13px 20px;
+  }
+</style>
+
+<section class="cart-container">
+  <header class="cart-header">
+    <h1 class="cart-title">CART</h1>
+    <div class="back-button-container">
+      <div class="back-button">BACK</div>
+      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5403d94facc52db0e0183bc219a7cf4bf570b62cca11f4397029438bd455acac?apiKey=07449926caf0434fa474b0526b0d5b23&" alt="Profile Image" class="profile-image" />
+    </div>
+  </header>
+  <main class="main-content">
+    <div class="content-wrapper">
+      <div class="form-column">
+        <div class="product-list"></div>
+      </div>
+      <aside class="info-column">
+        <div class="info-container">
+          <div class="full-name">ФИО</div>
+          <div class="phone-number">phone</div>
+          <div class="email">e-mail</div>
+          <div class="summary-container">
+            <div class="total-label">Total:</div>
+            <div class="total-amount">skokadeneg rub</div>
+            <div class="form-pdf-button">Form PDF</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</section>

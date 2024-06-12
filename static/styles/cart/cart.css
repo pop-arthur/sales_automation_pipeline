@@ -74,6 +74,12 @@ body{
         margin: auto ;
         
     }
+    .back-button-container:hover{
+        background-color: #8a8a8a;
+    }
+    .back-button-container:active{
+        background-color: #333333;
+    }
     .back-icon {
         aspect-ratio: 1;
         object-fit: auto;
@@ -161,7 +167,7 @@ body{
         background-color: #d9d9d9;
         white-space: nowrap;
         justify-content: center;
-        padding: 13px 20px;
+        padding: 13px 25px;
         cursor: pointer;
         margin-top: 25px;
     }
@@ -206,6 +212,13 @@ body{
         padding: 13px 20px;
         cursor: pointer;
     }
+
+    .form-pdf-button:hover{
+        background-color: #8a8a8a;
+    }
+    .form-pdf-button:active{
+        background-color: #333333;
+    }
     .cart-item {
         padding: 10px;
         display: inline-flex ;
@@ -230,18 +243,26 @@ body{
         font-size: 100%
     }
     .remove-button {
-        background: url("../test/images/delete.png");
         width: 30px;
         height: 30px;
+    }
+    .remove-button:hover{
+        background-color: #8a8a8a;
+        border-radius: 8px;
+    }
+    .remove-button:active{
+        background-color: #333333;
+        border-radius: 8px;
     }
     .butt {
         margin-left: 2%;
         display: flex;
-        justify-content: baseline;
+        justify-content: inline;
     }
     #quantity-form{
         font-family: Lydia-Light;
         font-size: medium;
+        margin-right: 10px;
         min-width: 1em;
         max-width: 4em;
         height: auto;

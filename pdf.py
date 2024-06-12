@@ -35,7 +35,7 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
     styles['Normal'].fontName='DejaVuSerif'
     styles['Heading1'].fontName='DejaVuSerif'
 
-    pdfmetrics.registerFont(TTFont('DejaVuSerif','DejaVuSerif.ttf', 'UTF-8'))
+    pdfmetrics.registerFont(TTFont('DejaVuSerif', 'static/font/DejaVuSerif.ttf', 'UTF-8'))
 
     doc = SimpleDocTemplate(filename = fileName,
                             pagesize = A4,

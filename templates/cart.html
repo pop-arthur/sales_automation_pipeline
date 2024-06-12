@@ -28,9 +28,9 @@
                         <img src="..\images\item_preview.jpg" class="cart-item" alt="Item Image">
                         <div class="cart-item-info">
                             <div class="item-name">{{value['name']}}</div>
-                            <div class="item-id">{{value['id']}}</div>
-                            <div class="item-quantity">{{value['quantity']}}</div>
-                            <div class="item-price">Price: {{value['price']}} rub</div>
+                            <div class="item-id">ID: {{value['id']}}</div>
+                            <div class="item-quantity">Quantity: {{value['quantity']}}</div>
+                            <div class="item-price">Price: {{value['price']}} тенге</div>
                         </div >
                     </div>
                     <div class="butt">
@@ -38,7 +38,7 @@
                             <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="1" value="1" placeholder="Enter the quantity">
                         </form>
                     
-                        <button class="remove-button" onclick="removeItem()"></button>
+                        <img class="remove-button" src="../images/delete.png" onclick="removeItem()"></button>
 
                     </div>
         

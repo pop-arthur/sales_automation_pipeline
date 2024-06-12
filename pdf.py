@@ -26,7 +26,7 @@ def makeCSV(fileName = "КП.pdf", items=[[1,"name","discription",123, 1]]): #д
      print("Probably your file is opened. Please close it and try one more time")
 
 
-def makePdf(fileName = "КП.pdf", title = "Комерческое предложение", items = [[1,"name","discription",123, 1]]):
+def makePdf(fileName = "КП.pdf", title = "Комерческое предложение", items = [[1,"name","discription",123, 1]],  name = "name", phone = "88005553535", mail = "a@a.com"):
     if (len(items)<=0):
         print("Items list is empty")
         return
@@ -46,6 +46,7 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
     # текст
     story.append(Paragraph(title, styles["Heading1"]))
     story.append(Paragraph('ООО "Название"', styles["Normal"]))
+    story.append(Paragraph("ФИО: "+name+" Телефон: " + phone + " Почта: " + mail, styles["Normal"]))
     # таблица русская
     column_widths = [60, 150, 150, 40, 80]
     for item in items:
@@ -80,7 +81,7 @@ def countItemsPrice(items): #подсчёт цены всех товаров
     return price
 
 
-def formFilesFromList(ids): #Формирование КП на вход idишники -> на выход pdf'ка и csv
+def formFilesFromList(ids, fio, phone, email): #Формирование КП на вход idишники -> на выход pdf'ка и csv
     items = []
     jsontext = loadJson()
     for i in range(len(ids)):
@@ -90,7 +91,7 @@ def formFilesFromList(ids): #Формирование КП на вход idиш�
             items.append(toAppend)
     itForCSV = items.copy()
     makeCSV(items=itForCSV)
-    makePdf(items=items)
+    makePdf(items=items, fileName=fio+'.pdf', name = fio, phone = phone, mail = email)
 
 
 def findInJson(findId, jsonText = None): #На вход: опционально json с продуктами и id для поиска -> на выход конкретный продукт из json'ая

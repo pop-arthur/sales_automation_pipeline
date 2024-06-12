@@ -11,10 +11,11 @@
   <div class="heading">
     Welcome!
   </div>
-  <form id="loginForm" action="/login" method="get">
+  <h2>{{ message }}</h2>
+  <form id="loginForm" action="/login" method="post">
 
     <label>
-      <input id="username1" type="text" class="input"/>
+      <input id="username1" type="text" class="input" name="username"/>
     </label>
 
     <label>

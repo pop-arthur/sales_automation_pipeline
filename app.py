@@ -1,11 +1,15 @@
-from flask import Flask, render_template, redirect, make_response, jsonify, request, url_for
+import json
+import time
+import io
+from flask import Flask, render_template, redirect, make_response, jsonify, request, url_for, send_file
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_restful import Api
 import requests
 import os
+from pdf import loadJson, formFilesFromList
 
 users = {
-    "Aitkun" : "qwe"
+    "Aitkun": "qwe"
 }
 
 app = Flask(__name__)
@@ -26,7 +30,28 @@ def index(message=""):
 
 @app.route('/cart')
 def cart():
-    return render_template("main.html")
+    with open('apiresp.json', 'r') as f:
+        cart = json.load(f)
+    return render_template("cart.html", cart=cart['products'])
+
+
+@app.route('/formPDF', methods=['POST', 'GET'])
+def formPDF():
+    with open('apiresp.json', 'r') as f:
+        cart = json.load(f)
+    ids = [item['id'] for item in cart['products']]
+
+    data = request.form
+    formFilesFromList(ids, data['FIO'], data['phone'], data['email'])
+    filename = f'{data["FIO"]}.pdf'
+
+    return_data = io.BytesIO()
+    with open(filename, 'rb') as fo:
+        return_data.write(fo.read())
+    return_data.seek(0)
+    os.remove(filename)
+
+    return send_file(return_data, mimetype='application/pdf', as_attachment=True, download_name=filename)
 
 
 @app.route('/login', methods=['POST'])

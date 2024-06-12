@@ -53,15 +53,17 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function generateTxtFile() {
-    const fullName = document.querySelector('.full-name').textContent.trim();
-    const phoneNumber = document.querySelector('.phone-number').textContent.trim();
-    const email = document.querySelector('.email').textContent.trim();
-    const content = `Full Name: ${fullName}\nPhone Number: ${phoneNumber}\nEmail: ${email}`;
-    const blob = new Blob([content], { type: 'text/plain' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'contact-info.txt';
-    a.click();
+        // Relative URL to redirect to
+        const relativeURL = '/formPDF'; // Change this to your desired relative path
+
+        // Construct absolute URL based on the current location
+        const absoluteURL = new URL(relativeURL, window.location.href);
+
+        // Log the absolute URL (optional)
+        console.log('Redirecting to:', absoluteURL.href);
+
+        // Redirect to the absolute URL
+        window.location.href = absoluteURL.href;
 }
 
 

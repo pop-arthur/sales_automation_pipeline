@@ -38,7 +38,8 @@ body{
     .cart-title {
         color: #fff;
         align-self: end;
-        margin-top: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         flex-grow: 1;
         flex-basis: auto;
         font: 100px Lydia-Bold;
@@ -102,8 +103,8 @@ body{
         }
     }
     .form-column {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-column: column;
         line-height: normal;
         width: auto;
         margin-left: 0px;
@@ -207,18 +208,18 @@ body{
     }
     .cart-item {
         padding: 10px;
-        display: flex;
+        display: inline-flex ;
         justify-content: space-between;
         align-items: center;
     }
     .cart-item img {
-        width: 150px;
-        height: 150px;
+        width: 30%;
+        height: 30%;
         border-radius: 20px;
     }
     .cart-item-info {
         flex-grow: 1;
-        margin-left: 10px;
+        margin-left: 5%;
     }
     .item-name,
     .item-id,
@@ -226,10 +227,17 @@ body{
     .item-price {
         margin: 5px 0;
         font-family: Lydia-Light;
+        font-size: 100%
     }
-    #remove-button {
+    .remove-button {
+        background: url("../test/images/delete.png");
         width: 30px;
         height: 30px;
+    }
+    .butt {
+        margin-left: 2%;
+        display: flex;
+        justify-content: baseline;
     }
     #quantity-form{
         font-family: Lydia-Light;

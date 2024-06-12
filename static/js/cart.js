@@ -29,6 +29,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+function removeItem() {
+    const item = button.closest('.cart-item');
+    item.remove();
+    updateTotal();
+}
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const input = document.getElementById("email");
@@ -58,11 +64,7 @@ function generateTxtFile() {
     a.click();
 }
 
-function removeItem(button) {
-    const item = button.closest('.cart-item');
-    item.remove();
-    updateTotal();
-}
+
 
 function setQuantity(button) {
     const quantityElement = button.closest('.cart-item').querySelector('.item-quantity');

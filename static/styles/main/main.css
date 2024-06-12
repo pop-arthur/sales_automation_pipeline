@@ -1,34 +1,90 @@
+*::-webkit-scrollbar {
+    width: 0 !important;
+}
+
 body {
+    font-family: Ebrima, sans-serif;
     background-color: #18002d;
+}
+
+.item-searching-block {
+    vertical-align: middle;
+    line-height: 100px;
+
+    margin-bottom: 5px;
+    background-color: #f7bb47;
+    text-align: center;
+    border-color: black;
+    border-radius: 20px;
+    height: 100px;
+}
+
+.item-shopping-cart {
+    vertical-align: middle;
+    line-height: 100px;
+
+    margin-bottom: 5px;
+    background-color: #f7bb47;
+    text-align: center;
+    border-color: black;
+    border-radius: 20px;
+    height: 100px;
+}
+
+.items-block {
+    height: 500px;
+    margin-top: 20px;
+    overflow-y: scroll;
+    background-color: white;
+    border-radius: 20px;
+
 }
 
 .heading {
     display: flex;
-    font-size: 200px;
+    font-size: 100px;
     color: white;
-    font-family: Ebrima, sans-serif;
-    margin-left: 50px;
+    margin-top: 20px;
 }
 
-button {
-    border-radius: 40px;
-    margin-left: 500px;
-    margin-bottom: 225px;
-    flex-grow: 1;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap : 20px;
+    justify-items: center;
+}
+
+.search-block {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-left: 150px;
+
+}
+
+.log-out-button {
+    text-align: center;
+    height: 50px;
     background-color: white;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
+    border-radius: 40px;
+
+    margin: 15px;
 }
 
-.container {
-    height: 200px;
+.shopping-cart {
+    margin-top: 50px;
+    width: 500px;
+    border-radius: 40px;
+    height: 750px;
+    background-color: white;
 }
 
-.data-block {
-
+.shopping-cart-items {
+    height: 500px;
+    margin-top: 20px;
+    overflow-y: scroll;
+    background-color: white;
+    border-radius: 20px;
 }
-
 
 .search-line {
     margin: 0 auto;
@@ -38,6 +94,7 @@ button {
     border-radius: 40px;
     width: 500px;
     outline: none;
+    border: none;
     font-size: 30px;
     flex-grow: 1;
     color: rgb(128, 128, 128);

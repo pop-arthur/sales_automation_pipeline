@@ -1,109 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="..\static\styles\cart\cart.css">
-<script src="..\static\js\cart.js"></script>
-<title>Cart</title>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\static\styles\cart\cart.css">
+    <script src="..\static\scripts\cart.js"></script>
+    <title>Cart</title>
 </head>
+
 <body>
 <section class="cart-container">
     <header class="cart-header">
         <h1 class="cart-title">CART</h1>
         <div class="back-button-container" onclick="window.location.href='index.html'">
             <div class="back-button">BACK</div>
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5403d94facc52db0e0183bc219a7cf4bf570b62cca11f4397029438bd455acac?apiKey=07449926caf0434fa474b0526b0d5b23&" alt="Profile Image" class="profile-image" />
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5403d94facc52db0e0183bc219a7cf4bf570b62cca11f4397029438bd455acac?apiKey=07449926caf0434fa474b0526b0d5b23&" alt="Profile Image" class="back-icon" />
         </div>
     </header>
     <main class="main-content">
         <div class="content-wrapper">
             <div class="form-column">
                 <div class="product-list" id="product-list">
+                    <!-- {%for value in universities.values()%} -->
                     <div class="cart-item">
-                        <img src="https://via.placeholder.com/50" alt="Item Image">
+                        <!-- <img src="{{value['image']}}" alt="Item Image"> -->
+                        <img src="..\images\item_preview.jpg" class="cart-item" alt="Item Image">
                         <div class="cart-item-info">
-                            <div class="item-name">Item Name 1</div>
-                            <div class="item-id">ID: 123</div>
-                            <div class="item-quantity">Quantity: 1</div>
-                            <div class="item-price">Price: 100 rub</div>
+                            <div class="item-name">{{value['name']}}</div>
+                            <div class="item-id">{{value['id']}}</div>
+                            <div class="item-quantity">{{value['quantity']}}</div>
+                            <div class="item-price">Price: {{value['price']}} rub</div>
+                        </div >
+                        <div class="butt">
+                            <img src="..\images\delete.png" alt="delete" id="remove-button">
+                            <form action="\quantity" method="get">
+                                <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="1" value="1" placeholder="Enter the quantity">
+                            </form>
                         </div>
-                        <button class="remove-button" onclick="removeItem(this)">Remove</button>
-                        <button class="quantity-button" onclick="setQuantity)">Set Quantity</button>
+                        
+                        
+                        
                     </div>
-                    <div class="cart-item">
-                        <img src="https://via.placeholder.com/50" alt="Item Image">
-                        <div class="cart-item-info">
-                            <div class="item-name">Item Name 2</div>
-                            <div class="item-id">ID: 456</div>
-                            <div class="item-quantity">Quantity: 2</div>
-                            <div class="item-price">Price: 200 rub</div>
-                        </div>
-                        <button class="remove-button" onclick="removeItem(this)">Remove</button>
-                        <button class="quantity-button" onclick="setQuantity(this)">Set Quantity</button>
-                    </div>
+        
+                    <hr width=90%>
+                    <!-- {%endfor%} -->
+                    
                 </div>
+                
             </div>
-            <aside class="info-column">
-                <div class="info-container">
-                    <input type="text" id="FIO" name="FIO" class="full-name">
-                    <input type="text" id="phone" name="phone" class="phone-number">
-                    <input type="text" id="email" name="email" class="e-mail">
-                    <div class="summary-container">
-                        <div class="total-label">Total:</div>
-                        <div class="total-amount" id="total-amount">300 rub</div>
-                        <button class="form-pdf-button" onclick="generateTxtFile()">Form TXT</button>
-                    </div>
-                </div>
-            </aside>
+            
+        </div>
+        <div class="info-container">
+            <form action="\personal-form" method="get">
+                <input type="text" id="FIO" name="FIO" class="full-name">
+                <input type="text" id="phone" name="phone" class="phone-number">
+                <input type="text" id="email" name="email" class="e-mail">
+            </form>
+            
+        </div>
+        <div class="summary-container">
+            <div class="total-label">Total:</div>
+            <div class="total-amount" id="total-amount">300 rub</div>
+            <button class="form-pdf-button" onclick="generateTxtFile()">Form PDF</button>
         </div>
     </main>
 </section>
-<script>
-    function generateTxtFile() {
-        const fullName = document.querySelector('.full-name').textContent.trim();
-        const phoneNumber = document.querySelector('.phone-number').textContent.trim();
-        const email = document.querySelector('.email').textContent.trim();
-        const content = `Full Name: ${fullName}\nPhone Number: ${phoneNumber}\nEmail: ${email}`;
-        const blob = new Blob([content], { type: 'text/plain' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'contact-info.txt';
-        a.click();
-    }
-
-    function removeItem(button) {
-        const item = button.closest('.cart-item');
-        item.remove();
-        updateTotal();
-    }
-
-    function setQuantity(button) {
-        const quantityElement = button.closest('.cart-item').querySelector('.item-quantity');
-        const newQuantity = prompt('Enter new quantity:', quantityElement.textContent.replace('Quantity: ', ''));
-        if (newQuantity !== null) {
-            quantityElement.textContent = `: ${newQuantity}`;
-            updateTotal();
-        }
-    }
-
-    function updateTotal() {
-        const items = document.querySelectorAll('.cart-item');
-        let total = 0;
-        items.forEach(item => {
-            const quantity = parseInt(item.querySelector('.item-quantity').textContent.replace('Quantity: ', ''), 10);
-            const price = parseInt(item.querySelector('.item-price').textContent.replace('Price: ', '').replace(' rub', ''), 10);
-            total += quantity * price;
-        });
-        document.getElementById('total-amount').textContent = `${total} rub`;
-    }
-
-    function editField(element) {
-        const newValue = prompt('Enter new value:', element.textContent);
-        if (newValue !== null) {
-            element.textContent = newValue;
-        }
-    }
-</script>
 </body>
 </html>

@@ -35,7 +35,7 @@ def makePdf(fileName = "КП.pdf", title = "Комерческое предло�
     styles['Normal'].fontName='DejaVuSerif'
     styles['Heading1'].fontName='DejaVuSerif'
 
-    pdfmetrics.registerFont(TTFont('DejaVuSerif', 'test/static/font/DejaVuSerif.ttf', 'UTF-8'))
+    pdfmetrics.registerFont(TTFont('DejaVuSerif', 'static/font/DejaVuSerif.ttf', 'UTF-8'))
 
     doc = SimpleDocTemplate(filename = fileName,
                             pagesize = A4,
@@ -106,7 +106,7 @@ def findInJson(findId, jsonText = None): #На вход: опционально 
 
 
 def loadJson(): #достаём json из файла
-    file_path = "test/apiresp.json"
+    file_path = "apiresp.json"
     with open(file_path, 'r', encoding='utf-8') as file:
       data = file.read().rstrip()
     jsonText = data

@@ -30,15 +30,15 @@ def index(message=""):
 
 @app.route('/cart')
 def cart():
-    with open('apiresp.json', 'r') as f:
-        cart = json.load(f)
+    #with open('apiresp.json', 'r') as f:
+    cart = json.loads(loadJson())
     return render_template("cart.html", cart=cart['products'])
 
 
 @app.route('/formPDF', methods=['POST', 'GET'])
 def formPDF():
-    with open('apiresp.json', 'r') as f:
-        cart = json.load(f)
+    #with open('apiresp.json', 'r') as f:
+    cart = json.loads(loadJson())
     ids = [item['id'] for item in cart['products']]
 
     data = request.form

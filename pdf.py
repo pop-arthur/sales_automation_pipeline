@@ -9,8 +9,9 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import csv
 
-def makeCSV(fileName = "КП.pdf", items=[[1,"name","discription",123, 1]]): #делаем csv из листа items
+def makeCSV(fileName = "КП.csv", title = "Комерческое предложение", items = [[1,"name","discription",123, 1]],  name = "name", phone = "88005553535", mail = "a@a.com"): #делаем csv из листа items
   items.insert(0, ["id","Имя","Описание","Цена","Доступное количество"])
+  items.insert(0, [title,"ФИО:",name,"Телефон:",phone,"Почта:",mail])
   try:
     with open(fileName.replace(".pdf",".csv"), 'w') as f:
       writer = csv.writer(f)
@@ -90,7 +91,7 @@ def formFilesFromList(ids, fio, phone, email): #Формирование КП н
             toAppend = [var["id"], var["name"],var["description"], var["price"], var["quantity_in_stock"]]
             items.append(toAppend)
     itForCSV = items.copy()
-    makeCSV(items=itForCSV)
+    makeCSV(fileName=fio+'.pdf', name = fio, phone = phone, mail = email, items=itForCSV)
     makePdf(items=items, fileName=fio+'.pdf', name = fio, phone = phone, mail = email)
 
 

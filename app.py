@@ -7,6 +7,7 @@ from flask_restful import Api
 import requests
 import os
 from pdf import loadJson, formFilesFromList
+import zipfile
 
 users = {
     "Aitkun": "qwe"
@@ -37,7 +38,6 @@ def cart():
 
 @app.route('/formPDF', methods=['POST', 'GET'])
 def formPDF():
-    #with open('apiresp.json', 'r') as f:
     cart = json.loads(loadJson())
     ids = [item['id'] for item in cart['products']]
 
@@ -50,9 +50,49 @@ def formPDF():
         return_data.write(fo.read())
     return_data.seek(0)
     os.remove(filename)
-
     return send_file(return_data, mimetype='application/pdf', as_attachment=True, download_name=filename)
 
+@app.route('/formCSV', methods=['POST', 'GET'])
+def formCSV():
+    cart = json.loads(loadJson())
+    ids = [item['id'] for item in cart['products']]
+
+    data = request.form
+    formFilesFromList(ids, data['FIO'], data['phone'], data['email'])
+    filename = f'{data["FIO"]}.csv'
+
+    return_data = io.BytesIO()
+    with open(filename, 'rb') as fo:
+        return_data.write(fo.read())
+    return_data.seek(0)
+    os.remove(filename)
+    return send_file(return_data, mimetype='application/csv', as_attachment=True, download_name=filename)
+
+@app.route('/formFiles', methods=['POST'])
+def formFiles():
+    cart = json.loads(loadJson())
+    ids = [item['id'] for item in cart['products']]
+
+    data = request.form
+    formFilesFromList(ids, data['FIO'], data['phone'], data['email'])
+    
+    pdf_filename = f'{data["FIO"]}.pdf'
+    csv_filename = f'{data["FIO"]}.csv'
+
+    zip_filename = f'{data["FIO"]}.zip'
+    zip_buffer = io.BytesIO()
+
+    with zipfile.ZipFile(zip_buffer, 'w') as zip_file:
+        zip_file.write(pdf_filename)
+        zip_file.write(csv_filename)
+    
+    # Clean up the individual files after zipping
+    os.remove(pdf_filename)
+    os.remove(csv_filename)
+
+    zip_buffer.seek(0)
+
+    return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name=zip_filename)
 
 @app.route('/login', methods=['POST'])
 def login():

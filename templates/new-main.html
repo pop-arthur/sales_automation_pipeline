@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\static\styles\main\new-main.css">
+    <script src="..\static\js\new-main.js"></script>
+    <title>Main</title>
+</head>
+
+<body>
+<section class="cart-container">
+    <header class="cart-header">
+        <h1 class="cart-title">Admin Panel</h1>
+        <div class="buttons-container">
+            <div class="import-button-container" onclick="">
+                <div class="import-button">IMPORT</div>
+                <img src="..\static\images\arrow_upward.png" alt="Import_img" class="import-icon" />
+            </div>
+            <div class="cart-button-container" onclick="window.location.href='cart.html'">
+                <div class="cart-button">CART</div>
+                <img src="..\static\images\shopping_cart.png" alt="Profile Image" class="cart-icon" />
+            </div>
+        </div>
+        
+    </header>
+
+
+    <main class="main-content">
+        <div class="search-bar-container">
+            <form action="\search" method="post">
+                <input type="text" id="search-bar" name="search" class="search-bar">
+            </form>
+        
+        </div>
+        <div class="content-wrapper">
+            <div class="form-column">
+                <div class="product-list" id="product-list">
+                     {%for value in all_items%}
+                    <div class="item">
+
+                        <img src="{{ value['images'][0]['url'] }}">
+
+<!--                        <img src="\static\images\item_preview.jpg" class="item" alt="Item Image">-->
+                        <div class="search-item-info">
+                            <div class="item-name">Name: {{value['name']}}</div>
+                            <div class="item-id">ID: {{value['id']}}</div>
+                            <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}}</div>
+                            <div class="item-price">Price: {{value['price']}} rub</div>
+                        </div>
+                    </div>
+                    <div class="butt">
+                        <form action="\quantity" method="get">
+                            <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="1" value="1" placeholder="Enter the quantity">
+                        </form>
+                    
+                        <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem()"></button>
+
+                    </div>
+
+                    <hr width=90%>
+                     {%endfor%}
+
+                </div>
+
+            </div>
+
+        </div>
+            
+
+    </main>
+</section>
+</body>
+</html>

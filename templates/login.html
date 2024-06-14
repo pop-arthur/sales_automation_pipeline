@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/styles/authorization/authorization.css">
+  <title>Authorization</title>
+</head>
+<body>
+<div class="login-container">
+  <div class="heading">
+    Welcome!
+  </div>
+  <h2>{{ message }}</h2>
+  <form id="loginForm" action="" method="post">
+
+    {{ form.hidden_tag() }}
+    <label>
+      {{ form.username.label }} <br>
+      {{ form.username(class="form-control", type="text") }}<br>
+<!--      <input id="username1" type="text" class="input" name="username"/>-->
+    </label>
+
+    <label>
+      {{ form.password.label }}<br>
+      {{ form.password(class="form-control", type="password") }}<br>
+<!--      <input id="password1" name="password" type="password" class="input"/>-->
+    </label>
+
+    <div class="remember-block">
+<!--      <label>-->
+<!--        <input type="checkbox" class="input-box">-->
+<!--      </label>-->
+<!--      Remember me-->
+      <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+      <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    </div>
+
+<!--    <button type="submit" id="loginButton">Login</button>-->
+
+  </form>
+</div>
+<script src="../static/scripts/authorization.js"></script>
+</body>
+</html>

@@ -226,8 +226,8 @@ body{
         align-items: center;
     }
     .cart-item img {
-        width: 1em;
-        height: 1em;
+        width: 5em;
+        height: 5em;
         border-radius: 20px;
     }
     .cart-item-info {

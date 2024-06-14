@@ -67,6 +67,10 @@ function generateTxtFile() {
 }
 
 
+function clear_cart(){
+    localStorage.clear();
+}
+
 
 function setQuantity(button) {
     const quantityElement = button.closest('.cart-item').querySelector('.item-quantity');

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="..\static\styles\main\new-main.css">
-    <script src="..\static\js\new-main.js"></script>
+    <script src="..\static\js\products.js"></script>
     <title>Main</title>
 </head>
 
@@ -53,7 +53,7 @@
                     <div class="butt">
                         <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
 
-                        <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem()"></button>
+                        <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem( {{ value['id'] }} )"></button>
 
                     </div>
 

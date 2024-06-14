@@ -17,10 +17,11 @@
                 <div class="import-button">IMPORT</div>
                 <img src="..\static\images\arrow_upward.png" alt="Import_img" class="import-icon" />
             </div>
-            <div class="cart-button-container" onclick="window.location.href='cart.html'">
+            <div class="cart-button-container" onclick="window.location.href='cart'">
                 <div class="cart-button">CART</div>
                 <img src="..\static\images\shopping_cart.png" alt="Profile Image" class="cart-icon" />
             </div>
+
         </div>
         
     </header>
@@ -50,10 +51,8 @@
                         </div>
                     </div>
                     <div class="butt">
-                        <form action="\quantity" method="get">
-                            <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="1" value="1" placeholder="Enter the quantity">
-                        </form>
-                    
+                        <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
+
                         <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem()"></button>
 
                     </div>

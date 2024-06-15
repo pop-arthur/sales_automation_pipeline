@@ -46,7 +46,6 @@ def products():
 @login_required
 @app.route('/cart')
 def cart():
-    # with open('apiresp.json', 'r') as f:
     cart = json.loads(load_json())
     return render_template("cart.html", cart=cart['products'])
 
@@ -119,10 +118,17 @@ def login():
         user = db_sess.query(User).filter(User.username == form.username.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
-            return redirect("/cart")
+            return redirect("/products")
         return render_template('login.html', message="Неправильный логин или пароль", form=form)
 
     return render_template('login.html', title='Авторизация', form=form)
+
+
+@login_required
+@app.route('/add')
+def add():
+    print("added")
+    return redirect('products')
 
 
 @login_required

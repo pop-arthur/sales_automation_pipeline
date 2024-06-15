@@ -15,6 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-function addItem (){
-    
+function addItem (id){
+    localStorage.setItem(id, 1);
 }

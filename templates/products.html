@@ -3,29 +3,24 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="..\static\styles\main\new-main.css">
+    <link rel="stylesheet" href="..\static\styles\products\products.css">
+    <link rel="stylesheet" href="..\static\styles\list_of_items\list_of_items.css">
     <script src="..\static\js\products.js"></script>
     <title>Main</title>
 </head>
 
 <body>
-<section class="cart-container">
-    <header class="cart-header">
-        <h1 class="cart-title">Admin Panel</h1>
-        <div class="buttons-container">
-            <div class="import-button-container" onclick="">
-                <div class="import-button">IMPORT</div>
-                <img src="..\static\images\arrow_upward.png" alt="Import_img" class="import-icon" />
-            </div>
-            <div class="cart-button-container" onclick="window.location.href='cart'">
-                <div class="cart-button">CART</div>
-                <img src="..\static\images\shopping_cart.png" alt="Profile Image" class="cart-icon" />
-            </div>
+    <header class="header">
+        <h1 class="display-cur-page">ADMIN PANEL</h1>
 
-        </div>
-        
+        <nav class="navbar">
+            <a href="..\templates\cart.html">Cart</a>
+            <a href="#">Upload offer</a>
+            <a href="#">Import to Satu</a>
+            <a href="#">Log out</a>
+        </nav>
     </header>
-
+    <hr class="divider">
 
     <main class="main-content">
         <div class="search-bar-container">

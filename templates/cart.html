@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="..\static\styles\cart\cart.css">
+    <link rel="stylesheet" href="..\static\styles\common\navbar\navbar.css">
+    <link rel="stylesheet" href="..\static\styles\common\list_of_items\list_of_items.css">
     <script src="..\static\js\cart.js"></script>
     <title>Cart</title>
 </head>
 
 <body>
     <header class="header">
-        <h1 class="display-cur-page">ADMIN PANEL</h1>
+        <h1 class="display-cur-page">CART</h1>
 
         <nav class="navbar">
-            <a href="..\templates\cart.html">Cart</a>
+            <a href="..\templates\cart.html">Admin Panel</a>
             <a href="#">Upload offer</a>
             <a href="#">Import to Satu</a>
             <a href="#">Log out</a>
@@ -25,13 +27,13 @@
         <div class="content-wrapper">
             <div class="form-column">
                 <div class="product-list" id="product-list">
-                     {%for value in cart%}
-                    <div class="cart-item">
+                     {%for value in all_items%}
+                    <div class="item">
 
-                        <img src="{{ value['images'][0]['url'] }}" class = "cart-item" alt = "Item_img">
+                        <img src="{{ value['images'][0]['url'] }}">
 
-<!--                        <img src="\static\images\item_preview.jpg" class="cart-item" alt="Item Image">-->
-                        <div class="cart-item-info">
+<!--                        <img src="\static\images\item_preview.jpg" class="item" alt="Item Image">-->
+                        <div class="search-item-info">
                             <div class="item-name">Name: {{value['name']}}</div>
                             <div class="item-id">ID: {{value['id']}}</div>
                             <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}}</div>
@@ -39,11 +41,9 @@
                         </div>
                     </div>
                     <div class="butt">
-                        <form action="\quantity" method="get">
-                            <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="1" value="1" placeholder="Enter the quantity">
-                        </form>
-                    
-                        <img class="remove-button" src="/static/images/delete.png" onclick="removeItem()"></button>
+                        <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
+
+                        <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem( {{ value['id'] }} )"></button>
 
                     </div>
 
@@ -56,19 +56,10 @@
 
         </div>
         <div class="info-container">
-            <form action="\downloadFiles" method="post">
-                <label>
+            <form action="\downloadFiles" method="post" class="personal-info">
                     <input type="text" id="FIO" name="FIO" class="full-name">
-                </label>
-
-                <label>
                     <input type="text" id="phone" name="phone" class="phone-number">
-                </label>
-
-                <label>
                     <input type="text" id="email" name="email" class="e-mail">
-                </label>
-
                 <div class="summary-container">
                     <div class="total-label">Total:</div>
                     <div class="total-amount" id="total-amount">300 rub</div>

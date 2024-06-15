@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     background: transparent;
     display: flex;
     justify-content: space-between;
@@ -12,6 +12,7 @@
 }
 
 .display-cur-page {
+    margin-left: 25px;
     color: #fff;
     font: 1.5em Lydia-Bold;
 

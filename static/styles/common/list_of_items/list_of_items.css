@@ -1,9 +1,11 @@
 
 .product-list {
     margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
     border-radius: 30px;
     background-color: #d9d9d9;
-    width: 100%;
+    width: auto;
     max-width: 991px;
     height: auto;
 }
@@ -64,6 +66,9 @@
     height: auto;
     border-radius: 10px;
 }
+.divider {
+    margin: 10px;
+}
 
 @media (max-width: 480px) {
     .divider {
@@ -71,10 +76,12 @@
     }
     .product-list {
         margin-top: 20px;
-        padding: 0px 15px 0px 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        /* padding: 0px 15px 0px 15px; */
         border-radius: 30px;
         background-color: #d9d9d9;
-        width: 100%;
+        width: auto;
         max-width: 991px;
         height: auto;
     }

@@ -24,37 +24,30 @@
     <hr class="divider">
 
     <main class="main-content">
-        <div class="content-wrapper">
-            <div class="form-column">
-                <div class="product-list" id="product-list">
-                     {%for value in all_items%}
-                    <div class="item">
-
-                        <img src="{{ value['images'][0]['url'] }}">
-
+        <div class="product-list" id="product-list">
+                {%for value in all_items%}
+            <div class="item">
+                <img src="{{ value['images'][0]['url'] }}">
 <!--                        <img src="\static\images\item_preview.jpg" class="item" alt="Item Image">-->
-                        <div class="search-item-info">
-                            <div class="item-name">Name: {{value['name']}}</div>
-                            <div class="item-id">ID: {{value['id']}}</div>
-                            <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}}</div>
-                            <div class="item-price">Price: {{value['price']}} rub</div>
-                        </div>
-                    </div>
-                    <div class="butt">
-                        <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
-
-                        <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem( {{ value['id'] }} )"></button>
-
-                    </div>
-
-                    <hr width=90%>
-                     {%endfor%}
-
+                <div class="search-item-info">
+                    <div class="item-name">Name: {{value['name']}}</div>
+                    <div class="item-id">ID: {{value['id']}}</div>
+                    <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}}</div>
+                    <div class="item-price">Price: {{value['price']}} rub</div>
                 </div>
+            </div>
+            <div class="butt">
+                <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
+
+                <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem( {{ value['id'] }} )"></button>
 
             </div>
 
+            <hr class="divider">
+                {%endfor%}
+
         </div>
+
         <div class="info-container">
             <form action="\downloadFiles" method="post" class="personal-info">
                     <input type="text" id="FIO" name="FIO" class="full-name">

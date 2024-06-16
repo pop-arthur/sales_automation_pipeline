@@ -15,7 +15,7 @@
         <h1 class="display-cur-page">PRODUCTS</h1>
 
         <nav class="navbar">
-            <a href="..\cart">Cart</a>
+            <a href="..\templates\cart.html">Cart</a>
             <a href="#">Upload offer</a>
             <a href="#">Import</a>
             <a href="#">Log out</a>
@@ -30,8 +30,7 @@
             </form>
         
         </div>
-        <div class="content-wrapper">
-            <div class="form-column">
+
                 <div class="product-list" id="product-list">
                      {%for value in all_items%}
                     <div class="item">
@@ -57,11 +56,6 @@
                      {%endfor%}
 
                 </div>
-
-            </div>
-
-        </div>
-            
 
     </main>
 </section>

@@ -1,6 +1,8 @@
 body{
     background: rgb(24,0,45);
     background: linear-gradient(180deg, rgba(24,0,45,1) 55%, rgba(54,0,101,1) 80%);
+    width: 100%;
+    min-height: 100vh;
   }
   @font-face {
     font-family: Lydia-Bold;
@@ -15,10 +17,6 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-body {
-    min-height: 100vh;
-
 }
 
 
@@ -45,59 +43,8 @@ body {
 .main-content {
     align-self: auto;
     width: 100%;
-    max-width: 958px;
 }
 
-.form-column {
-    
-    display: grid;
-    grid-column: column;
-    line-height: normal;
-    width: auto;
-    padding-left: 25px;
-    padding-right: 25px;
-
-}
-
-.product-list {
-    margin-top: 10px;
-    border-radius: 30px;
-    background-color: #d9d9d9;
-    width: 100%;
-    max-width: 991px;
-    height: auto;
-}
-
-.info-column {
-    display: flex;
-    flex-direction: column;
-    line-height: normal;
-    width: 100%;
-}
-
-.item {
-    padding: 10px;
-    display: inline-flex ;
-    justify-content: space-between;
-    align-items: center;
-}
-.item img {
-    width: 30%;
-    height: 30%;
-    border-radius: 20px;
-}
-.all-item-info {
-    flex-grow: 1;
-    margin-left: 5%;
-}
-.item-name,
-.item-id,
-.item-quantity,
-.item-price {
-    margin: 5px 0;
-    font-family: Lydia-Light;
-    font-size: 100%
-}
 .add-button {
     width: 30px;
     height: 30px;

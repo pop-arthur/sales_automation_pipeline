@@ -1,5 +1,6 @@
 body{
-    background-color: #18002d;
+    background: rgb(24,0,45);
+    background: linear-gradient(180deg, rgba(24,0,45,1) 55%, rgba(54,0,101,1) 80%);
   }
   @font-face {
     font-family: Lydia-Bold;
@@ -9,10 +10,7 @@ body{
     font-family: Lydia-Light;
     src: url(LydiaSansLight.ttf);
 }
-body{
-    background: rgb(24,0,45);
-    background: linear-gradient(180deg, rgba(24,0,45,1) 55%, rgba(54,0,101,1) 80%);
-  }
+
 
 
 * {
@@ -28,7 +26,6 @@ body {
 .main-content {
     align-self: auto;
     width: 100%;
-    max-width: 958px;
 }
 
 

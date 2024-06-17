@@ -125,13 +125,6 @@ def login():
 
 
 @login_required
-@app.route('/add')
-def add():
-    print("added")
-    return redirect('products')
-
-
-@login_required
 @app.route('/logout')
 def logout():
     logout_user()

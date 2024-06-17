@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="..\static\styles\cart\cart.css">
     <link rel="stylesheet" href="..\static\styles\common\navbar\navbar.css">
     <link rel="stylesheet" href="..\static\styles\common\list_of_items\list_of_items.css">
-    <script src="..\static\js\cart.js"></script>
+    <script src="static\js\cart.js"></script>
+    <script src="static\js\objects.js"></script>
     <title>Cart</title>
 </head>
 
@@ -17,34 +18,34 @@
         <nav class="navbar">
             <a href="products">Search</a>
             <a href="#">Upload offer</a>
-            <a href="#">Import</a>
-            <a href="#">Log out</a>
+            <a href="logout">Import</a>
         </nav>
     </header>
     <hr class="divider">
 
     <main class="main-content">
         <div class="product-list" id="product-list">
-                {%for value in all_items%}
-            <div class="item">
-                <img src="{{ value['images'][0]['url'] }}">
-<!--                        <img src="\static\images\item_preview.jpg" class="item" alt="Item Image">-->
-                <div class="search-item-info">
-                    <div class="item-name">Name: {{value['name']}}</div>
-                    <div class="item-id">ID: {{value['id']}}</div>
-                    <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}}</div>
-                    <div class="item-price">Price: {{value['price']}} rub</div>
+            <template id="product_row">
+                <div class="item">
+                    <img src="../static/images/item_preview.jpg" class="item-img">
+                    <div class="search-item-info">
+                        <div class="item-name"></div>
+                        <div class="item-id"></div>
+                        <div class="item-quantity"></div>
+                        <div class="item-price"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="butt">
-                <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
+                <div class="butt">
+                    <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
 
-                <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem( {{ value['id'] }} )"></button>
+                    <img class="add-button" src="../static/images/shopping_cart.png" onclick=""></button>
 
-            </div>
+                </div>
 
-            <hr class="divider">
-                {%endfor%}
+                <hr class="divider">
+
+
+            </template>
 
         </div>
 
@@ -60,8 +61,9 @@
                 </div>
             </form>
             
-
+        </div>
     </main>
+
 </section>
 </body>
 </html>

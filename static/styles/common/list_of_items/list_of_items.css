@@ -7,6 +7,7 @@
     background-color: #d9d9d9;
     width: auto;
     height: auto;
+    min-height: 25px;
 }
 
 .info-column {

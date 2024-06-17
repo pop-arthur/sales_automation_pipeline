@@ -28,6 +28,13 @@ body {
     width: 100%;
 }
 
+.empty-cart-error {
+    font: 15px Lydia-Light;
+    display:flex ;
+    justify-content:center;
+    align-items: center;
+
+}
 
 .info-container {
     display: flex;
@@ -36,6 +43,8 @@ body {
     color: rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
 }
+
+
 
 .clear-cart.container {
     display: flex;

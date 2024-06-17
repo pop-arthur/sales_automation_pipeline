@@ -37,6 +37,14 @@ body{
     margin: 20px 15px 0px;
 }
 
+.unsuccessfull-search {
+    font: 15px Lydia-Light;
+    display:flex ;
+    justify-content:center;
+    align-items: center;
+
+}
+
 @media (max-width: 480px) {
     .search-bar {
         width: 15em;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="..\static\styles\common\navbar\navbar.css">
     <link rel="stylesheet" href="..\static\styles\common\list_of_items\list_of_items.css">
     <script src="..\static\js\products.js"></script>
+    <script src="..\static\js\objects.js"></script>
     <title>Main</title>
 </head>
 
@@ -33,9 +34,9 @@
 
                 <div class="product-list" id="product-list">
                      {%for value in all_items%}
-                    <div class="item">
+                    <div class="item" id="item{{ value['id'] }}">
 
-                        <img src="{{ value['images'][0]['url'] }}">
+                        <img src="{{ value['images'][0]['url'] }}" class="item-img">
 
 <!--                        <img src="\static\images\item_preview.jpg" class="item" alt="Item Image">-->
                         <div class="search-item-info">

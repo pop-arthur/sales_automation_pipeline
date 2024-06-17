@@ -130,13 +130,6 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@app.route('/add')
-@login_required
-def add():
-    print("added")
-    return redirect('products')
-
-
 @app.route('/logout')
 @login_required
 def logout():

@@ -1,6 +1,7 @@
+from http import HTTPStatus
 import json
 import io
-from flask import Flask, render_template, redirect, make_response, jsonify, request, url_for, send_file
+from flask import Flask, abort, render_template, redirect, make_response, jsonify, request, url_for, send_file
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_restful import Api
 import os
@@ -17,6 +18,11 @@ api = Api(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'SOME SECRET KEY'
+
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    return redirect(url_for('login'))
 
 
 @login_manager.user_loader
@@ -36,15 +42,15 @@ def index(message=""):
     return redirect(url_for('login'))
 
 
-@login_required
 @app.route('/products', methods=['GET', 'POST'])
+@login_required
 def products():
     products = json.loads(load_json())['products']
     return render_template("products.html", all_items=products)
 
 
-@login_required
 @app.route('/cart')
+@login_required
 def cart():
     cart = json.loads(load_json())
     return render_template("cart.html", cart=cart['products'])
@@ -124,15 +130,15 @@ def login():
     return render_template('login.html', title='Авторизация', form=form)
 
 
-@login_required
 @app.route('/add')
+@login_required
 def add():
     print("added")
     return redirect('products')
 
 
-@login_required
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect("/")

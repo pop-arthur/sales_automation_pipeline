@@ -4,7 +4,7 @@ body{
     width: 100%;
     min-height: 100vh;
   }
-  @font-face {
+@font-face {
     font-family: Lydia-Bold;
     src: url(LydiaSansBold.ttf);
 }
@@ -32,12 +32,15 @@ body{
     white-space: nowrap;
     justify-content: center;
     padding: 13px 25px;
-    width: 21em;
+    width: auto;
     cursor: pointer;
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 25px;
+    margin: 20px 15px 0px;
+}
 
+@media (max-width: 480px) {
+    .search-bar {
+        width: 15em;
+    }
 }
 
 .main-content {

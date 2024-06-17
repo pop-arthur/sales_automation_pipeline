@@ -12,24 +12,23 @@ document.addEventListener("DOMContentLoaded", function() {
             input.value = "ФИО";
         }
     });
-})
+});
 
 document.addEventListener("DOMContentLoaded", function() {
     input = document.getElementById("phone");
     input.value = "Телефон";
-    input.addEventListener("focus", function () {
+    input.addEventListener("focus", function() {
         if (input.value === "Телефон") {
             input.value = "";
         }
     });
 
-    input.addEventListener("blur", function () {
+    input.addEventListener("blur", function() {
         if (input.value === "") {
             input.value = "Телефон";
         }
     });
-
-})
+});
 
 
 document.addEventListener("DOMContentLoaded", function() {

@@ -43,20 +43,7 @@
 
                 </div>
 
-            <hr class="divider">
-                {%endfor%}
-                {%if all_items|length==0%}
-                     <div class="empty-cart-error">
-                         <h3>Корзина пуста</h3>
-                     </div>
-                {%endif%}
-                {%if all_items|length>0%}
-                <div class="clear-cart-container">
-                    <button class="clear-cart-button" onclick="clear_cart()">Clear cart</button>
-                </div>
-                {%endif%}
-
-                <hr class="divider">
+                <hr class="item-divider">
 
 
             </template>
@@ -65,7 +52,6 @@
         <div class="clear-cart-container">
             <button class="clear-cart-button" onclick="clear_cart()">Clear cart</button>
         </div>
-
 
         <hr class="divider">
 

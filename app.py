@@ -5,7 +5,7 @@ from flask import Flask, abort, render_template, redirect, make_response, jsonif
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_restful import Api
 import os
-from pdf import load_json, form_files_from_list
+from pdf import load_json, form_files_from_list, find_in_json
 import zipfile
 from utils.db_api import User
 from utils.db_api import db_session
@@ -142,6 +142,13 @@ def add():
 def logout():
     logout_user()
     return redirect("/")
+
+@app.route('/search', methods=['GET', 'POST'])
+@login_required
+def search():
+    search_query = request.form.get('search')
+    data = find_in_json(search_query)
+    return render_template("products.html", all_items=data)
 
 
 def main():

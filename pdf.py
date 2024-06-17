@@ -112,6 +112,18 @@ def find_in_json(findId,
     return None
 
 
+def find_in_json(findName, jsonText=None):
+    if (jsonText == None):
+        jsonText = load_json()
+    dic = json.loads(jsonText)
+    products = dic["products"]
+    to_return = []
+    for product in dic.get('products', []):
+        if findName.lower() in product['name'].lower():
+            to_return.append(product)
+    return to_return
+
+
 def load_json():  # достаём json из файла
     file_path = "apiresp.json"
     with open(file_path, 'r', encoding='utf-8') as file:

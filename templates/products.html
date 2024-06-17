@@ -54,7 +54,11 @@
 
                     <hr class="item-divider">
                      {%endfor%}
-
+                     {%if all_items|length==0%}
+                     <div>
+                         hueta
+                     </div>
+                     {%endif%}
                 </div>
 
     </main>

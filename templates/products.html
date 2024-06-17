@@ -19,7 +19,7 @@
             <a href="..\cart">Cart</a>
             <a href="#">Upload offer</a>
             <a href="#">Import</a>
-            <a href="..\logout">Log out</a>
+            <a href="logout">Log out</a>
         </nav>
     </header>
     <hr class="divider">
@@ -53,9 +53,13 @@
 
                     </div>
 
-                    <hr width=90%>
+                    <hr class="item-divider">
                      {%endfor%}
-
+                     {%if all_items|length==0%}
+                     <div>
+                         hueta
+                     </div>
+                     {%endif%}
                 </div>
 
     </main>

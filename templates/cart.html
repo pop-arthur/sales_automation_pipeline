@@ -18,7 +18,8 @@
         <nav class="navbar">
             <a href="products">Search</a>
             <a href="#">Upload offer</a>
-            <a href="logout">Import</a>
+            <a href="#">Import</a>
+            <a href="logout">Log out</a>
         </nav>
     </header>
     <hr class="divider">
@@ -48,6 +49,11 @@
             </template>
 
         </div>
+        <div class="clear-cart-container">
+            <button class="clear-cart-button" onclick="clear_cart()">Clear cart</button>
+        </div>
+
+        <hr class="divider">
 
         <div class="info-container">
             <form action="\downloadFiles" method="post" class="personal-info">

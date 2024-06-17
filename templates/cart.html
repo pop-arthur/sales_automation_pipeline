@@ -26,6 +26,8 @@
 
     <main class="main-content">
         <div class="product-list" id="product-list">
+            <h1 id="no-items-in-cart"></h1>
+
             <template id="product_row">
                 <div class="item">
                     <img src="../static/images/item_preview.jpg" class="item-img">
@@ -50,7 +52,7 @@
 
         </div>
         <div class="clear-cart-container">
-            <button class="clear-cart-button" onclick="clear_cart()">Clear cart</button>
+            <button class="clear-cart-button" id="clear-cart-button" onclick="clearCart()">Clear cart</button>
         </div>
 
         <hr class="divider">

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    input = document.getElementById("FIO");
+    const input = document.getElementById("FIO");
     input.value = "ФИО";
     input.addEventListener("focus", function () {
         if (input.value === "ФИО") {
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    input = document.getElementById("phone");
+    const input = document.getElementById("phone");
     input.value = "Телефон";
     input.addEventListener("focus", function() {
         if (input.value === "Телефон") {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    input = document.getElementById("email");
+    const input = document.getElementById("email");
     input.value = "E-mail";
     input.addEventListener("focus", function() {
         if (input.value === "E-mail") {
@@ -57,6 +57,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
     myCart.products = savedCart.products;
 
+    if (myCart.products.length === 0) {
+        document.getElementById("clear-cart-button").style.display = "none";
+        document.getElementById("no-items-in-cart").innerText = "No items in cart"
+    } else {
+        showCartItems();
+    }
+
+    function showCartItems() {
+    document.getElementById("clear-cart-button").style.display = "block";
+
     if ("content" in document.createElement("template")) {
         const template = document.querySelector("#product_row");
         const list = document.querySelector("#product-list");
@@ -77,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
             list.appendChild(clone);
         }
     }
+}
 })
 
 
@@ -102,9 +113,10 @@ function generateTxtFile() {
 }
 
 
-function clear_cart(){
+function clearCart(){
     const myCart = new Cart();
     localStorage.setItem("cart", JSON.stringify(myCart));
+    location.reload();
 }
 
 

@@ -38,7 +38,7 @@ def not_found(error):
 
 @app.route('/')
 @app.route('/index/')
-def index(message=""):
+def index():
     return redirect(url_for('login'))
 
 
@@ -91,7 +91,7 @@ def formCSV():
 
 
 @app.route('/downloadFiles', methods=['POST'])
-def downloadFiles():
+def download_files():
     cart = json.loads(load_json())
     ids = [item['id'] for item in cart['products']]
 
@@ -135,6 +135,7 @@ def login():
 def logout():
     logout_user()
     return redirect("/")
+
 
 @app.route('/search', methods=['GET', 'POST'])
 @login_required

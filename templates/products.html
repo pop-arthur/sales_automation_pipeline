@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\static\styles\products\products.css">
+    <link rel="stylesheet" href="..\static\styles\common\navbar\navbar.css">
+    <link rel="stylesheet" href="..\static\styles\common\list_of_items\list_of_items.css">
+    <script src="..\static\js\products.js"></script>
+    <script src="..\static\js\objects.js"></script>
+    <title>Main</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="display-cur-page">PRODUCTS</h1>
+
+        <nav class="navbar">
+            <a href="..\cart">Cart</a>
+            <a href="#">Upload offer</a>
+            <a href="upload">Import</a>
+            <a href="logout">Log out</a>
+        </nav>
+    </header>
+    <hr class="divider">
+
+    <main class="main-content">
+        <div class="search-bar-container">
+            <form action="\search" method="post">
+                <input type="text" id="search-bar" name="search" class="search-bar">
+            </form>
+        
+        </div>
+
+                <div class="product-list" id="product-list">
+                     {%for value in all_items%}
+                    <div class="item" id="item{{ value['id'] }}">
+
+                        <img src="{{ value['images'][0]['url'] }}" class="item-img">
+
+<!--                        <img src="\static\images\item_preview.jpg" class="item" alt="Item Image">-->
+                        <div class="search-item-info">
+                            <div class="item-name">Name: {{value['name']}}</div>
+                            <div class="item-id">ID: {{value['id']}}</div>
+                            <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}}</div>
+                            <div class="item-price">Price: {{value['price']}} rub</div>
+                        </div>
+                    </div>
+                    <div class="butt">
+                        <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
+
+                        <img class="add-button" src="../static/images/shopping_cart.png" onclick="addItem( {{ value['id'] }} )"></button>
+
+                    </div>
+
+                    <hr class="item-divider">
+                     {%endfor%}
+                     {%if all_items|length==0%}
+                     <div class="unsuccessfull-search">
+                         <h3>Ничего не найдено</h3>
+                     </div>
+                     {%endif%}
+                </div>
+
+    </main>
+</section>
+</body>
+</html>

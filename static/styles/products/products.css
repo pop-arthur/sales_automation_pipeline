@@ -1,0 +1,84 @@
+body{
+    background: rgb(24,0,45);
+    background: linear-gradient(180deg, rgba(24,0,45,1) 55%, rgba(54,0,101,1) 80%);
+    width: 100%;
+    min-height: 100vh;
+  }
+@font-face {
+    font-family: Lydia-Bold;
+    src: url(LydiaSansBold.ttf);
+}
+@font-face {
+    font-family: Lydia-Light;
+    src: url(LydiaSansLight.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.search-bar-container{
+    margin-bottom: 3%;
+}
+
+.search-bar {
+    font-family: Lydia-Light;
+    font-size: large;
+    border-radius: 30px;
+    background-color: #d9d9d9;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 13px 25px;
+    width: auto;
+    cursor: pointer;
+    margin: 20px 15px 0px;
+}
+
+.unsuccessfull-search {
+    font: 15px Lydia-Light;
+    display:flex ;
+    justify-content:center;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+    .search-bar {
+        width: 15em;
+    }
+}
+
+.main-content {
+    align-self: auto;
+    width: 100%;
+}
+
+.add-button {
+    width: 30px;
+    height: 30px;
+}
+.add-button:hover{
+    background-color: #8a8a8a;
+    border-radius: 8px;
+}
+.add-button:active{
+    background-color: #333333;
+    border-radius: 8px;
+}
+.butt {
+    margin-left: 2%;
+    display: flex;
+    justify-content: inline;
+}
+#quantity-form{
+    font-family: Lydia-Light;
+    font-size: medium;
+    margin-right: 10px;
+    min-width: 1em;
+    max-width: 4em;
+    height: auto;
+    border-radius: 10px;
+}
+

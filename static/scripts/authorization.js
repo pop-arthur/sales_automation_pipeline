@@ -8,39 +8,27 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const input = document.getElementById("username1");
-    input.value = "Username";
+document.addEventListener("DOMContentLoaded", function () {
+    const seePasswordButton = document.getElementById("seePasswordButton");
+    seePasswordButton.src = "../static/styles/authorization/show.png";
 
-    input.addEventListener("focus", function() {
-        if (input.value === "Username") {
-            input.value = "";
-        }
-    });
 
-    input.addEventListener("blur", function() {
-        if (input.value === "") {
-            input.value = "Username";
-        }
-    });
-});
+    seePasswordButton.addEventListener("click", function () {
+        const showSrc = "../static/styles/authorization/show.png";
+        const hideSrc = "../static/styles/authorization/hide.png";
+        const input = document.getElementById("password1");
+        input.type = "text"
 
-document.addEventListener("DOMContentLoaded", function() {
-    const input = document.getElementById("password1");
-    input.value = "Password";
-    input.type = "text"
-
-    input.addEventListener("focus", function() {
-        if (input.value === "Password") {
-            input.type = "password"
-            input.value = "";
-        }
-    });
-
-    input.addEventListener("blur", function() {
-        if (input.value === "") {
+        if (seePasswordButton.src.endsWith("show.png")) {
+            seePasswordButton.src = hideSrc;
             input.type = "text"
-            input.value = "Password";
+            seePasswordButton.height = 29.5;
+        } else {
+            seePasswordButton.src = showSrc;
+            input.type = "password"
+            seePasswordButton.height = 29;
         }
     });
 });
+
+

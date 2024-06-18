@@ -24,8 +24,10 @@ container_for_search.forEach(item => {
     newItem.classList.add('item-shopping-cart');
 
     newItem.innerHTML = `
-        <p>ID: ${item.ID} Name: ${item.name} 
-        Description: ${item.description} Price: ${item.price} Amount: ${item.amount}</p>
+        ID: ${item.ID} Name: ${item.name} 
+        Description: ${item.description} Price: ${item.price} Amount: ${item.amount} <button class="add-in-shopping-cart-button">
+            Add
+        </button>
     `;
 
     item_block.appendChild(newItem);

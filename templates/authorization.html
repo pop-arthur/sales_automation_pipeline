@@ -14,12 +14,19 @@
   <form id="loginForm" action="/login" method="get">
 
     <label>
-      <input id="username1" type="text" class="input"/>
+      <input id="username1" type="text" class="input" placeholder="Username"/>
     </label>
 
-    <label>
-      <input id="password1" name="password" type="password" class="input"/>
-    </label>
+    <div class="input-button-wrapper">
+      <input id="password1" type="password" class="input" placeholder="Password"/>
+      <div class="see-password-button" id="togglePassword" >
+          <img src="../static/styles/authorization/hide.png" alt="" id="seePasswordButton">
+      </div>
+    </div>
+
+    <div class="wrong-user-notification">
+      Wrong username or password
+    </div>
 
     <div class="remember-block">
       <label>
@@ -28,7 +35,7 @@
       Remember me
     </div>
 
-    <button type="submit" id="loginButton">Login</button>
+    <button type="submit" class="apply-button" id="loginButton">Login</button>
 
   </form>
 </div>

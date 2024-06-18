@@ -91,7 +91,7 @@ def form_files_from_list(ids, fio, phone, email):  # Формирование К
     items = []
     jsontext = load_json()
     for i in range(len(ids)):
-        var = find_in_json(ids[i], jsontext)
+        var = find_in_json_by_id(ids[i], jsontext)
         if var != None:
             toAppend = [var["id"], var["name"], var["description"], var["price"], var["quantity_in_stock"]]
             items.append(toAppend)
@@ -100,7 +100,7 @@ def form_files_from_list(ids, fio, phone, email):  # Формирование К
     make_pdf(items=items, fileName=fio + '.pdf', name=fio, phone=phone, mail=email)
 
 
-def find_in_json(findId,
+def find_in_json_by_id(findId,
                  jsonText=None):  # На вход: опционально json с продуктами и id для поиска -> на выход конкретный продукт из json'ая
     if (jsonText == None):
         jsonText = load_json()
@@ -119,7 +119,7 @@ def find_in_json(findName, jsonText=None):
     products = dic["products"]
     to_return = []
     for product in dic.get('products', []):
-        if findName.lower() in product['name'].lower():
+        if str(findName).lower() in str(product['name']).lower():
             to_return.append(product)
     return to_return
 

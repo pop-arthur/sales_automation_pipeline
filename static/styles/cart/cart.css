@@ -11,12 +11,7 @@ body{
     src: url(LydiaSansLight.ttf);
 }
 
-#no-items-in-cart {
-    font: 15px Lydia-Light;
-    display:flex ;
-    justify-content:center;
-    align-items: center;
-}
+
 
 
 * {
@@ -34,8 +29,9 @@ body {
     width: 100%;
 }
 
-.empty-cart-error {
-    font: 15px Lydia-Light;
+#no-items-in-cart {
+    font-family: Lydia-Light;
+    font-size: 1.17em;
     display:flex ;
     justify-content:center;
     align-items: center;
@@ -49,7 +45,6 @@ body {
     color: rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
 }
-
 
 
 .clear-cart.container {
@@ -92,7 +87,7 @@ body {
 .phone-number,
 .e-mail {
     font-family: Lydia-Light;
-    font-size: 15px;
+    font-size: 20px;
     border-radius: 30px;
     background-color: #d9d9d9;
     white-space: nowrap;

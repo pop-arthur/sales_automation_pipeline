@@ -38,11 +38,13 @@ body{
 }
 
 .unsuccessfull-search {
-    font: 15px Lydia-Light;
+    font: 1.17em Lydia-Light;
     display:flex ;
     justify-content:center;
     align-items: center;
 }
+
+
 
 @media (max-width: 480px) {
     .search-bar {

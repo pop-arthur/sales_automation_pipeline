@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+
+
 function addItem (id){
     const myCart = new Cart();
 

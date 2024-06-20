@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (myCart.products.length === 0) {
         document.getElementById("clear-cart-button").style.display = "none";
-        document.getElementById("no-items-in-cart").innerText = "No items in cart"
+        document.getElementById("no-items-in-cart").innerText = "Корзина пуста"
     } else {
         showCartItems();
     }

@@ -8,6 +8,31 @@ body {
     margin: 0;
 }
 
+.wrong-user-notification {
+    color: red;
+    text-align: left;
+}
+
+img {
+    margin-top: 5px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.see-password-button {
+    background-color: white;
+    color: rgb(128, 128, 128);
+    border: 1px solid #303134;
+    margin-top: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 29px;
+    margin-right: -4px;
+}
+
 .login-container {
     background-color: white;
     padding: 20px;
@@ -20,7 +45,7 @@ body {
 .heading {
     font-weight: bold;
     font-family: "Ebrima", sans-serif;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     font-size: 35px;
     text-align: center;
 }
@@ -32,7 +57,7 @@ body {
 .input {
     background-color: white;
     color: rgb(128, 128, 128);
-    margin-bottom: 7px;
+    margin-top: 5px;
     width: 96%;
     height: 35%;
     padding: 8px;
@@ -43,6 +68,7 @@ body {
 
 .remember-block {
     display: flex;
+    margin-top: 1px;
     margin-bottom: 5px;
 }
 
@@ -50,7 +76,7 @@ form {
     display: grid;
 }
 
-button {
+.apply-button {
     padding: 10px;
     width: 101%;
     background-color: #303134;
@@ -60,3 +86,21 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+
+.input-button-wrapper {
+    display: flex;
+}
+
+.input-button-wrapper input[type="password"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.5rem;
+    margin-bottom: 1px;
+}
+
+.input-button-wrapper input[type="text"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.5rem;
+}
+

@@ -1,16 +1,16 @@
 from http import HTTPStatus
 import json
 import io
-from flask import Flask, abort, render_template, redirect, make_response, jsonify, request, url_for, send_file
+from flask import Flask, abort, flash, render_template, redirect, make_response, jsonify, request, url_for, send_file
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_restful import Api
 import os
-from pdf import load_json, form_files_from_list, find_in_json
+from pdf import load_json, form_files_from_list, find_in_json, parsing_file
 import zipfile
 from utils.db_api import User
 from utils.db_api import db_session
 from flask_restful import Api
-
+from werkzeug.utils import secure_filename
 from utils.forms import LoginForm
 
 app = Flask(__name__)
@@ -18,7 +18,7 @@ api = Api(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'SOME SECRET KEY'
-
+app.config['UPLOAD_FOLDER'] = 'uploads'
 
 @login_manager.unauthorized_handler
 def unauthorized():
@@ -143,6 +143,24 @@ def search():
     search_query = request.form.get('search')
     data = find_in_json(search_query)
     return render_template("products.html", all_items=data)
+
+
+@app.route('/upload', methods=['GET','POST'])
+@login_required
+def upload():
+    if request.method == 'GET':
+        return render_template('upload.html')
+    if 'file' not in request.files or  request.files['file'].filename == '' or not allowed_file(request.files['file'].filename):
+        return render_template('upload.html', message="No or wrong file")
+    file = request.files['file']
+    filename = secure_filename(file.filename)
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    parsing_file(filename)
+    return render_template('upload.html', message="Success")
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'txt', 'csv'}
 
 
 def main():

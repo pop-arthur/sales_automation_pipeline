@@ -133,5 +133,9 @@ def load_json():  # достаём json из файла
     return jsonText
 
 
+def parsing_file(filename):
+    print("Asdsad")
+    return
+
 if __name__ == "__main__":
     form_files_from_list([115900610, 109158468])  # test code. #delete before production

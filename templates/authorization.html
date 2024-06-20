@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/styles/authorization/authorization.css">
+  <title>Authorization</title>
+</head>
+<body>
+<div class="login-container">
+  <div class="heading">
+    Welcome!
+  </div>
+  <form id="loginForm" action="/login" method="get">
+
+    <label>
+      <input id="username1" type="text" class="input" placeholder="Username"/>
+    </label>
+
+    <div class="input-button-wrapper">
+      <input id="password1" type="password" class="input" placeholder="Password"/>
+      <div class="see-password-button" id="togglePassword" >
+          <img src="../static/styles/authorization/hide.png" alt="" id="seePasswordButton">
+      </div>
+    </div>
+
+    <div class="wrong-user-notification">
+      Wrong username or password
+    </div>
+
+    <div class="remember-block">
+      <label>
+        <input type="checkbox" class="input-box">
+      </label>
+      Remember me
+    </div>
+
+    <button type="submit" class="apply-button" id="loginButton">Login</button>
+
+  </form>
+</div>
+<script src="../static/scripts/authorization.js"></script>
+</body>
+</html>

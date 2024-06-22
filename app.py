@@ -167,8 +167,7 @@ def main():
     db_file = "db/database.db"
     db_session.global_init(db_file)
 
-    port = int(os.environ.get("PORT", 8000))
-    app.run(host='0.0.0.0', port=port)
+    app.run()
 
 
 if __name__ == '__main__':

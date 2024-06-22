@@ -3,6 +3,7 @@ RUN apt-get update -y && apt-get install -y build-essential
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
-EXPOSE 8000
+EXPOSE 80/tcp
+EXPOSE 80/udp
 ENTRYPOINT ['python']
 CMD ['app.py']

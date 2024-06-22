@@ -6,4 +6,4 @@ RUN pip install -r requirements.txt
 EXPOSE 80/tcp
 EXPOSE 80/udp
 ENTRYPOINT ['python']
-CMD ['app.py']
+CMD ["flask", "run", "--host", "0.0.0.0"]

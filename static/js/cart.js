@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("clear-cart-button").style.display = "none";
         document.getElementById("no-items-in-cart").innerText = "Корзина пуста"
     } else {
-        showCartItems();
+        showCartItems("add-button");
     }
 
     function showCartItems() {
@@ -70,10 +70,11 @@ document.addEventListener("DOMContentLoaded", function() {
     if ("content" in document.createElement("template")) {
         const template = document.querySelector("#product_row");
         const list = document.querySelector("#product-list");
-
+        console.log(myCart.products);
         for (let productKey in myCart.products) {
             let product = myCart.products[productKey];
             const clone = template.content.cloneNode(true);
+            clone.querySelector(".item").id = "item"+product.id;
             clone.querySelector(".item-img").src = product.imageSrc;
             let item_name = clone.querySelector(".item-name");
             item_name.textContent = product.name;
@@ -83,7 +84,18 @@ document.addEventListener("DOMContentLoaded", function() {
             item_price.textContent = product.price;
             let item_quantity = clone.querySelector(".item-quantity");
             item_quantity.textContent = product.quantity;
-
+            clone.querySelector(".butt").querySelector("#remove-one").style.display = "flex";
+            clone.querySelector(".butt").querySelector(".quantity-form").style.display = "flex";
+            clone.querySelector(".butt").querySelector(".quantity-form").id = "quantity-form"+product.id.split(" ")[1];
+            console.log(clone.querySelector(".butt").querySelector(".quantity-form").id);
+            clone.querySelector(".butt").querySelector("#add-more").style.display = "flex";
+            clone.querySelector(".butt").querySelector("#remove-one").onclick = function removeHandler(){
+                Remove(product.id);
+            };
+            clone.querySelector(".butt").querySelector("#add-more").onclick = function addHandler(){
+                Add(product.id);
+            };
+            clone.querySelector(".butt").querySelector("#quantity-form"+product.id.split(" ")[1]).value = product.amount;
             list.appendChild(clone);
         }
     }
@@ -96,6 +108,49 @@ document.addEventListener("DOMContentLoaded", function() {
 //     item.remove();
 //     updateTotal();
 // }
+
+
+function Remove(id){
+    id = id.split(" ")[1];
+    const myCart = new Cart();
+
+    if (localStorage.getItem("cart") == null) {
+      localStorage.setItem("cart", JSON.stringify(myCart));
+    }
+
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
+    let inp = document.getElementById("quantity-form"+id);
+    console.log(inp);
+    if (inp.value <= 1){
+        inp.value = 0;
+        myCart.removeProductById("ID: " + id);
+        localStorage.setItem("cart", JSON.stringify(myCart));
+    }
+    else{
+        inp.value--;
+        myCart.get_product(id).amount = inp.value;
+    }
+    localStorage.setItem("cart", JSON.stringify(myCart));
+}
+
+
+function Add(id){
+    id = id.split(" ")[1];
+    const myCart = new Cart();
+
+    if (localStorage.getItem("cart") == null) {
+      localStorage.setItem("cart", JSON.stringify(myCart));
+    }
+
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
+    console.log("INP: " + "quantity-form"+id);
+    let inp = document.getElementById("quantity-form"+id);
+    inp.value++;
+    myCart.get_product(id).amount = inp.value;
+    localStorage.setItem("cart", JSON.stringify(myCart));
+}
 
 
 function generateTxtFile() {

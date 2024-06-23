@@ -31,10 +31,11 @@ body {
 
 #no-items-in-cart {
     font-family: Lydia-Light;
-    font-size: 1.17em;
+    font-size: 20px;
     display:flex ;
     justify-content:center;
     align-items: center;
+    height: 40px;
 
 }
 

@@ -7,7 +7,11 @@
     background-color: #d9d9d9;
     width: auto;
     height: auto;
-    min-height: 25px;
+    min-height: 40px;
+}
+
+.search-item-info {
+    margin-left: 15px;
 }
 
 .info-column {
@@ -16,6 +20,76 @@
     line-height: normal;
     width: 100%;
 }
+.add-button {
+    font: 15px Lydia-Light;
+    align-items: start;
+    border-radius: 30px;
+    background-color: #d9d9d9;
+    width: auto;
+    color: #000;
+    justify-content: center;
+    /* margin: 10px 0 0 15px; */
+    padding: 2px 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-button:hover{
+    box-shadow: 0px 0px 5px 3px #af7edb;
+}
+
+.add-button:active{
+    box-shadow: 0px 0px 5px 3px #714796;
+    background-color: #333333;
+    transition: 0.1s;
+}
+
+.quantity-form {
+    width: 35px;
+    height: 31px;
+    display: none;
+    border-radius: 10px;
+   -moz-appearance: textfield;
+    margin-right: 5px;
+	-webkit-appearance: textfield;
+	appearance: textfield;
+    text-align: center;
+
+}
+
+.quantity-form::-webkit-outer-spin-button,
+.quantity-form::-webkit-inner-spin-button {
+	display: none;
+}
+
+.change-qty-btn {
+    display: none;
+    font: 15px Lydia-Light;
+    text-align:center;
+    border-radius: 50%;
+    margin-right: 5px;
+    width: 31px;
+    height: 31px;
+    size:initial;
+    color: #000;
+    justify-content: center;
+    /* margin: 10px 0 0 15px; */
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.change-qty-btn:hover{
+    box-shadow: 0px 0px 5px 3px #af7edb;
+}
+
+.change-qty-btn:active{
+    box-shadow: 0px 0px 5px 3px #714796;
+    background-color: #333333;
+    transition: 0.1s;
+}
+
+
+
 
 .item {
     padding: 10px;
@@ -40,40 +114,28 @@
     font-family: Lydia-Light;
     font-size: 100%
 }
-.add-button {
-    width: 30px;
-    height: 30px;
+
+.item-price {
+    font-family: Lydia-Bold;
 }
-.add-button:hover{
-    background-color: #8a8a8a;
-    border-radius: 8px;
-}
-.add-button:active{
-    background-color: #333333;
-    border-radius: 8px;
-}
+
 .butt {
     margin-left: 2%;
     margin-bottom: 5px;
     display: flex;
+    align-items: center;
     justify-content: inline;
+    
+    
 }
-#quantity-form{
-    font-family: Lydia-Light;
-    font-size: medium;
-    margin-right: 10px;
-    min-width: 1em;
-    max-width: 4em;
-    height: auto;
-    border-radius: 10px;
-}
+
 .divider {
     margin: 10px;
 }
 
 .item-divider {
-    width: 90%;
-    margin: 50px;
+    /* width: 90%; */
+    margin: 25px;
 }
 
 @media (max-width: 480px) {
@@ -81,8 +143,8 @@
         margin: 10px;
     }
     .item-divider {
-        width: 75%;
-        margin: 30px;
+        /* width: 75%; */
+        margin: 25px;
     }
     .product-list {
         margin-top: 20px;
@@ -127,29 +189,67 @@
         font: 15px Lydia-Light;
     }
     .add-button {
-        width: 30px;
-        height: 30px;
+        font: 15px Lydia-Light;
+        align-items: start;
+        border-radius: 30px;
+        background-color: #d9d9d9;
+        width: auto;
+        color: #000;
+        justify-content: center;
+        /* margin: 10px 0 0 15px; */
+        padding: 2px 5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
     }
+    
     .add-button:hover{
-        background-color: #8a8a8a;
-        border-radius: 8px;
+        box-shadow: 0px 0px 5px 3px #af7edb;
     }
+    
     .add-button:active{
+        box-shadow: 0px 0px 5px 3px #714796;
         background-color: #333333;
-        border-radius: 8px;
+        transition: 0.1s;
     }
-    .butt {
-        /* margin-left: 2%; */
-        display: flex;
-        justify-content: inline;
-    }
-    #quantity-form{
-        font-family: Lydia-Light;
-        font-size: medium;
-        margin-right: 10px;
-        min-width: 1em;
-        max-width: 4em;
-        height: auto;
+    
+    .quantity-form {
+        width: 35px;
+        height: 31px;
+        display: none;
         border-radius: 10px;
+       -moz-appearance: textfield;
+        margin-right: 5px;
+        -webkit-appearance: textfield;
+        appearance: textfield;
+        text-align: center;
+    
+    }
+    
+    .quantity-form::-webkit-outer-spin-button,
+    .quantity-form::-webkit-inner-spin-button {
+        display: none;
+    }
+    
+    .change-qty-btn {
+        display: none;
+        font: 15px Lydia-Light;
+        text-align:center;
+        border-radius: 50%;
+        margin-right: 5px;
+        width: 31px;
+        height: 31px;
+        size:initial;
+        color: #000;
+        justify-content: center;
+        /* margin: 10px 0 0 15px; */
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+    }
+    
+    
+    .change-qty-btn:active{
+        box-shadow: 0px 0px 5px 3px #714796;
+        background-color: #333333;
+        transition: 0.1s;
     }
 }

@@ -39,9 +39,10 @@
                     </div>
                 </div>
                 <div class="butt">
-                    <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity">
-
-                    <img class="add-button" src="../static/images/shopping_cart.png" onclick=""></button>
+                    <!-- <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity"> -->
+                    <button class="change-qty-btn" id="remove-one" type="image"><img src="..\static\images\remove-minus.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="rem"></button>
+                    <input type="number" class = "quantity-form" pattern="\d*" id="quantity-form"  min="1" value="1"></input>
+                    <button class="change-qty-btn" id="add-more"><img src="..\static\images\add.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="add"></button>
 
                 </div>
 

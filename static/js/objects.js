@@ -12,6 +12,14 @@ class Cart {
   removeProduct(index) {
     this.products.splice(index, 1);
   }
+  removeProductById(id){
+    for (let i = 0; i < this.products.length; i++){
+      if(this.products[i].id == id){
+        this.removeProduct(i);
+      }
+    }
+    
+  }
   get cost() {
     const prices = this.products.map((product) => {
       return toNum(product.price);
@@ -33,7 +41,16 @@ class Cart {
   get discount() {
     return this.cost - this.costDiscount;
   }
-
+  get_product(id){
+    id = "ID: " + id;
+    for (let i = 0; i < this.products.length; i++){
+      console.log(this.products[i].id);
+      if (this.products[i].id == id){
+        return this.products[i];
+      }
+    }
+    return null;
+  }
   clearProducts() {
     this.products = [];
   }
@@ -46,11 +63,13 @@ class Product {
   price;
   quantity;
   id;
-  constructor(card) {
+  amount;
+  constructor(card, amount) {
     this.imageSrc = card.querySelector(".item-img").src;
     this.name = card.querySelector(".item-name").innerText;
     this.id = card.querySelector(".item-id").innerText;
     this.price = card.querySelector(".item-price").innerText;
     this.quantity = card.querySelector(".item-quantity").innerText;
+    this.amount = amount;
   }
 }

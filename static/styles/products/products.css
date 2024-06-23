@@ -19,7 +19,9 @@ body{
     box-sizing: border-box;
 }
 
-
+.search-item-info {
+    margin-left: 15px;
+}
 .search-bar-container{
     margin-bottom: 3%;
 }
@@ -57,30 +59,11 @@ body{
     width: 100%;
 }
 
-.add-button {
-    width: 30px;
-    height: 30px;
-}
-.add-button:hover{
-    background-color: #8a8a8a;
-    border-radius: 8px;
-}
-.add-button:active{
-    background-color: #333333;
-    border-radius: 8px;
-}
+
 .butt {
     margin-left: 2%;
     display: flex;
     justify-content: inline;
 }
-#quantity-form{
-    font-family: Lydia-Light;
-    font-size: medium;
-    margin-right: 10px;
-    min-width: 1em;
-    max-width: 4em;
-    height: auto;
-    border-radius: 10px;
-}
+
 

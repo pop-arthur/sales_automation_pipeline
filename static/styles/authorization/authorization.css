@@ -1,11 +1,21 @@
 body {
-    font-family: "Ebrima", sans-serif;
-    background-color: #18002d;
+    background: rgb(24,0,45);
+    background: linear-gradient(180deg, rgba(24,0,45,1) 55%, rgba(54,0,101,1) 80%);
+    font-family: Lydia-Light;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+}
+
+@font-face {
+    font-family: Lydia-Bold;
+    src: url(LydiaSansBold.ttf);
+}
+@font-face {
+    font-family: Lydia-Light;
+    src: url(LydiaSansLight.ttf);
 }
 
 .wrong-user-notification {
@@ -43,8 +53,7 @@ img {
 }
 
 .heading {
-    font-weight: bold;
-    font-family: "Ebrima", sans-serif;
+    font-family: Lydia-Bold;
     margin-bottom: 5px;
     font-size: 35px;
     text-align: center;
@@ -57,6 +66,7 @@ img {
 .input {
     background-color: white;
     color: rgb(128, 128, 128);
+    font-family: Lydia-Light;
     margin-top: 5px;
     width: 96%;
     height: 35%;
@@ -83,6 +93,7 @@ form {
     border: none;
     border-radius: 4px;
     color: white;
+    font-family: Lydia-Light;
     font-size: 16px;
     cursor: pointer;
 }

@@ -2,9 +2,6 @@
 # -*- coding: UTF-8 -*-
 import csv
 import json
-import shutil
-import openpyxl
-import pandas as pd
 from datetime import datetime
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors

@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 3.1">
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 3.2">
+      <change beforePath="$PROJECT_DIR$/pdf.py" beforeDir="false" afterPath="$PROJECT_DIR$/pdf.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +59,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Flask server.Flask (app.py).executor": "Run",
+    "Flask server.sales_automation_pipeline.executor": "Run",
     "Python.sales_automation_pipeline.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -71,7 +73,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Flask server.sales_automation_pipeline">
+  <component name="RunManager" selected="Python.sales_automation_pipeline">
     <configuration name="sales_automation_pipeline" type="PythonConfigurationType" factoryName="Python">
       <module name="sales_automation_pipeline" />
       <option name="ENV_FILES" value="" />
@@ -130,7 +132,7 @@
       <updated>1719060723450</updated>
       <workItem from="1719060724491" duration="8289000" />
       <workItem from="1719134857082" duration="447000" />
-      <workItem from="1719650405378" duration="760000" />
+      <workItem from="1719650405378" duration="1114000" />
     </task>
     <task id="LOCAL-00001" summary="setup Dockerfile">
       <option name="closed" value="true" />
@@ -252,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719650941528</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="version 3.2">
+      <option name="closed" value="true" />
+      <created>1719651260029</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1719651260029</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +285,8 @@
     <MESSAGE value="version 2.3" />
     <MESSAGE value="version 3.0" />
     <MESSAGE value="version 3.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 3.1" />
+    <MESSAGE value="version 3.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 3.2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sales_automation_pipeline$sales_automation_pipeline.coverage" NAME="sales_automation_pipeline Coverage Results" MODIFIED="1719060789919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

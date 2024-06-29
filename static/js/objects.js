@@ -1,21 +1,29 @@
 class Cart {
   products;
+  totalSum;
+  coeff;
   constructor() {
     this.products = [];
+    this.coeff=1;
   }
   get count() {
     return this.products.length;
   }
   addProduct(product) {
     this.products.push(product);
+    
+
   }
   removeProduct(index) {
     this.products.splice(index, 1);
+
   }
   removeProductById(id){
     for (let i = 0; i < this.products.length; i++){
       if(this.products[i].id == id){
         this.removeProduct(i);
+
+
       }
     }
     
@@ -44,7 +52,6 @@ class Cart {
   get_product(id){
     id = "ID: " + id;
     for (let i = 0; i < this.products.length; i++){
-      console.log(this.products[i].id);
       if (this.products[i].id == id){
         return this.products[i];
       }
@@ -64,6 +71,7 @@ class Product {
   quantity;
   id;
   amount;
+  totalPrice;
   constructor(card, amount) {
     this.imageSrc = card.querySelector(".item-img").src;
     this.name = card.querySelector(".item-name").innerText;
@@ -71,5 +79,6 @@ class Product {
     this.price = card.querySelector(".item-price").innerText;
     this.quantity = card.querySelector(".item-quantity").innerText;
     this.amount = amount;
+    this.totalPrice = amount * this.price.split(" ")[1];
   }
 }

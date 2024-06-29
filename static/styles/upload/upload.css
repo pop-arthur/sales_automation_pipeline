@@ -1,0 +1,124 @@
+body {
+    font-family: "Ebrima", sans-serif;
+    background-color: #18002d;
+    height: 100vh;
+    margin-top: -20px;
+}   
+
+.download-content { 
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heading {
+    justify-content: left;
+    color: black;
+    font-size: 20px;
+    margin: 15px;
+}
+.container {
+    justify-content: center;
+    height: auto;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+}
+
+.back-button {
+    border: none;
+    margin-left: 5px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: white;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.drop-zone {
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+    border: 2px dashed #cccccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    margin: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #cccccc;
+    cursor: pointer;
+  }
+
+  .drop-zone.dragover {
+    border-color: #000000;
+    color: #000000;
+  }
+
+  #fileUpload {
+    display: none;
+  }
+
+.submit-button {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.progress-container {
+    display: none;
+    
+}
+
+.file-details {
+    display: flex;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.file-size {
+    color: gray;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.cancel-button {
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+    margin-left: 5px;
+}
+
+.progress-bar {
+    margin: 10px;
+    height: 5px;
+    border-radius: 20px;
+    background-color: #4caf50;
+    color: white;
+}
+
+.file-name {
+    text-align: center;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 4px;
+}
+
+form {
+    border: none;
+}

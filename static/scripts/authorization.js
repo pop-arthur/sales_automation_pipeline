@@ -22,11 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (seePasswordButton.src.endsWith("show.png")) {
             seePasswordButton.src = hideSrc;
             input.type = "text"
-            seePasswordButton.height = 29.5;
         } else {
             seePasswordButton.src = showSrc;
             input.type = "password"
-            seePasswordButton.height = 29;
         }
     });
 });

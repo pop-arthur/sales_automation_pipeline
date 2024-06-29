@@ -2,11 +2,12 @@ from utils.db_api.config import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-# association_table = db.Table('users_universities', db.Model.metadata,
-#                              db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
-#                              db.Column('university_id', db.Integer, db.ForeignKey('university.id')),
-#                              extend_existing=True
-#                              )
+
+class Product(db.Model):
+    __tablename__ = 'products'
+    __table_args__ = {'extend_existing': True}
+    id = db.Column(db.Integer, primary_key=True)
+    data = db.Column(db.Text)
 
 
 class User(db.Model, UserMixin):
@@ -15,8 +16,13 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     password = db.Column(db.String, nullable=False)
-    # universities = db.relationship("University",
-    #                                secondary=association_table)
+    cart = db.Column(db.String)
+
+    def get_cart(self):
+        return self.cart
+
+    def set_cart(self, value):
+        self.cart = value
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

@@ -9,34 +9,33 @@
 <body>
 <div class="login-container">
   <div class="heading">
-    Welcome!
+    Добро пожаловать!
   </div>
-  <h2>{{ message }}</h2>
   <form id="loginForm" action="" method="post">
 
     {{ form.hidden_tag() }}
     <label>
-      {{ form.username.label }} <br>
-      {{ form.username(class="form-control", type="text") }}<br>
-<!--      <input id="username1" type="text" class="input" name="username"/>-->
+      {{ form.username(class="input", type="text", placeholder="Имя пользователя") }}<br>
     </label>
 
-    <label>
-      {{ form.password.label }}<br>
-      {{ form.password(class="form-control", type="password") }}<br>
-<!--      <input id="password1" name="password" type="password" class="input"/>-->
-    </label>
-
-    <div class="remember-block">
-<!--      <label>-->
-<!--        <input type="checkbox" class="input-box">-->
-<!--      </label>-->
-<!--      Remember me-->
-      <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-      <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    <div class="input-button-wrapper">
+      {{ form.password(class="input", type="password", placeholder="Пароль", id="password1") }}<br>
+      <div class="see-password-button" id="togglePassword">
+          <img src="../static/styles/authorization/hide.png" alt="" id="seePasswordButton"/>
+      </div>
     </div>
 
-<!--    <button type="submit" id="loginButton">Login</button>-->
+    <div class="wrong-user-notification">
+      {{ message }}
+    </div>
+
+    <div class="remember-block">
+      <label>
+        {{ form.remember_me() }} {{ form.remember_me.label }}
+      </label>
+    </div>
+
+    <button type="submit" class="apply-button" id="loginButton">Login</button>
 
   </form>
 </div>

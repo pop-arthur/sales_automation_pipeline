@@ -40,9 +40,17 @@
                 </div>
                 <div class="butt">
                     <!-- <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity"> -->
-                    <button class="change-qty-btn" id="remove-one" type="image"><img src="..\static\images\remove-minus.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="rem"></button>
-                    <input type="number" class = "quantity-form" pattern="\d*" id="quantity-form"  min="1" value="1"></input>
-                    <button class="change-qty-btn" id="add-more"><img src="..\static\images\add.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="add"></button>
+                    <div class="button-wrapper">
+                        <button class="change-qty-btn" id="remove-one" type="image"><img src="..\static\images\remove-minus.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="rem"></button>
+                        <input type="number" class = "quantity-form" pattern="\d*" id="quantity-form"  min="1" value="1"></input>
+                        <button class="change-qty-btn" id="add-more"><img src="..\static\images\add.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="add"></button>
+                    </div>
+                    <div class="item-price-total-wrapper">
+                        <h3>Total:</h3>
+                        <h3 class="item-price-total" id="">.</h3>
+                        <h3>RUB</h3>
+
+                    </div>
 
                 </div>
 
@@ -54,19 +62,27 @@
         </div>
         <div class="clear-cart-container">
             <button class="clear-cart-button" id="clear-cart-button" onclick="clearCart()">Clear cart</button>
+
         </div>
 
         <hr class="divider">
 
-        <div class="info-container">
+        <div class="info-container" id="info-container">
             <form action="\downloadFiles" method="post" class="personal-info">
                     <input type="text" id="FIO" name="FIO" class="full-name">
                     <input type="text" id="phone" name="phone" class="phone-number">
                     <input type="text" id="email" name="email" class="e-mail">
+                    <div class="coeff-container" id="coeff-container">
+                        <h3 class="coeff-title">Coefficient:</h3>
+                        <input type="number" min="0" step="0.01" class="coeff-button" id="coeff-button" name="coeff-button" oninput="changeCoeff()">
+                    </div>
                 <div class="summary-container">
-                    <div class="total-label">Total:</div>
-                    <div class="total-amount" id="total-amount">300 rub</div>
-                    <button class="form-pdf-button" type="submit">Form PDF</button>
+                    <div class="total-wrapper" >
+                        <div class="total-label">Total:</div>
+                        <div class="total-amount" id="total-amount"></div>
+                        <div class="total-amount">RUB</div>
+                    </div>
+                    <button class="form-pdf-button"  type="submit">Form PDF</button>
                 </div>
             </form>
             

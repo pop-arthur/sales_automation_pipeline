@@ -43,16 +43,20 @@
                             <div class="item-name">Name: {{value['name']}}</div>
                             <div class="item-id">ID: {{value['id']}}</div>
                             <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}}</div>
-                            <div class="item-price">Price: {{value['price']}} rub</div>
+                            <div class="item-price">Price: {{value['price']}} RUB</div>
                         </div>
                     </div>
                         <div class="butt">
                             <!-- <input type="number" name="quantity-form" pattern="\d*" id="quantity-form" step="1" min="0" value="0" placeholder="Enter the quantity"> -->
-    
-                            <button class="add-button" id="add-to-cart-btn{{ value['id'] }}" onclick="addItem( {{ value['id'] }} )">Add to cart</button>
-                            <button class="change-qty-btn" id="remove-one{{ value['id'] }}" onclick="Remove({{ value['id'] }})" type="image"><img src="..\static\images\remove-minus.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="rem"></button>
-                            <input type="number" class = "quantity-form" pattern="\d*" id="quantity-form{{ value['id'] }}"  min="1" value="1"></input>
-                            <button class="change-qty-btn" id="add-more{{ value['id'] }}" onclick="addMore( {{ value['id'] }} )"><img src="..\static\images\add.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="add"></button>
+                            <div class="button-wrapper">
+                                <button class="add-button" id="add-to-cart-btn{{ value['id'] }}" onclick="addItem( {{ value['id'] }} )">Add to cart</button>
+                                <button class="change-qty-btn" id="remove-one{{ value['id'] }}" onclick="Remove({{ value['id'] }})" type="image"><img src="..\static\images\remove-minus.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="rem"></button>
+                                <input type="number" class = "quantity-form" pattern="\d*" id="quantity-form{{ value['id'] }}" min="1" max-value = "5" value="1" oninput="change( {{ value['id'] }} )"></input>
+                                <button class="change-qty-btn" id="add-more{{ value['id'] }}" onclick="addMore( {{ value['id'] }} )"><img src="..\static\images\add.png" style="height: 31px; width: 31px; padding-bottom: 3px;" alt="add"></button>    
+                            </div>
+                            <div class="item-price-total-wrapper">
+                                <h3 class="item-price-total" id="item-price-total{{ value['id'] }}" style="display: none;">.</h3>
+                            </div>
      
                         </div>
  

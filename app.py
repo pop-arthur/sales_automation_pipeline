@@ -1,17 +1,23 @@
+from datetime import datetime
 from http import HTTPStatus
 import json
 import io
-from flask import Flask, abort, flash, render_template, redirect, make_response, jsonify, request, url_for, send_file
+from flask import (Flask, abort, flash, render_template, redirect, make_response, jsonify, request, url_for, send_file,
+                   session)
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_restful import Api
 import os
-from pdf import load_json, form_files_from_list, find_in_json, parsing_file
+from pdf import find_item, load_json, form_files_from_list, parsing_file
 import zipfile
 from utils.db_api import User
 from utils.db_api import db_session
 from flask_restful import Api
 from werkzeug.utils import secure_filename
+
+from utils.db_api.models import Product
 from utils.forms import LoginForm
+from flask_session import Session
+import json
 
 app = Flask(__name__)
 api = Api(app)
@@ -19,6 +25,33 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'SOME SECRET KEY'
 app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
+
+@app.route('/get_cart', methods=['GET'])
+@login_required
+def get_tasks():
+    cart = load_user(current_user.id).get_cart().replace("\'", "\"")
+    cart = json.loads(cart)
+    return cart if cart else {"products": []}
+
+
+@app.route('/post_cart', methods=['POST'])
+@login_required
+def post_cart():
+    if not request.json:
+        abort(400)
+
+    cart = request.json['products']
+    session = db_session.create_session()
+    user = session.query(User).filter(User.id == current_user.id).first()
+    user.set_cart(str(cart))
+    session.commit()
+    session.close()
+    return jsonify({'cart': cart}), 201
+
 
 @login_manager.unauthorized_handler
 def unauthorized():
@@ -28,7 +61,9 @@ def unauthorized():
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
-    return db_sess.query(User).filter(User.id == user_id).first()
+    response = db_sess.query(User).filter(User.id == user_id).first()
+    db_sess.close()
+    return response
 
 
 @app.errorhandler(404)
@@ -45,63 +80,31 @@ def index():
 @app.route('/products', methods=['GET', 'POST'])
 @login_required
 def products():
-    products = json.loads(load_json())['products']
+    db_sess = db_session.create_session()
+    products = [json.loads(item.data) for item in db_sess.query(Product).all()]
     return render_template("products.html", all_items=products)
 
 
 @app.route('/cart')
 @login_required
 def cart():
-    cart = json.loads(load_json())
-    return render_template("cart.html", cart=cart['products'])
+    return render_template("cart.html")
 
 
-@app.route('/formPDF', methods=['POST', 'GET'])
-def formPDF():
-    cart = json.loads(load_json())
-    ids = [item['id'] for item in cart['products']]
-
-    data = request.form
-    form_files_from_list(ids, data['FIO'], data['phone'], data['email'])
-    filename = f'{data["FIO"]}.pdf'
-
-    return_data = io.BytesIO()
-    with open(filename, 'rb') as fo:
-        return_data.write(fo.read())
-    return_data.seek(0)
-    os.remove(filename)
-    return send_file(return_data, mimetype='application/pdf', as_attachment=True, download_name=filename)
-
-
-@app.route('/formCSV', methods=['POST', 'GET'])
-def formCSV():
-    cart = json.loads(load_json())
-    ids = [item['id'] for item in cart['products']]
-
-    data = request.form
-    form_files_from_list(ids, data['FIO'], data['phone'], data['email'])
-    filename = f'{data["FIO"]}.csv'
-
-    return_data = io.BytesIO()
-    with open(filename, 'rb') as fo:
-        return_data.write(fo.read())
-    return_data.seek(0)
-    os.remove(filename)
-    return send_file(return_data, mimetype='application/csv', as_attachment=True, download_name=filename)
-
-
+# TODO remove useless functions from app.py
 @app.route('/downloadFiles', methods=['POST'])
 def download_files():
-    cart = json.loads(load_json())
-    ids = [item['id'] for item in cart['products']]
+    cart = get_tasks()
+    products = cart['products']
 
     data = request.form
-    form_files_from_list(ids, data['FIO'], data['phone'], data['email'])
+    form_files_from_list(products, data['FIO'], data['phone'], data['email'], float(data['coeff-button']))
 
-    pdf_filename = f'{data["FIO"]}.pdf'
-    csv_filename = f'{data["FIO"]}.csv'
+    filename = f"КП{data['FIO']+str(datetime.now().date())}".replace(" ","").replace(".","")
+    pdf_filename = f"{filename}.pdf"
+    csv_filename = f"{filename}.csv"
 
-    zip_filename = f'{data["FIO"]}.zip'
+    zip_filename = f"КП{data['FIO']+str(datetime.now().date())}.zip"
     zip_buffer = io.BytesIO()
 
     with zipfile.ZipFile(zip_buffer, 'w') as zip_file:
@@ -141,7 +144,9 @@ def logout():
 @login_required
 def search():
     search_query = request.form.get('search')
-    data = find_in_json(search_query)
+    db_sess = db_session.create_session()
+    products = [json.loads(item.data) for item in db_sess.query(Product).all()]
+    data = find_item(search_query, products)
     return render_template("products.html", all_items=data)
 
 
@@ -150,17 +155,23 @@ def search():
 def upload():
     if request.method == 'GET':
         return render_template('upload.html')
-    if 'file' not in request.files or  request.files['file'].filename == '' or not allowed_file(request.files['file'].filename):
-        return render_template('upload.html', message="No or wrong file")
-    file = request.files['file']
+    if ('fileUpload' not in request.files) or  (request.files['fileUpload'].filename == '') or (not allowed_file(request.files['fileUpload'].filename)):
+        return render_template('upload.html', message="Wrong file or no file")
+    file = request.files['fileUpload']
     filename = secure_filename(file.filename)
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     parsing_file(filename)
     return render_template('upload.html', message="Success")
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    print(e)
+    return render_template('404.html'), 404
+
+
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'txt', 'csv'}
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'txt', 'csv', 'pdf'}
 
 
 def main():

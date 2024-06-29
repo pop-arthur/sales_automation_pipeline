@@ -41,20 +41,20 @@ body {
 
 .info-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     font-size: 30px;
     color: rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
 }
 
 
-.clear-cart.container {
+.clear-cart-container {
     display: flex;
     flex-direction: column;
     font-size: 30px;
     color: rgba(0, 0, 0, 0.5);
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .clear-cart-button {
@@ -79,6 +79,37 @@ body {
     box-shadow: 0px 0px 5px 3px #690000;
     background-color: #333333;
     transition: 0.1s;
+}
+
+.coeff-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.coeff-title {
+    font: 20px Lydia-Light;
+    color: #fff;
+    margin: 10px 0 0 15px;
+    justify-content: center;
+
+
+}
+.coeff-button {
+    font: 15px Lydia-Light;
+    text-align: center;
+    border-radius: 15px;
+    padding-left: 10px;
+    width: 70px;
+    height: 31px;
+    size:initial;
+    color: #000;
+    justify-content: center;
+    margin: 10px 0 0 15px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
 }
 .personal-info {
     padding-left: 15px;
@@ -113,7 +144,7 @@ body {
 
 .summary-container {
     align-self: end;
-    display: flex;
+    display: grid;
     margin-top: 50px;
     width: 225px;
     max-width: 100%;
@@ -124,12 +155,14 @@ body {
 
 .total-label {
     font-family: Lydia-Light;
-    font-size: 1.5em;
+    font-size: 30px;
 }
 
 .total-amount {
-    font: 1em Lydia-Light;
-    align-self: stretch;
+    font: 30px Lydia-Light;
+    vertical-align: baseline;
+    margin-left: 10px;
+    margin-right: 5px;
 }
 .form-pdf-button {
     font-family: Lydia-Light;
@@ -140,11 +173,20 @@ body {
     width: 100%;
     color: #000;
     justify-content: center;
-    margin: 20px 0 0 0px;
+    margin: 20px 0 40px 0px;
     padding: 5px 16px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 
+}
+
+.total-wrapper {
+    font: 20px Lydia-Bold;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2%;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .form-pdf-button:hover{

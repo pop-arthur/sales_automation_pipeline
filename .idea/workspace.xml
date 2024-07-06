@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 4.0">
-      <change beforePath="$PROJECT_DIR$/db/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/cart.js" afterDir="false" />
-    </list>
+    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 4.1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +47,7 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2iEfapVv9SwtnihVgY6rxZRRJkN" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -65,6 +62,7 @@
     "Python.sales_automation_pipeline.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/arthur/PycharmProjects/sales_automation_pipeline/static/js",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,6 +72,13 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/js" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/db" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.sales_automation_pipeline">
     <configuration name="sales_automation_pipeline" type="PythonConfigurationType" factoryName="Python">
       <module name="sales_automation_pipeline" />
@@ -140,6 +145,7 @@
       <workItem from="1719134857082" duration="447000" />
       <workItem from="1719650405378" duration="1701000" />
       <workItem from="1720250933036" duration="1570000" />
+      <workItem from="1720253248889" duration="1061000" />
     </task>
     <task id="LOCAL-00001" summary="setup Dockerfile">
       <option name="closed" value="true" />
@@ -285,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720251194548</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="version 4.1">
+      <option name="closed" value="true" />
+      <created>1720253521914</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1720253521914</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,10 +325,11 @@
     <MESSAGE value="version 3.2" />
     <MESSAGE value="version 3.3" />
     <MESSAGE value="version 4.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 4.0" />
+    <MESSAGE value="version 4.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 4.1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sales_automation_pipeline$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1719651506880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/sales_automation_pipeline$sales_automation_pipeline.coverage" NAME="sales_automation_pipeline Coverage Results" MODIFIED="1720252120577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/sales_automation_pipeline$sales_automation_pipeline.coverage" NAME="sales_automation_pipeline Coverage Results" MODIFIED="1720253372442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

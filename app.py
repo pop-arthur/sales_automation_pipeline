@@ -132,8 +132,7 @@ def download_pdf():
     cart = get_tasks()
     products = cart['products']
     data = request.form
-    print(data)
-    form_files_from_list(products, fio=data['FIO'],phone=data['phone'], email=data['email'], delcond=data['delivery-cond'], coef=float(data['coeff-button']))
+    form_files_from_list(products, fio=data['FIO'],phone=data['phone'], email=data['email'], delcond=data['delivery-cond'], co_number=data["conum"], coef=float(data['coeff-button']))
 
     filename = f"КП{data['FIO']+str(datetime.now().date())}".replace(" ","").replace(".","")
     pdf_filename = f"{filename}.pdf"
@@ -155,7 +154,7 @@ def download_excel():
 
     data = request.form
     print(data)
-    form_files_from_list(products, fio=data['FIO'],phone=data['phone'], email=data['email'], delcond=data['delivery-cond'], coef=float(data['coeff-button']), is_form_pdf=False)
+    form_files_from_list(products, fio=data['FIO'],phone=data['phone'], email=data['email'], delcond=data['delivery-cond'], co_number=data["conum"], coef=float(data['coeff-button']), is_form_pdf=False)
 
     filename = f"КП{data['FIO']+str(datetime.now().date())}".replace(" ","").replace(".","")
     csv_filename = f"{filename}.xlsx"

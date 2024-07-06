@@ -291,7 +291,7 @@ def count_items_price(items):  # подсчёт цены всех товаров
 
 
 # function that combines formin pdf and csv, also prepare data for them
-def form_files_from_list(products, fio, phone, email, coef, delcond,
+def form_files_from_list(products, fio, phone, email, coef, delcond, co_number,
                          is_form_pdf=True):  # Формирование КП на вход idишники -> на выход pdf'ка и csv
     items = []
     fio = fio.replace(" ", "")
@@ -305,9 +305,9 @@ def form_files_from_list(products, fio, phone, email, coef, delcond,
         items.append(toAppend)
     itForCSV = items.copy()
     if is_form_pdf:
-        form_pdf(f"КП{fio + str(datetime.now().date())}", name=fio, phone=phone, email=email, deliveryCond = delcond, data=items)
+        form_pdf(f"КП{fio + str(datetime.now().date())}", name=fio, phone=phone, email=email, deliveryCond = delcond, data=items, co_number=co_number)
     else:
-        form_excel(f"КП{fio + str(datetime.now().date())}", name=fio, phone=phone, email=email, data=items, co_number="300 (temp)")
+        form_excel(f"КП{fio + str(datetime.now().date())}", name=fio, phone=phone, email=email, data=items, co_number=co_number)
     # make_pdf(items=items, fileName=fio + '.pdf', name=fio, phone=phone, mail=email)
 
 

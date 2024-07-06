@@ -508,13 +508,14 @@ function postExcel(){
     const form = document.createElement('form');
     form.method = "POST";
     form.action = "/download_excel";
-    
+
     const cart_info = document.getElementById("info-container");
     const fio = document.getElementById("FIO").value;
     const phone = document.getElementById("phone").value;
     const email = document.getElementById("email").value;
     const coef = document.getElementById("coeff-button").value;
     const delcond = document.getElementById("delivery-cond").value;
+    const co_number = document.getElementById("co-num").value;
 
     const hiddenField_fio = document.createElement('input');
     hiddenField_fio.type = 'hidden';
@@ -549,6 +550,12 @@ function postExcel(){
     hiddenField_delivery_cond.name = "delivery-cond";
     hiddenField_delivery_cond.value = delcond;
     form.appendChild(hiddenField_delivery_cond);
+
+    const hiddenField_co_num = document.createElement('input');
+    hiddenField_co_num.type = 'hidden';
+    hiddenField_co_num.name = "conum";
+    hiddenField_co_num.value = co_number;
+    form.appendChild(hiddenField_co_num);
 
     document.body.appendChild(form);
     form.submit();
@@ -568,6 +575,7 @@ function postPdf(){
     const email = document.getElementById("email").value;
     const coef = document.getElementById("coeff-button").value;
     const delcond = document.getElementById("delivery-cond").value;
+    const co_number = document.getElementById("co-num").value;
 
     const hiddenField_fio = document.createElement('input');
     hiddenField_fio.type = 'hidden';
@@ -602,6 +610,12 @@ function postPdf(){
     hiddenField_delivery_cond.name = "delivery-cond";
     hiddenField_delivery_cond.value = delcond;
     form.appendChild(hiddenField_delivery_cond);
+
+    const hiddenField_co_num = document.createElement('input');
+    hiddenField_co_num.type = 'hidden';
+    hiddenField_co_num.name = "conum";
+    hiddenField_co_num.value = co_number;
+    form.appendChild(hiddenField_co_num);
 
     document.body.appendChild(form);
     form.submit();

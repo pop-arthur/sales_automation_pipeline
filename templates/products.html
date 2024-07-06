@@ -3,11 +3,11 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="..\static\styles\products\products.css">
-    <link rel="stylesheet" href="..\static\styles\common\navbar\navbar.css">
-    <link rel="stylesheet" href="..\static\styles\common\list_of_items\list_of_items.css">
-    <script src="..\static\js\products.js"></script>
-    <script src="..\static\js\objects.js"></script>
+    <link rel="stylesheet" href="../static/styles/products/products.css">
+    <link rel="stylesheet" href="../static/styles/common/navbar/navbar.css">
+    <link rel="stylesheet" href="../static/styles/common/list_of_items/list_of_items.css">
+    <script src="../static/js/products.js"></script>
+    <script src="../static/js/objects.js"></script>
     <title>Main</title>
 </head>
 
@@ -19,6 +19,7 @@
             <a href="..\cart">Cart</a>
             <a href="#">Upload offer</a>
             <a href="upload">Import</a>
+            <a href="account">Account</a>
             <a href="logout">Log out</a>
         </nav>
     </header>
@@ -29,7 +30,9 @@
             <form action="\search" method="post">
                 <input type="text" id="search-bar" name="search" class="search-bar">
             </form>
-        
+
+            <button onclick="location.href='add'" class="image-button" id="add-item"></button>
+
         </div>
 
                 <div class="product-list" id="product-list">
@@ -42,8 +45,13 @@
                         <div class="search-item-info">
                             <div class="item-name">Name: {{value['name']}}</div>
                             <div class="item-id">ID: {{value['id']}}</div>
-                            <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}}</div>
+                            <div class="quantity-container">
+                                <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}} </div>
+                                <div class="quantity-measure-unit">{{value['measure_unit']}}</div>
+                            </div>
+                            <div class="sku">SKU: {{value['sku']}}</div>
                             <div class="item-price">Price: {{value['price']}} RUB</div>
+                            
                         </div>
                     </div>
                         <div class="butt">
@@ -57,6 +65,7 @@
                             <div class="item-price-total-wrapper">
                                 <h3 class="item-price-total" id="item-price-total{{ value['id'] }}" style="display: none;">.</h3>
                             </div>
+
      
                         </div>
  
@@ -72,6 +81,5 @@
                 </div>
 
     </main>
-</section>
 </body>
 </html>

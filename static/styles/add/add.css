@@ -1,0 +1,169 @@
+body {
+    background: rgb(24,0,45);
+    background: linear-gradient(180deg, rgba(24,0,45,1) 55%, rgba(54,0,101,1) 80%);
+    width: 100%;
+    min-height: 100vh;
+    font-family: Lydia-Bold, sans-serif;
+}
+
+@font-face {
+    font-family: Lydia-Bold;
+    src: url(../products/LydiaSansBold.ttf);
+}
+
+@font-face {
+    font-family: Lydia-Light;
+    src: url(../products/LydiaSansLight.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.add-item-container {
+    background-color: white;
+    max-width: 900px;
+    width: 90%;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    /*flex-wrap: wrap;*/
+}
+
+.left-column, .right-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: auto;
+}
+
+.drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.progress-container {
+    display: none;
+    margin-top: 10px;
+}
+
+.file-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.file-name, .file-size, .cancel-button {
+    font-size: 14px;
+}
+
+.progress-bar {
+    height: 5px;
+    background: #4caf50;
+    width: 0%;
+}
+
+.input {
+    background-color: white;
+    color: rgb(128, 128, 128);
+    padding: 10px;
+    border: 1px solid #303134;
+    border-radius: 4px;
+    outline: none;
+}
+
+.add-button {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-item-content {
+    height: 50vh;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+@media (max-width: 1440px) {
+    .input {
+        font-size: 14px;
+        width: 390px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .input {
+        font-size: 14px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 585px) {
+    .input {
+        font-size: 12px;
+        width: 125px;
+    }
+    .drop-zone {
+        padding: 10px;
+        width: 200px;
+        font-size: 12px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 425px) {
+    .input {
+        font-size: 12px;
+        width: 150px;
+    }
+    .drop-zone {
+        padding: 10px;
+        width: 125px;
+        font-size: 12px;
+        height: 50px;
+    }
+}
+@media (max-width: 390px) {
+    .input {
+        font-size: 12px;
+        width: 110px;
+    }
+    .drop-zone {
+        padding: 10px;
+        width: 100px;
+        font-size: 12px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 320px) {
+    .input {
+        font-size: 12px;
+        width: 100px;
+    }
+    .drop-zone {
+        margin: 5px;
+        padding: 50px;
+        width: 100px;
+        font-size: 12px;
+        height: 50px;
+    }
+}

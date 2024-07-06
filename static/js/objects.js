@@ -2,9 +2,11 @@ class Cart {
   products;
   totalSum;
   coeff;
+  commonDeliveryDate;
   constructor() {
     this.products = [];
     this.coeff=1;
+    this.commonDeliveryDate="Срок поставки";
   }
   get count() {
     return this.products.length;
@@ -71,7 +73,10 @@ class Product {
   quantity;
   id;
   amount;
+  sku;
   totalPrice;
+  deliveryDate;
+  measure;
   constructor(card, amount) {
     this.imageSrc = card.querySelector(".item-img").src;
     this.name = card.querySelector(".item-name").innerText;
@@ -80,5 +85,8 @@ class Product {
     this.quantity = card.querySelector(".item-quantity").innerText;
     this.amount = amount;
     this.totalPrice = amount * this.price.split(" ")[1];
-  }
+    this.sku = card.querySelector(".sku").innerText;
+    this.deliveryDate="-";
+    this.measure=card.querySelector(".quantity-measure-unit").innerText;
+}
 }

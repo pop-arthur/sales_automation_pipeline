@@ -1,0 +1,108 @@
+body {
+    font-family: "Ebrima", sans-serif;
+    background-color: #18002d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.wrong-user-notification {
+    color: red;
+    text-align: left;
+}
+
+img {
+    margin-top: 5px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.see-password-button {
+    background-color: white;
+    color: rgb(128, 128, 128);
+    border: 1px solid #303134;
+    margin-top: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border-left: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 29px;
+    margin-right: -4px;
+}
+
+.login-container {
+    margin: 10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+.heading {
+    font-weight: bold;
+    font-family: "Ebrima", sans-serif;
+    margin-bottom: 5px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.input-box {
+    margin-top: 5px;
+
+}
+
+.input {
+    background-color: white;
+    color: rgb(128, 128, 128);
+    margin-top: 5px;
+    width: 96%;
+    height: 13px;
+    padding: 8px;
+    border: 1px solid #303134;
+    border-radius: 4px;
+    outline: none;
+}
+
+.remember-block {
+    display: flex;
+    margin-top: 1px;
+    margin-bottom: 5px;
+}
+
+form {
+    display: grid;
+}
+
+.apply-button {
+    padding: 10px;
+    width: 101%;
+    background-color: #303134;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.input-button-wrapper {
+    display: flex;
+
+}
+
+.input-button-wrapper input[type="password"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.5rem;
+    margin-bottom: 1px;
+}
+
+.input-button-wrapper input[type="text"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 0.5rem;
+}

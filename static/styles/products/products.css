@@ -19,15 +19,30 @@ body{
     box-sizing: border-box;
 }
 
+.image-button {
+    background: url('../../images/add.png') no-repeat center center;
+    background-size: cover;
+    width: 100px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    filter: invert(1) brightness(2);
+}
+.image-button:hover {
+    opacity: 0.8;
+}
+
 .search-item-info {
     margin-left: 15px;
 }
 .search-bar-container{
-    margin-bottom: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .search-bar {
-    font-family: Lydia-Light;
+    font-family: Lydia-Light, sans-serif;
     font-size: large;
     border-radius: 30px;
     background-color: #d9d9d9;
@@ -36,7 +51,7 @@ body{
     padding: 13px 25px;
     width: auto;
     cursor: pointer;
-    margin: 20px 15px 0px;
+    margin: 10px 15px 10px;
 }
 
 .unsuccessfull-search {
@@ -59,6 +74,17 @@ body{
     width: 100%;
 }
 
+.add-item-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 20px;
+    filter: invert(1) brightness(2);
+    width: 70px;
+    height: 70px;
+    margin-right: 15px;
+}
 
 .butt {
     margin-left: 2%;

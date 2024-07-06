@@ -5,7 +5,6 @@ const dropZone = document.getElementById('drop-zone');
         const fileNameDisplay = document.getElementById('file-name');
         const fileSizeDisplay = document.getElementById('file-size');
         const cancelButton = document.getElementById('cancel-button');
-        const uploadForm = document.getElementById('uploadForm');
         let xhr;
 
         dropZone.addEventListener('click', () => {

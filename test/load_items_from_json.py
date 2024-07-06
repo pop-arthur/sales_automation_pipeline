@@ -35,6 +35,4 @@ def get_items_from_database_to_json():
 
 
 if __name__ == '__main__':
-    # load_items_from_json()
-    resp = get_items_from_database_to_json()
-    print(resp)
+    load_items_from_json()

@@ -19,6 +19,7 @@
             <a href="products">Search</a>
             <a href="#">Upload offer</a>
             <a href="upload">Import</a>
+            <a href="account">Account</a>
             <a href="logout">Log out</a>
         </nav>
     </header>
@@ -34,8 +35,26 @@
                     <div class="search-item-info">
                         <div class="item-name"></div>
                         <div class="item-id"></div>
-                        <div class="item-quantity"></div>
-                        <div class="item-price"></div>
+                        
+                        <div class="item-sku"></div>
+                        <div class="item-price" style="display: none;"></div>
+                        <div class="item-quantity" style="display: none;"></div>
+
+                        <div class="item-quantity-container">
+                            <h3 class="quantity-title">В наличии:</h3>
+                            <input type="number" min="1" step="0.1" class="quantity-button" id="quantity-button" name="quantity-button">
+                            <input type="text" class="quantity-measure-button" id="quantity-measure-button" name="quantity-measure-button">
+                            
+                        </div>
+                        <div class="price-container">
+                            <h3 class="price-title">Price:</h3>
+                            <input type="number" min="0" step="0.01" class="price-button" id="price-button" name="price-button">
+                            <h3 class="price-title">RUB</h3>
+                        </div>
+                        <div class="delivery-date-container">
+                            <h3 class="delivery-date-title">Срок поставки:</h3>
+                            <input type="text" class="delivery-date-button" id="delivery-date-button" name="delivery-date-button" oninput="changeCoeff()">
+                        </div>
                     </div>
                 </div>
                 <div class="butt">
@@ -68,10 +87,13 @@
         <hr class="divider">
 
         <div class="info-container" id="info-container">
-            <form action="\downloadFiles" method="post" class="personal-info">
+            <div class="personal-info">
                     <input type="text" id="FIO" name="FIO" class="full-name">
                     <input type="text" id="phone" name="phone" class="phone-number">
                     <input type="text" id="email" name="email" class="e-mail">
+                    <input type="text" id="co-num" name="co-num" class="co-num">
+                    <input type="text" id="delivery-date" name="delivery-date" class="delivery-date">
+                    <input type="text" id="delivery-cond" name="delivery-cond" class="delivery-cond">
                     <div class="coeff-container" id="coeff-container">
                         <h3 class="coeff-title">Coefficient:</h3>
                         <input type="number" min="0" step="0.01" class="coeff-button" id="coeff-button" name="coeff-button" oninput="changeCoeff()">
@@ -82,9 +104,14 @@
                         <div class="total-amount" id="total-amount"></div>
                         <div class="total-amount">RUB</div>
                     </div>
-                    <button class="form-pdf-button"  type="submit">Form PDF</button>
+
+
                 </div>
-            </form>
+                <div class="form-butt-container">
+                    <button class="form-pdf-button" onclick="postPdf()" >Form PDF</button>
+                    <button class="form-pdf-button"  onclick="postExcel()">Form Excel</button>
+                </div>
+            </div>
             
         </div>
     </main>

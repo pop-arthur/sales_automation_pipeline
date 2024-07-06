@@ -3,9 +3,9 @@ body {
     background-color: #18002d;
     height: 100vh;
     margin-top: -20px;
-}   
+}
 
-.download-content { 
+.download-content {
     height: 70vh;
     display: flex;
     align-items: center;
@@ -25,6 +25,7 @@ body {
     border-radius: 20px;
     border: none;
     background-color: white;
+    margin: 15px;
 }
 
 .back-button {
@@ -40,7 +41,6 @@ body {
 }
 
 .drop-zone {
-    width: 100%;
     max-width: 400px;
     height: 200px;
     border: 2px dashed #cccccc;
@@ -54,28 +54,28 @@ body {
     padding-right: 5px;
     color: #cccccc;
     cursor: pointer;
-  }
+}
 
-  .drop-zone.dragover {
+.drop-zone.dragover {
     border-color: #000000;
     color: #000000;
-  }
+}
 
-  #fileUpload {
+#fileUpload {
     display: none;
-  }
+}
 
 .submit-button {
     margin: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .progress-container {
     display: none;
-    
+
 }
 
 .file-details {

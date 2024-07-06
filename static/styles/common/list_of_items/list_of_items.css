@@ -89,8 +89,6 @@
 }
 
 
-
-
 .item {
     padding: 10px;
     display: inline-flex ;
@@ -102,21 +100,34 @@
     height: 10em;
     border-radius: 20px;
 }
-.all-item-info {
+.search-item-info {
     flex-grow: 1;
-    margin-left: 5%;
+    width: 1%;
 }
 .item-name,
 .item-id,
 .item-quantity,
-.item-price {
+.item-price,
+.sku,
+.price-container,
+.quantity-measure-unit {
     margin: 5px 0;
-    font-family: Lydia-Light;
-    font-size: 100%;
+    font: 100% Lydia-Light;
 }
 
-.item-price {
-    font-family: Lydia-Bold;
+.quantity-container{
+    font: 100% Lydia-Light;
+    display: inline-flex ;
+    justify-content: space-between;
+}
+
+.quantity-measure-unit{
+    margin-left: 5px;
+}
+
+
+.item-quantity {
+    
 }
 
 .butt{
@@ -134,18 +145,7 @@
     justify-content: inline;
 }
 
-.item-price-total-wrapper {
-    font: 20px Lydia-Bold;
-    display: flex;
-    justify-content: space-between;
-    margin-right: 2%;
-    margin-bottom: 5px;
-}
 
-.item-price-total {
-    margin-left: 15px;
-    margin-right: 5px;
-}
 .divider {
     margin: 10px;
 }
@@ -180,27 +180,34 @@
     }
     
     .item {
-        padding: 0.5em;
-        display:flex ;
-        justify-content:center;
+        padding: 10px;
+        display: inline-flex ;
+        justify-content: space-between;
         align-items: center;
     }
     .item img {
-        width: 10em;
-        height: 10em;
+        width: 8em;
+        height: 8em;
         border-radius: 20px;
     }
-    .all-item-info {
+    .search-item-info {
         flex-grow: 1;
-        margin-left: 1em;
-        margin-right: 1em; 
+        width: 1%;
     }
     .item-name,
     .item-id,
     .item-quantity,
-    .item-price {
+    .item-price,
+    .item-sku,
+    .price-container,
+    .sku,
+    .quantity-measure-unit {
         margin: 5px 0;
-        font: 15px Lydia-Light;
+        font-family: Lydia-Light;
+        font-size: 75%;
+    }
+    .quantity-container{
+        display: inline-block;
     }
     .add-button {
         font: 15px Lydia-Light;

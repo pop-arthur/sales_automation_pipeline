@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/products/products.css">
+    <link rel="stylesheet" href="../static/styles/account/account.css">
+    <link rel="stylesheet" href="../static/styles/common/navbar/navbar.css">
+    <link rel="stylesheet" href="../static/styles/common/list_of_items/list_of_items.css">
+    <script src="../static/js/products.js"></script>
+    <script src="../static/js/objects.js"></script>
+    <title>Account</title>
+</head>
+<body>
+    <div>
+        <header class="header">
+            <h1 class="display-cur-page">ACCOUNT</h1>
+
+            <nav class="navbar">
+                <a href="products">Search</a>
+                <a href="cart">Cart</a>
+                <a href="#">Upload offer</a>
+                <a href="upload">Import</a>
+                <a href="logout">Log out</a>
+
+            </nav>
+        </header>
+        <hr class="divider">
+
+        <div class="account-info">
+            <div class="personal-details" id="personal-details">
+                <p>Имя: {{ username }}</p>
+                <!-- <p style="margin-bottom: 10px">Фамилия: Пушкарева</p> -->
+                <button class="change-password-button" id="createInputsButton">Сменить пароль</button>
+            </div>
+            <div class="change-password-inputs" id="change-password-container"></div>
+        </div>
+
+
+        <div class="documents">
+            <div class="document">
+                <p>КП №228 Носов К.А 04.07.2024</p>
+                <button onclick='sorry()'>Открыть</button>
+            </div>
+            <div class="document">
+                <p>КП №228 Носов К.А 04.07.2024</p>
+                <button onclick='sorry()'>Открыть</button>
+            </div>
+            <div class="document">
+                <p>КП №228 Носов К.А 04.07.2024</p>
+                <button onclick='sorry()'>Открыть</button>
+            </div>
+        </div>
+    </div>
+<script src="../static/js/account.js"></script>
+</body>
+</html>

@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="..\static\styles\cart\cart.css">
-  <link rel="stylesheet" href="../static/styles/upload/upload.css">
-  <link rel="stylesheet" href="..\static\styles\common\navbar\navbar.css">\
-  <link rel="stylesheet" href="..\static\styles\common\list_of_items\list_of_items.css">
-  <title>Загрузить новый файл</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/cart/cart.css">
+    <link rel="stylesheet" href="../static/styles/upload/upload.css">
+    <link rel="stylesheet" href="../static/styles/common/navbar/navbar.css">\
+    <link rel="stylesheet" href="../static/styles/common/list_of_items/list_of_items.css">
+    <title>Загрузить новый файл</title>
 </head>
 <body>
-  <header class="header">
+<header class="header">
     <h1 class="display-cur-page" style="margin-top: 0;">IMPORT</h1>
     <nav class="navbar">
         <a href="products">Search</a>
         <a href="#">Upload offer</a>
         <a href="cart">Cart</a>
+        <a href="account">Account</a>
         <a href="logout">Log out</a>
+
     </nav>
 </header>
 <hr class="divider">
-  <div class="download-content">
+<div class="download-content">
 
     <div class="container">
-  
-      <div class="heading">
-        Загрузка файла
-      </div>
 
-      <hr>
-    
-      <form method=post enctype=multipart/form-data style="border: none;">
-        <label for="fileUpload" class="drop-zone" id="drop-zone">
-          Перетащите файл сюда или нажмите для выбора файла
-        </label>
-        <input type="file" id="fileUpload" name="fileUpload">
-        <div class="progress-container" id="progress-container">
-          <div class="file-details">
-                  <div class="file-name" id="file-name"></div>
-                  <div class="file-size" id="file-size"></div>
-                  <div class="cancel-button" id="cancel-button">×</div>
-          </div>
-          <div class="progress-bar" id="progress-bar"></div>
-      </div>
-      
-        <div class="submit-button">
-            <button>Загрузить</button>
+        <div class="heading">
+            Загрузка файла
         </div>
-      </form>
+
+        <hr>
+
+        <form method=post enctype=multipart/form-data style="border: none;">
+            <label for="fileUpload" class="drop-zone" id="drop-zone">
+                Перетащите файл сюда или нажмите для выбора файла
+            </label>
+            <input type="file" id="fileUpload" name="fileUpload">
+            <div class="progress-container" id="progress-container">
+                <div class="file-details">
+                    <div class="file-name" id="file-name"></div>
+                    <div class="file-size" id="file-size"></div>
+                    <div class="cancel-button" id="cancel-button">×</div>
+                </div>
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <div class="submit-button">
+                <button>Загрузить</button>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
 <script src="../static/js/upload.js"></script>
 </body>
 </html>

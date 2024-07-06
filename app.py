@@ -1,23 +1,19 @@
 from datetime import datetime
-from http import HTTPStatus
-import json
 import io
-from flask import (Flask, abort, flash, render_template, redirect, make_response, jsonify, request, url_for, send_file,
+from flask import (Flask, Response, abort, flash, render_template, redirect, make_response, jsonify, request, url_for, send_file,
                    session)
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from flask_restful import Api
 import os
 from pdf import find_item, load_json, form_files_from_list, parsing_file
-import zipfile
+from load_items_from_json import load_items_from_json, add_item
 from utils.db_api import User
 from utils.db_api import db_session
 from flask_restful import Api
 from werkzeug.utils import secure_filename
-
 from utils.db_api.models import Product
 from utils.forms import LoginForm
-from flask_session import Session
 import json
+import requests
 
 app = Flask(__name__)
 api = Api(app)
@@ -27,13 +23,12 @@ app.config['SECRET_KEY'] = 'SOME SECRET KEY'
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
 
 
 @app.route('/get_cart', methods=['GET'])
 @login_required
 def get_tasks():
-    cart = load_user(current_user.id).get_cart().replace("\'", "\"")
+    cart = load_user(current_user.id).get_cart().replace("\'", "\"").replace("None", "0")
     cart = json.loads(cart)
     return cart if cart else {"products": []}
 
@@ -66,9 +61,9 @@ def load_user(user_id):
     return response
 
 
-@app.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify({'error': 'Not found'}), 404)
+# @app.errorhandler(404)
+# def not_found(error):
+#     return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 @app.route('/')
@@ -91,32 +86,85 @@ def cart():
     return render_template("cart.html")
 
 
-# TODO remove useless functions from app.py
-@app.route('/downloadFiles', methods=['POST'])
-def download_files():
+@app.route('/account')
+@login_required
+def account():
+    return render_template("account.html", username = load_user(current_user.id).get_username())
+
+
+@app.route('/changeUserPassword', methods = ['POST'])
+@login_required
+def change_user_password():
+    password = request.json["password"]
+    session = db_session.create_session()
+    user = session.query(User).filter(User.id == current_user.id).first()
+    user.set_password(password)
+    session.commit()
+    session.close()
+    response = app.response_class(
+        status=200,
+        response=json.dumps("ok"),
+        mimetype='application/json'
+    )
+    return response
+
+
+@app.route('/add',  methods=['POST', 'GET'])
+@login_required
+def add():
+    if request.method == 'GET':
+        return render_template("add.html")
+    name = request.form.get("name")
+    id = request.form.get("id")
+    quantity = request.form.get("quantity")
+    sku = request.form.get("sku")
+    price = request.form.get("price")
+    if (add_item(id, name, sku, quantity, price)):
+        db_sess = db_session.create_session()
+        return render_template("products.html", all_items= [json.loads(item.data) for item in db_sess.query(Product).all()])
+    else:
+        return render_template("add.html")
+
+
+@app.route('/download_pdf', methods=['POST'])
+@login_required
+def download_pdf():
+    cart = get_tasks()
+    products = cart['products']
+    data = request.form
+    form_files_from_list(products, fio=data['FIO'],phone=data['phone'], email=data['email'], delcond=data['delivery-cond'], coef=float(data['coeff-button']))
+
+    filename = f"КП{data['FIO']+str(datetime.now().date())}".replace(" ","").replace(".","")
+    pdf_filename = f"{filename}.pdf"
+
+    return_data = io.BytesIO()
+    with open(pdf_filename, 'rb') as fo:
+        return_data.write(fo.read())
+    return_data.seek(0)
+    os.remove(pdf_filename)
+
+    return send_file(return_data, mimetype='application/pdf', as_attachment=True, download_name=pdf_filename)
+
+
+@app.route('/download_excel', methods=['POST'])
+@login_required
+def download_excel():
     cart = get_tasks()
     products = cart['products']
 
     data = request.form
-    form_files_from_list(products, data['FIO'], data['phone'], data['email'], float(data['coeff-button']))
+    form_files_from_list(products, data['FIO'], data['phone'], data['email'], data['delivery-cond'], float(data['coeff-button']), is_form_pdf=False)
 
     filename = f"КП{data['FIO']+str(datetime.now().date())}".replace(" ","").replace(".","")
-    pdf_filename = f"{filename}.pdf"
-    csv_filename = f"{filename}.csv"
+    csv_filename = f"{filename}.xlsx"
 
-    zip_filename = f"КП{data['FIO']+str(datetime.now().date())}.zip"
-    zip_buffer = io.BytesIO()
-
-    with zipfile.ZipFile(zip_buffer, 'w') as zip_file:
-        zip_file.write(pdf_filename)
-        zip_file.write(csv_filename)
-
-    # Clean up the individual files after zipping
-    os.remove(pdf_filename)
+    return_data = io.BytesIO()
+    with open(csv_filename, 'rb') as fo:
+        return_data.write(fo.read())
+    return_data.seek(0)
     os.remove(csv_filename)
 
-    zip_buffer.seek(0)
-    return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name=zip_filename)
+    return send_file(return_data, mimetype='application/pdf', as_attachment=True, download_name=csv_filename)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -150,7 +198,7 @@ def search():
     return render_template("products.html", all_items=data)
 
 
-@app.route('/upload', methods=['GET','POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 @login_required
 def upload():
     if request.method == 'GET':
@@ -166,7 +214,6 @@ def upload():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    print(e)
     return render_template('404.html'), 404
 
 
@@ -182,5 +229,27 @@ def main():
     app.run(host='0.0.0.0', port=port)
 
 
+def load_from_api():
+
+    url = 'https://namazlive.herokuapp.com/trade/products/list'
+    api_key = 'jiro_dreams_of_sushi'
+    headers = {
+        'x-api-key': api_key
+    }
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        print('Success:', len(response.json()['products']))
+        # print(response.json())
+
+        resp = response.json()#.replace("null","0")
+        with open("apiresp.json", 'w', encoding='utf-8') as f:
+            json.dump(resp, f, ensure_ascii=False)
+        load_items_from_json()
+    else:
+        print('Failed:', response.status_code, response.text)
+
+
 if __name__ == '__main__':
+    load_from_api()
     main()

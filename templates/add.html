@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/products/products.css">
+    <link rel="stylesheet" href="../static/styles/add/add.css">
+    <link rel="stylesheet" href="../static/styles/upload/upload.css">
+    <link rel="stylesheet" href="../static/styles/common/navbar/navbar.css">
+    <title>Account</title>
+</head>
+<body>
+<header class="header">
+    <h1 class="display-cur-page" style="margin-top: 0;">ADD ITEM</h1>
+    <nav class="navbar">
+        <a href="products">Search</a>
+        <a href="#">Upload offer</a>
+        <a href="cart">Cart</a>
+        <a href="upload">Import</a>
+        <a href="logout">Log out</a>
+    </nav>
+</header>
+<hr class="divider">
+<div class="add-item-content">
+    <div class="add-item-container">
+        <form method="post" enctype="multipart/form-data" class="form-container">
+            <div class="left-column">
+                <label for="fileUpload" class="drop-zone" id="drop-zone">
+                    Перетащите файл сюда или нажмите для выбора файла
+                </label>
+                <input type="file" id="fileUpload" name="fileUpload">
+                <div class="progress-container" id="progress-container">
+                    <div class="file-details">
+                        <div class="file-name" id="file-name"></div>
+                        <div class="file-size" id="file-size"></div>
+                        <div class="cancel-button" id="cancel-button">×</div>
+                    </div>
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+            <div class="right-column">
+                <label>
+                    <input type="text" class="input" placeholder="Name" />
+                </label>
+                <label>
+                    <input type="text" class="input" placeholder="ID"/>
+                </label>
+                <label>
+                    <input type="text" class="input" placeholder="Quantity in stock"/>
+                </label>
+                <label>
+                    <input type="text" class="input" placeholder="SKU"/>
+                </label>
+                <label>
+                    <input type="text" class="input" placeholder="Price"/>
+                </label>
+            </div>
+        </form>
+        <div class="add-button">
+            <button>Добавить</button>
+        </div>
+    </div>
+</div>
+<script src="../static/js/upload.js"></script>
+</body>
+</html>

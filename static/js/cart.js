@@ -508,12 +508,14 @@ function postExcel(){
     const form = document.createElement('form');
     form.method = "POST";
     form.action = "/download_excel";
+    
     const cart_info = document.getElementById("info-container");
     const fio = document.getElementById("FIO").value;
     const phone = document.getElementById("phone").value;
     const email = document.getElementById("email").value;
     const coef = document.getElementById("coeff-button").value;
-    
+    const delcond = document.getElementById("delivery-cond").value;
+
     const hiddenField_fio = document.createElement('input');
     hiddenField_fio.type = 'hidden';
     hiddenField_fio.name = "FIO";
@@ -541,11 +543,11 @@ function postExcel(){
     hiddenField_coeff.value = coef;
 
     form.appendChild(hiddenField_coeff);
-    const hiddenField_delivery_cond = document.createElement('input');
-    hiddenField_coeff.type = 'hidden';
-    hiddenField_coeff.name = "delivery-cond";
-    hiddenField_coeff.value = delcond;
 
+    const hiddenField_delivery_cond = document.createElement('input');
+    hiddenField_delivery_cond.type = 'hidden';
+    hiddenField_delivery_cond.name = "delivery-cond";
+    hiddenField_delivery_cond.value = delcond;
     form.appendChild(hiddenField_delivery_cond);
 
     document.body.appendChild(form);

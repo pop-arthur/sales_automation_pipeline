@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 5.1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/versel.json" beforeDir="false" afterPath="$PROJECT_DIR$/versel.json" afterDir="false" />
-    </list>
+    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 5.2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,7 +150,7 @@
       <workItem from="1720286386230" duration="3299000" />
       <workItem from="1720418294700" duration="18000" />
       <workItem from="1720448023283" duration="15000" />
-      <workItem from="1720693372523" duration="1851000" />
+      <workItem from="1720693372523" duration="2184000" />
     </task>
     <task id="LOCAL-00001" summary="setup Dockerfile">
       <option name="closed" value="true" />
@@ -331,7 +328,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720694173721</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="version 5.2">
+      <option name="closed" value="true" />
+      <created>1720695734534</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1720695734534</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +377,8 @@
     <MESSAGE value="version 4.2" />
     <MESSAGE value="version 5.0" />
     <MESSAGE value="version 5.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 5.1" />
+    <MESSAGE value="version 5.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 5.2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sales_automation_pipeline$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1719651506880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

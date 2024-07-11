@@ -1,6 +1,11 @@
-FROM harbor.pg.innopolis.university/docker-hub-cache/ubuntu
+FROM python:3
+RUN apt-get update -y && apt-get install -y build-essential
+WORKDIR /main
+COPY . .
+ENV FLASK_APP=app.py
+EXPOSE 8000
 
-RUN apt update && apt install --no-install-recommends -y nginx && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-CMD ["nginx", "-g", "daemon off;"]
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["app.py"]

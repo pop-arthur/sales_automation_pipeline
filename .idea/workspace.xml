@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 5.3">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/versel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 5.4">
+      <change afterPath="$PROJECT_DIR$/../test/Vagrant/Vagrantfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/Vagrant/provision.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/Vagrantfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test/deployment_instruction.md" beforeDir="false" afterPath="$PROJECT_DIR$/../test/deployment_instruction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +155,7 @@
       <workItem from="1720286386230" duration="3299000" />
       <workItem from="1720418294700" duration="18000" />
       <workItem from="1720448023283" duration="15000" />
-      <workItem from="1720693372523" duration="3404000" />
+      <workItem from="1720693372523" duration="3758000" />
     </task>
     <task id="LOCAL-00001" summary="setup Dockerfile">
       <option name="closed" value="true" />
@@ -348,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720696081227</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="version 5.4">
+      <option name="closed" value="true" />
+      <created>1720697492750</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1720697492750</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +400,8 @@
     <MESSAGE value="version 5.1" />
     <MESSAGE value="version 5.2" />
     <MESSAGE value="version 5.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 5.3" />
+    <MESSAGE value="version 5.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 5.4" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sales_automation_pipeline$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1719651506880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

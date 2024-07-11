@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 4.2">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deployment_instruction.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flask_session/c9796697c76c1394ed6e8b89a12a1343" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gitlab.tpl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py_test/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/styles/common/list_of_items/list_of_items.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/common/list_of_items/list_of_items.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/styles/products/products.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/products/products.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test/.vagrant/rgloader/loader.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test/Vagrant/Vagrantfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test/Vagrant/provision.sh" beforeDir="false" />
-    </list>
+    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 5.0" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,7 +150,7 @@
       <workItem from="1720286386230" duration="3299000" />
       <workItem from="1720418294700" duration="18000" />
       <workItem from="1720448023283" duration="15000" />
-      <workItem from="1720693372523" duration="358000" />
+      <workItem from="1720693372523" duration="730000" />
     </task>
     <task id="LOCAL-00001" summary="setup Dockerfile">
       <option name="closed" value="true" />
@@ -330,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720286480499</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="version 5.0">
+      <option name="closed" value="true" />
+      <created>1720694080894</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1720694080895</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +359,8 @@
     <MESSAGE value="version 4.0" />
     <MESSAGE value="version 4.1" />
     <MESSAGE value="version 4.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 4.2" />
+    <MESSAGE value="version 5.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 5.0" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sales_automation_pipeline$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1719651506880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

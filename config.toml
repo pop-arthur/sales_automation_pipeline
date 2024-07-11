@@ -1,0 +1,13 @@
+[[runners]]
+  name = "docker-windows executor"
+  url = "https://gitlabcom/"
+  token = "glpat-zEBCkydsVnpryn77muUW"
+  executor = "docker-windows"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+  [runners.docker]
+    tls_verify = false
+    image = "mcr.microsoft.com/windows:20H2"

@@ -243,7 +243,7 @@ function removeItem(closest, id) {
     item2.remove();
     itemDivider.remove();
     updateTotal();
-    saveCart(cart);
+    saveCart(myCart);
     if (myCart.products.length === 0) {
         document.getElementById("clear-cart-button").style.display = "none";
         document.getElementById("no-items-in-cart").innerText = "Корзина пуста"

@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 4.1" />
+    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 4.2">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deployment_instruction.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_session/c9796697c76c1394ed6e8b89a12a1343" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gitlab.tpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py_test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles/common/list_of_items/list_of_items.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/common/list_of_items/list_of_items.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles/products/products.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/products/products.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/.vagrant/rgloader/loader.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/Vagrant/Vagrantfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/Vagrant/provision.sh" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +48,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -62,7 +81,7 @@
     "Python.sales_automation_pipeline.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/arthur/PycharmProjects/sales_automation_pipeline/static/js",
+    "last_opened_file_path": "/Users/arthur/PycharmProjects/sales_automation_pipeline",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,12 +93,12 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static/js" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/static/js" />
       <recent name="$PROJECT_DIR$/db" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.sales_automation_pipeline">
+  <component name="RunManager" selected="Flask server.sales_automation_pipeline">
     <configuration name="sales_automation_pipeline" type="PythonConfigurationType" factoryName="Python">
       <module name="sales_automation_pipeline" />
       <option name="ENV_FILES" value="" />
@@ -146,6 +165,10 @@
       <workItem from="1719650405378" duration="1701000" />
       <workItem from="1720250933036" duration="1570000" />
       <workItem from="1720253248889" duration="1061000" />
+      <workItem from="1720286386230" duration="3299000" />
+      <workItem from="1720418294700" duration="18000" />
+      <workItem from="1720448023283" duration="15000" />
+      <workItem from="1720693372523" duration="358000" />
     </task>
     <task id="LOCAL-00001" summary="setup Dockerfile">
       <option name="closed" value="true" />
@@ -299,11 +322,30 @@
       <option name="project" value="LOCAL" />
       <updated>1720253521914</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="version 4.2">
+      <option name="closed" value="true" />
+      <created>1720286480499</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1720286480499</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -326,7 +368,8 @@
     <MESSAGE value="version 3.3" />
     <MESSAGE value="version 4.0" />
     <MESSAGE value="version 4.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 4.1" />
+    <MESSAGE value="version 4.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 4.2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sales_automation_pipeline$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1719651506880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

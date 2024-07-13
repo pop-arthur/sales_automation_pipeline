@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../static/styles/account/account.css">
     <link rel="stylesheet" href="../static/styles/common/navbar/navbar.css">
     <link rel="stylesheet" href="../static/styles/common/list_of_items/list_of_items.css">
-    <script src="../static/js/products.js"></script>
+    <!-- <script src="../static/js/products.js"></script> -->
     <script src="../static/js/objects.js"></script>
     <title>Account</title>
 </head>
@@ -37,19 +37,15 @@
         </div>
 
 
-        <div class="documents">
-            <div class="document">
-                <p>КП №228 Носов К.А 04.07.2024</p>
-                <button onclick='sorry()'>Открыть</button>
-            </div>
-            <div class="document">
-                <p>КП №228 Носов К.А 04.07.2024</p>
-                <button onclick='sorry()'>Открыть</button>
-            </div>
-            <div class="document">
-                <p>КП №228 Носов К.А 04.07.2024</p>
-                <button onclick='sorry()'>Открыть</button>
-            </div>
+        <div class="documents" id="documents">
+            <template id="history-display">
+                <div class="document" id="document">
+                    <p class="num" id="num">,</p>
+                    <p class="name" id="name">.</p>
+                    <p class="date" id="date">/</p>
+                    <button class="open-button" id= "open-button" onclick='open_cart(id)'>Открыть</button>
+                </div>
+            </template>
         </div>
     </div>
 <script src="../static/js/account.js"></script>

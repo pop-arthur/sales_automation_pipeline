@@ -54,6 +54,7 @@
 	-webkit-appearance: textfield;
 	appearance: textfield;
     text-align: center;
+
 }
 
 .quantity-form::-webkit-outer-spin-button,
@@ -107,6 +108,7 @@
 .item-id,
 .item-quantity,
 .item-price,
+.item-sku,
 .sku,
 .price-container,
 .quantity-measure-unit {

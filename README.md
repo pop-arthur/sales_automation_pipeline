@@ -103,15 +103,22 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+- [ ] Q1. Goal: Defining the main idea and creqte a layout for the customer
+    - [ ] First customer meeting, discussion of the ideas
+    - [ ] Creating Figma layout
+    - [ ] HTML/CSS design
+- [ ] Q2. Goal: Earliest Testable Product
+    - [ ] Provide a website with the first implemented functionality
+    - [ ] Improve the formation of the CO
+    - [ ] Adding functionality according to customers' requests
+- [ ] Q3. Goal: Earliest Usable Product
+    - [ ] Test the work in real conditions
+    - [ ] Adding functionality according to customers' requests
+- [ ] Q4. Earliest Lovable Product.
+    - [ ] Coordination with the customer on final minor fixes
+    - [ ] Getting customer approval
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://gitlab.pg.innopolis.university/swp/test/-/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -147,9 +154,13 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+* Arthur Popov - [@ee_boooy](https://t.me/ee_boooy) - ar.popov@innopolis.university
+* Egor Glebov - [@i_geeg_i](https://t.me/i_geeg_i) - e.glebov@innopolis.university
+* Sofia Pushkareva - [@mcpushka](https://t.me/mcpushka) - s.pushkareva@innopolis.university
+* Ivan Murzin - [@alliumpro](https://t.me/alliumpro) - i.murzin@innopolis.university
+* Kirill Nosov - [@nodoser](https://t.me/nodoser) - k.nosov@innopolis.university
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://gitlab.pg.innopolis.university/swp/test/](https://gitlab.pg.innopolis.university/swp/test/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

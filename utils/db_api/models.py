@@ -10,6 +10,23 @@ class Product(db.Model):
     data = db.Column(db.Text)
 
 
+class History(db.Model):
+    __tablename__ = 'history'
+    __table_args__ = {'extend_existing': True}
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    cart = db.Column(db.Text)
+
+    def save_cart_to_history(self, value):
+        self.cart = value
+
+    def get_cart_from_history(self):
+        return self.cart
+    
+    def __str__(self):
+        return '{'+f'\"id\": {self.id}, \"user_id\": {self.user_id}, \"cart\": {self.cart}'+'}'
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     __table_args__ = {'extend_existing': True}

@@ -3,10 +3,21 @@ class Cart {
   totalSum;
   coeff;
   commonDeliveryDate;
+  name;
+  phone;
+  email;
+  coNum;
+  deliveryCond;
+
   constructor() {
     this.products = [];
     this.coeff=1;
     this.commonDeliveryDate="Срок поставки";
+    this.name="ФИО";
+    this.phone="Телефон";
+    this.email="E-mail";
+    this.coNum="Номер КП";
+    this.deliveryCond="Условие поставки";
   }
   get count() {
     return this.products.length;

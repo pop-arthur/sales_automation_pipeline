@@ -10,7 +10,7 @@ from utils.db_api import User
 from utils.db_api import db_session
 from flask_restful import Api
 from werkzeug.utils import secure_filename
-from utils.db_api.models import Product
+from utils.db_api.models import *
 from utils.forms import LoginForm
 import json
 import requests
@@ -46,6 +46,34 @@ def post_cart():
     session.commit()
     session.close()
     return jsonify({'cart': cart}), 201
+
+
+@app.route('/save_cart_to_history', methods=['POST'])
+@login_required
+def save_cart_to_history():
+    if not request.json:
+        abort(400)
+
+    session = db_session.create_session()
+    row = History(
+        user_id=current_user.id,
+        cart=str(request.json['products']),
+    )
+    session.add(row)
+    session.commit()
+    session.close()
+    return render_template("cart.html", all_items=products)
+
+
+@app.route('/get_cart_history', methods=['GET'])
+@login_required
+def get_carts():
+    session = db_session.create_session()
+    carts = session.query(History).filter(History.user_id == current_user.id).all()
+    carts = [cart.cart.replace("\'", "\"").replace("None", "0") for cart in carts] 
+    carts = [json.loads(cart) for cart in carts]
+    session.close()
+    return json.dumps(carts)
 
 
 @login_manager.unauthorized_handler
@@ -89,7 +117,11 @@ def cart():
 @app.route('/account')
 @login_required
 def account():
-    return render_template("account.html", username = load_user(current_user.id).get_username())
+    session = db_session.create_session()
+    carts = session.query(History).filter(History.user_id == current_user.id).all()
+    carts_v2 = [(json.dumps(cart.cart)) for cart in carts]
+    session.close()
+    return render_template("account.html", username = load_user(current_user.id).get_username(), history = carts_v2)
 
 
 @app.route('/changeUserPassword', methods = ['POST'])
@@ -211,6 +243,7 @@ def upload():
     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     parsing_file(filename)
     return render_template('upload.html', message="Success")
+
 
 
 @app.errorhandler(404)

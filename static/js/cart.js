@@ -107,6 +107,11 @@ document.addEventListener("DOMContentLoaded", function() {
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
 
     if (myCart.products.length === 0) {
@@ -193,12 +198,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
             
         }
+        document.querySelector("#FIO").oninput = function changeFIOHandler(){
+            changeFIO();
+        };
+        document.querySelector("#phone").oninput = function changePhoneHandler(){
+            changePhone();
+        };
+        document.querySelector("#email").oninput = function changeEmailHandler(){
+            changeEmail();
+        };
+        document.querySelector("#co-num").oninput = function changeCoNumHandler(){
+            changeCoNum();
+        };
         document.querySelector("#delivery-date").oninput = function changeEveryDeliveryDateHandler(){
             changeEveryDeliveryDate();
+        };
+        document.querySelector("#delivery-cond").oninput = function changeDeliveryCondHandler(){
+            changeDeliveryCond();
         };
         // document.getElementById("delivery-date").value = myCart.CommonDeliveryDate;
 
         document.getElementById("coeff-button").value = myCart.coeff;
+        document.getElementById("FIO").value = myCart.name;
+        document.getElementById("phone").value = myCart.phone;
+        document.getElementById("email").value = myCart.email;
+        document.getElementById("co-num").value = myCart.coNum;
+        document.getElementById("delivery-date").value = myCart.commonDeliveryDate;
+        document.getElementById("delivery-cond").value = myCart.deliveryCond;
         let coeff = Number(document.getElementById("coeff-button").value);
         myCart.totalSum=Math.round(sum*100)/100;
         saveCart(myCart);
@@ -231,9 +257,14 @@ function removeItem(closest, id) {
 
     const savedCart = JSON.parse(localStorage.getItem("cart"));
     myCart.products = savedCart.products;
-    myCart.coeff = savedCart.coeff;
     myCart.totalSum = savedCart.totalSum;
+    myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
     myCart.removeProductById("ID: " + id);
     const item = document.getElementById('item'+id);
@@ -243,7 +274,7 @@ function removeItem(closest, id) {
     item2.remove();
     itemDivider.remove();
     updateTotal();
-    saveCart(myCart);
+    saveCart(cart);
     if (myCart.products.length === 0) {
         document.getElementById("clear-cart-button").style.display = "none";
         document.getElementById("no-items-in-cart").innerText = "Корзина пуста"
@@ -267,6 +298,11 @@ function Remove(id){
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
     let inp = document.getElementById("quantity-form"+id);
     if (inp.value <= 1){
@@ -305,6 +341,11 @@ function Add(id){
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
     let inp = document.getElementById("quantity-form"+id);
     if (Number(inp.value)+1 > Number(myCart.get_product(id).quantity.split(" ")[3])) {
@@ -372,6 +413,11 @@ function changeDeliveryDate(id){
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
     let inp = document.getElementById("delivery-date-button"+id);
     myCart.get_product(id).deliveryDate = inp.value;
@@ -387,11 +433,15 @@ function changeQuantityInStock(id){
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
     let inp = document.getElementById("quantity-button"+id);
     myCart.get_product(id).quantity = inp.value;
     saveCart(myCart);
-    console.log(myCart.get_product(id).quantity);
 }
 
 function changeEveryDeliveryDate(){
@@ -401,16 +451,101 @@ function changeEveryDeliveryDate(){
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
     let inp = document.getElementById("delivery-date");
     myCart.commonDeliveryDate = inp.value;
     for (let productKey in myCart.products){
         let product = myCart.products[productKey];
         product.deliveryDate = inp.value;
-        console.log(product.id);
-        console.log(document.getElementById("delivery-date-button"+product.id.split(" ")[1]));
         document.getElementById("delivery-date-button"+product.id.split(" ")[1]).value=inp.value;
 
     }
+    saveCart(myCart);
+}
+
+function changeFIO (){
+    const myCart = new Cart();
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
+    myCart.totalSum = savedCart.totalSum;
+    myCart.coeff = savedCart.coeff;
+    myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
+    let inp = document.getElementById("FIO");
+    myCart.name = inp.value;
+    saveCart(myCart);
+}
+
+function changePhone (){
+    const myCart = new Cart();
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
+    myCart.totalSum = savedCart.totalSum;
+    myCart.coeff = savedCart.coeff;
+    myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
+    let inp = document.getElementById("phone");
+    myCart.phone = inp.value;
+    saveCart(myCart);
+}
+function changeEmail (){
+    const myCart = new Cart();
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
+    myCart.totalSum = savedCart.totalSum;
+    myCart.coeff = savedCart.coeff;
+    myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
+    let inp = document.getElementById("email");
+    myCart.email = inp.value;
+    saveCart(myCart);
+}
+function changeCoNum (){
+    const myCart = new Cart();
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
+    myCart.totalSum = savedCart.totalSum;
+    myCart.coeff = savedCart.coeff;
+    myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
+    let inp = document.getElementById("co-num");
+    myCart.coNum = inp.value;
+    saveCart(myCart);
+}
+function changeDeliveryCond (){
+    const myCart = new Cart();
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    myCart.products = savedCart.products;
+    myCart.totalSum = savedCart.totalSum;
+    myCart.coeff = savedCart.coeff;
+    myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
+    let inp = document.getElementById("delivery-cond");
+    myCart.deliveryCond = inp.value;
     saveCart(myCart);
 }
 
@@ -422,11 +557,15 @@ function changeQuantityMeasure(id){
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
     let inp = document.getElementById("quantity-measure-button"+id);
     myCart.get_product(id).measure = inp.value;
     saveCart(myCart);
-    console.log(myCart.get_product(id).measure);
 }
 
 // function to control changes of input field of each item
@@ -441,6 +580,11 @@ function change(id){
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
     let inp = document.getElementById("quantity-form"+id);
     if (Number(inp.value)+1 > Number(myCart.get_product(id).quantity.split(" ")[3])) {
@@ -492,6 +636,11 @@ function changeCoeff(){
     myCart.totalSum = savedCart.totalSum;
     myCart.coeff = savedCart.coeff;
     myCart.commonDeliveryDate = savedCart.commonDeliveryDate;
+    myCart.name = savedCart.name;
+    myCart.phone = savedCart.phone;
+    myCart.email = savedCart.email;
+    myCart.coNum = savedCart.coNum;
+    myCart.deliveryCond = savedCart.deliveryCond;
 
     let coeff = document.getElementById("coeff-button").value;
     myCart.coeff=coeff;
@@ -619,4 +768,21 @@ function postPdf(){
 
     document.body.appendChild(form);
     form.submit();
+}
+
+
+
+function save_cart() {
+
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    fetch("/save_cart_to_history", {
+      method: "POST",
+      body: JSON.stringify({"products": savedCart}),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    });
+
+    localStorage.setItem("cart", JSON.stringify(new Cart()));
+    clearCart();
 }

@@ -31,11 +31,12 @@ def form_pdf(file_name, name="Ivan Ivanov", phone="+79998887766", email="a@aaв�
     elements = []
 
     pdfmetrics.registerFont(TTFont('DejaVuSans', 'static/font/DejaVuSerif.ttf'))
+    pdfmetrics.registerFont(TTFont('DejaVuSans-Bold', 'static/font/DejaVuSerif-Bold.ttf'))
     styles = getSampleStyleSheet()
     centered_style = ParagraphStyle(
         name='Centered',
         parent=styles['Normal'],
-        fontName='DejaVuSans',
+        fontName='DejaVuSans-Bold',
         fontSize=5,
         alignment=1,  # Center alignment (TA_CENTER)
         spaceAfter=12
@@ -43,7 +44,7 @@ def form_pdf(file_name, name="Ivan Ivanov", phone="+79998887766", email="a@aaв�
     left_style = ParagraphStyle(
         name='Left',
         parent=styles['Normal'],
-        fontName='DejaVuSans',
+        fontName='DejaVuSans-Bold',
         fontSize=5,
         alignment=0,  # Left alignment (TA_LEFT)
         spaceAfter=12
@@ -56,24 +57,6 @@ def form_pdf(file_name, name="Ivan Ivanov", phone="+79998887766", email="a@aaв�
         alignment=2,  # Right alignment (TA_RIGHT)
         spaceAfter=12
     )
-    left_style_inv = ParagraphStyle(
-        name='Left',
-        parent=styles['Normal'],
-        fontName='DejaVuSans',
-        fontSize=5,
-        alignment=0,  # Left alignment (TA_LEFT)
-        spaceAfter=12,
-        textColor=None
-    )
-    right_style_inv = ParagraphStyle(
-        name='Right',
-        parent=styles['Normal'],
-        fontName='DejaVuSans',
-        fontSize=5,
-        alignment=2,  # Right alignment (TA_RIGHT)
-        spaceAfter=12,
-        textColor=None
-    )
     big_bold_style = ParagraphStyle(
         name='BigBold',
         parent=styles['Normal'],
@@ -82,11 +65,18 @@ def form_pdf(file_name, name="Ivan Ivanov", phone="+79998887766", email="a@aaв�
         alignment=1,  # Center alignment (TA_CENTER)
         spaceAfter=12
     )
-
+    small_style = ParagraphStyle(
+        name='Centered',
+        parent=styles['Normal'],
+        fontName='DejaVuSans',
+        fontSize=6,
+        alignment=1,  # Center alignment (TA_CENTER)
+        spaceAfter=12
+    )
     p = Paragraph("<br/><br/><br/><br/><br/><br/>")
     elements.append(p)
     # Table data processing
-    column_widths = [15, 120, 80, 60, 40, 25, 50, 60, 50, 60]
+    column_widths = [20, 120, 80, 60, 30, 30, 50, 60, 50, 60]
     style_normal = styles['Normal']
     style_normal.fontName = 'DejaVuSans'
     style_normal.wordWrap = 'NORMAL'
@@ -97,26 +87,24 @@ def form_pdf(file_name, name="Ivan Ivanov", phone="+79998887766", email="a@aaв�
 
     # Define the table style
     table_style = TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
         ('FONTNAME', (0, 0), (-1, -1), 'DejaVuSans'),
-        ('FONTSIZE', (0, 0), (-1, -1), 7),
+        ('FONTSIZE', (0, 0), (-1, 0), 6),
         ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
         ('GRID', (0, 0), (-1, -1), 1, colors.black),
         ('rowHeights', (0, 0), (-1, -1), None)
     ])
+
     table_data = [['№', 'Наименование', 'Производитель\nили\nАртикул', 'Цена\nс учетом НДС', 'Ед.\nизм', 'К-во',
                    'Сумма\nс\nучетом НДС', 'Кратность\nупаковки', 'Наличие', 'Срок\nпоставки']]
     for row in data:
         arr = []
         for cell in row:
-            arr.append(Paragraph(str(cell), styles['Normal']))
+            arr.append(Paragraph(str(cell), small_style))
         table_data.append(arr)
     table = Table(table_data, style=table_style, colWidths=column_widths)
     elements.append(table)
-    total = f"""ВСЕГО СТОИМОСТЬ ОБОРУДОВАНИЯ С УЧЕТОМ НДС: {count_items_price(items=data)}"""
+    total = f"""<br/>ВСЕГО СТОИМОСТЬ ОБОРУДОВАНИЯ С УЧЕТОМ НДС: {format(count_items_price(items=data), '.2f').replace('.',',')} KZT"""
     elements.append(Paragraph(total, big_bold_style))
     # Footer information
     footer_left = f"""
@@ -134,7 +122,7 @@ def form_pdf(file_name, name="Ivan Ivanov", phone="+79998887766", email="a@aaв�
         Калмаханов А.Г.
         """
     elements.append(Paragraph(footer_left, left_style))
-
+    doc.title = file_name
     # Build the document
     doc.build(elements,
               onFirstPage=lambda canvas, doc: add_page_template_first(canvas, doc, co_number=co_number, name=name,
@@ -154,6 +142,7 @@ def add_page_template(canvas, doc, co_number="316"):
 def add_page_template_first(canvas, doc, co_number="as", name="ass", phone="dsdf", email="@"):
     canvas.saveState()
     pdfmetrics.registerFont(TTFont('DejaVuSans', 'static/font/DejaVuSerif.ttf'))
+    pdfmetrics.registerFont(TTFont('DejaVuSans-Bold', 'static/font/DejaVuSerif-Bold.ttf'))
     canvas.setFont('DejaVuSans', 6)
     styles = getSampleStyleSheet()
     centered_style = ParagraphStyle(
@@ -161,15 +150,15 @@ def add_page_template_first(canvas, doc, co_number="as", name="ass", phone="dsdf
         parent=styles['Normal'],
         fontName='DejaVuSans',
         fontSize=6,
-        alignment=1,  # Center alignment (TA_CENTER)
+        alignment=0,  # Left alignment
         spaceAfter=12
     )
     left_style = ParagraphStyle(
         name='Centered',
         parent=styles['Normal'],
-        fontName='DejaVuSans',
+        fontName='DejaVuSans-Bold',
         fontSize=6,
-        alignment=0,  # Center alignment (TA_CENTER)
+        alignment=1,  # Center alignment
         spaceAfter=12
     )
     big_bold_style = ParagraphStyle(
@@ -180,18 +169,18 @@ def add_page_template_first(canvas, doc, co_number="as", name="ass", phone="dsdf
         alignment=1,  # Center alignment (TA_CENTER)
         spaceAfter=12
     )
-    left_hren = """ТОО «АСБ-ТОП» Республика Казахстан,
+    left_header = """<b>ТОО «АСБ-ТОП» Республика Казахстан,
         010000 г. Астана, Алматинский район,
         ул. Жанкент, д 155, офис 6.<br/>
         Тел: +7 777 5336031<br/>РНН 620200517080
         Р/сч KZ71998BTB0000323564 KZT;<br/>
         БИК TSESKZKA ; БИН 160540005119<br/>
-        АО "Jýsan Bank"
+        АО "Jýsan Bank"</b>
         """
-    paragraph = Paragraph(left_hren, centered_style)
+    paragraph = Paragraph(left_header, left_style)
     # Create a Frame to hold the paragraph (fixed-size box)
-    frame_width = 150
-    frame_height = 108
+    frame_width = 155
+    frame_height = 120
     frame_x = (17)
     frame_y = (700)  # Center vertically
 
@@ -205,7 +194,7 @@ def add_page_template_first(canvas, doc, co_number="as", name="ass", phone="dsdf
     # Create a Frame to hold the paragraph (fixed-size box)
     frame_width = 200
     frame_height = 100
-    frame_x = (400)
+    frame_x = (420)
     frame_y = (690)  # Center vertically
 
     frame = Frame(frame_x, frame_y, frame_width, frame_height)
@@ -229,7 +218,6 @@ def add_page_template_first(canvas, doc, co_number="as", name="ass", phone="dsdf
 
 def form_excel(file_name, name, phone, email, co_number, data):
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
     # Create a logger instance
     logger = logging.getLogger(__name__)
 
@@ -254,6 +242,7 @@ def form_excel(file_name, name, phone, email, co_number, data):
     sheet["F18"] = phone
     sheet["F19"] = email
     sheet["F20"] = co_number
+    sheet["B22"] = f"от {datetime.today().strftime('%d.%m.%Y')} г."
 
     # set items
     logger.info("Add rows")
@@ -299,8 +288,8 @@ def form_files_from_list(products, fio, phone, email, coef, delcond, co_number,
     for i in range(len(products)):
         # print(products[i])
         toAppend = [i + 1, products[i]["name"].replace("Name: ", ""), products[i]["sku"].replace("SKU: ", ""),
-                    float(products[i]["price"].split(" ")[1]) * float(coef),  products[i]["measure"], products[i]["amount"],
-                    float(products[i]["price"].split(" ")[1]) * coef * int(products[i]["amount"]), "64",
+                    format(float(products[i]["price"].split(" ")[1]) * float(coef), '.2f').replace('.',',') + " KZT",  products[i]["measure"], products[i]["amount"],
+                    format(float(products[i]["price"].split(" ")[1]) * coef * int(products[i]["amount"]), '.2f').replace('.',',') + " KZT", "64",
                     products[i]["quantity"], products[i]["deliveryDate"]]
         items.append(toAppend)
     itForCSV = items.copy()

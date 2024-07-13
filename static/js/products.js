@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+        
             let resp = await response.json();
             const cart = new Cart();
             cart.products = resp.products;

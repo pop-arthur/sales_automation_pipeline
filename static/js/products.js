@@ -17,6 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+function refreshCart() {
+    fetch("/load_from_api", {
+        method: "GET",
+    });
+}
+
+
+
 // check if some items in products are already in cart. If so, display their amount
 function checkCart(){
     const myCart = new Cart();

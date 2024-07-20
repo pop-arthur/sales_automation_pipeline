@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 6.0" />
+    <list default="true" id="45adf8f0-e785-4a46-8c5f-cccb7158d28c" name="Changes" comment="version 6.0">
+      <change beforePath="$PROJECT_DIR$/../test/deployment_instruction.md" beforeDir="false" afterPath="$PROJECT_DIR$/../test/deployment_instruction.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,6 +154,7 @@
       <workItem from="1720448023283" duration="15000" />
       <workItem from="1720693372523" duration="4810000" />
       <workItem from="1720867762440" duration="1186000" />
+      <workItem from="1721044727616" duration="94000" />
     </task>
     <task id="LOCAL-00001" summary="setup Dockerfile">
       <option name="closed" value="true" />
@@ -416,7 +419,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="version 6.0" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/sales_automation_pipeline$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1719651506880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/sales_automation_pipeline$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1721044743263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/sales_automation_pipeline$sales_automation_pipeline.coverage" NAME="sales_automation_pipeline Coverage Results" MODIFIED="1720253372442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

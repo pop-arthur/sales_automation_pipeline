@@ -24,21 +24,22 @@ def add_item(id, name, sku, quantity, price):
     session.close()
     return True
 
-def load_items_from_json():
+def load_items_from_json(data_json):
     db_file = "db/database.db"
     db_session.global_init(db_file)
 
     session = db_session.create_session()
 
-    data = json.load(open("apiresp.json",  encoding='utf-8'))#.replace("null","0")
+    data = json.loads(data_json)#.replace("null","0")
     ids = []
+    already_in_db = 0
     products = get_items_from_database_to_json()['products']
     for product in products:
         ids.append(product['id'])
     for item in data['products']:
         id = item['id']
         if (id in ids):
-            print("АПИ, ты дурак совсем?! Какого чёрта два одинаковых айдишника? ", id)
+            already_in_db+=1
             continue
         ids.append(id)
         new_product = Product(
@@ -46,7 +47,7 @@ def load_items_from_json():
             data=json.dumps(item, ensure_ascii=False)
         )
         session.add(new_product)
-
+    print(str(already_in_db) + " are already in db")
     session.commit()
     session.close()
 

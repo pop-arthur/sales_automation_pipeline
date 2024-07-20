@@ -31,7 +31,10 @@
                 <input type="text" id="search-bar" name="search" class="search-bar">
             </form>
 
-            <button onclick="location.href='add'" class="image-button" id="add-item"></button>
+            <div style="display: flex; justify-content: center;align-items: center; gap:5px">
+                <button onclick="refreshCart()" class="refresh-button"></button>
+                <button onclick="location.href='add'" class="add-item-button" id="add-item"></button>
+            </div>
 
         </div>
 
@@ -43,7 +46,7 @@
 
 <!--                        <img src="\static\images\item_preview.jpg" class="item" alt="Item Image">-->
                         <div class="search-item-info">
-                            <div class="item-name">Name: {{value['name']}}</div>
+                            <div class="item-name">Name: {{value['name'].replace("&nbsp;", " ")}}</div>
                             <div class="item-id">ID: {{value['id']}}</div>
                             <div class="quantity-container">
                                 <div class="item-quantity">Quantity in stock: {{value['quantity_in_stock']}} </div>

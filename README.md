@@ -13,13 +13,11 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#deployment">Deployment</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -52,38 +50,34 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- DEPLOYMENT -->
+## Deployment
 
-<!-- GETTING STARTED -->
-## Getting Started
+### Stack
+This project is based on python flask package and sqlite database.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+### Requirements
+To delpoy the project, firstly, install dependencies from requirements.txt
 
-### Prerequisites
+### Executing file
+To start the program run the app.py file
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+### Dockerfile
+You can use dockerfile for deployment
+```Dockerfile
+FROM python:3
+RUN apt-get update -y && apt-get install -y build-essential
+WORKDIR /main
+COPY . .
+ENV FLASK_APP=app.py
+EXPOSE 8000
 
-### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["app.py"]
+```
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -92,9 +86,8 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+You can find the demonstration video [here](https://drive.google.com/file/d/1zWk5EcEwzLUlXscTgDpiYzLoNnyNHgmE/view)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -103,7 +96,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Q1. Goal: Defining the main idea and creqte a layout for the customer
+- [ ] Q1. Goal: Defining the main idea and create a layout for the customer
     - [ ] First customer meeting, discussion of the ideas
     - [ ] Creating Figma layout
     - [ ] HTML/CSS design
@@ -114,29 +107,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Q3. Goal: Earliest Usable Product
     - [ ] Test the work in real conditions
     - [ ] Adding functionality according to customers' requests
-- [ ] Q4. Earliest Lovable Product.
+- [ ] Q4. Earliest Lovable Product
     - [ ] Coordination with the customer on final minor fixes
     - [ ] Getting customer approval
 
 See the [open issues](https://gitlab.pg.innopolis.university/swp/test/-/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -148,6 +123,50 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- API Description -->
+## API Description
+### `/get_cart` (GET)
+- **Purpose**: Retrieves the current shopping cart for the authenticated user.
+- **Method**: GET
+- **Authentication Required**: Yes (`@login_required`)
+- **Response**:
+  - On success, returns the JSON representation of the user's current shopping cart.
+  - If the cart is empty, returns an object with an empty `products` array.
+- **Error Handling**:
+  - No explicit error handling is shown, but standard Flask practices should be applied.
+
+### `/post_cart` (POST)
+- **Purpose**: Updates the authenticated user's shopping cart with new product information.
+- **Method**: POST
+- **Authentication Required**: Yes (`@login_required`)
+- **Request Body**:
+  - Expected to contain a JSON object with a `products` field representing the updated cart contents.
+- **Response**:
+  - Returns the updated cart as JSON with a 201 status code indicating successful creation.
+- **Error Handling**:
+  - Aborts with a 400 status code if the request does not contain valid JSON.
+
+### `/save_cart_to_history` (POST)
+- **Purpose**: Saves the current state of the authenticated user's shopping cart to history.
+- **Method**: POST
+- **Authentication Required**: Yes (`@login_required`)
+- **Request Body**:
+  - Expected to contain a JSON object with a `products` field representing the cart contents to be saved.
+- **Response**:
+  - Redirects to a template named "cart.html" with a variable `all_items` presumably populated with products.
+- **Error Handling**:
+  - Aborts with a 400 status code if the request does not contain valid JSON.
+
+### `/get_cart_history` (GET)
+- **Purpose**: Retrieves the history of shopping carts for the authenticated user.
+- **Method**: GET
+- **Authentication Required**: Yes (`@login_required`)
+- **Response**:
+  - Returns a JSON array of cart histories, each represented as a JSON object.
+- **Error Handling**:
+  - No explicit error handling is shown, but standard Flask practices should be applied.
 
 
 
@@ -206,7 +225,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [Python]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 [Python-url]: https://www.python.org/
 
-[ReportLab]: -
+[ReportLab]: https://prnt.sc/cf6aSF-rVPWh/
 [ReportLab-url]: https://docs.reportlab.com/
 
 [SQLAlchemy]: -

@@ -2,3 +2,5 @@
 env/
 .venv/
 __pycache__/
+Debian-12.box
+.env

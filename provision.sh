@@ -31,14 +31,16 @@ sudo usermod -aG docker gitlab-runner
 
 # Install and run as a service
 sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+sudo gitlab-runner verify
 sudo gitlab-runner start
+sudo gitlab-runner run
 
 RUNNER_TOKEN="SPECIFY_TOKEN"
 
 sudo gitlab-runner register \
   --non-interactive \
   --url "https://gitlab.pg.innopolis.university" \
-  --token "$RUNNER_TOKEN" \
+  --token glrt-3K69Ysaa6K_ygRJvhy36 \
   --executor "shell" \
   --description "Development environment"
 

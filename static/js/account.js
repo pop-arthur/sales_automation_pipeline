@@ -13,15 +13,16 @@ document.addEventListener("DOMContentLoaded", async function() {
             let resp = await response.json();
             const template = document.querySelector("#history-display");
             const list = document.querySelector("#documents");
+            console.log(resp);
             for (let storyKey in resp) {
                 const clone = template.content.cloneNode(true);
                 let story = resp[storyKey];
                 clone.querySelector(".document").id = "document"+Number(Number(storyKey)+1);
                 clone.querySelector(".open-button").id = "open-button"+Number(Number(storyKey)+1);
                 let doc_num = clone.querySelector(".num");
-                doc_num.textContent = story['coNum'];
+                doc_num.textContent = "КП #" + story['coNum'];
                 let doc_name = clone.querySelector(".name");
-                doc_name.textContent = story['name'];
+                doc_name.textContent = story['name'].split(" ")[0];
                 let doc_date = clone.querySelector(".date");
                 doc_date.textContent = story['phone'];
 

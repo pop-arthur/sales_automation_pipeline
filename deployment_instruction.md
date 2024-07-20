@@ -10,4 +10,17 @@ To delpoy the project, firstly, install dependencies from requirements.txt
 To start the program run the app.py file
 
 ## Dockerfile
-You can use dockerfile for deplyment
+You can use dockerfile for deployment
+```Dockerfile
+FROM python:3
+RUN apt-get update -y && apt-get install -y build-essential
+WORKDIR /main
+COPY . .
+ENV FLASK_APP=app.py
+EXPOSE 8000
+
+
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["app.py"]
+```

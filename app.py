@@ -1,7 +1,10 @@
 from datetime import datetime
 import io
-from flask import (Flask, Response, abort, flash, render_template, redirect, make_response, jsonify, request, url_for, send_file,
+from dotenv import load_dotenv
+from flask import (Flask, Response, abort, flash, render_template, redirect, make_response, jsonify, request, url_for,
+                   send_file,
                    session)
+from flask.typing import ResponseReturnValue
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 import os
 from pdf import find_item, load_json, form_files_from_list, parsing_file
@@ -70,7 +73,8 @@ def save_cart_to_history():
 def get_carts():
     session = db_session.create_session()
     carts = session.query(History).filter(History.user_id == current_user.id).all()
-    carts = [cart.cart.replace("\'", "\"").replace("None", "0") for cart in carts] 
+    carts = [cart.cart.replace("\'", "\"").replace("None", "0") for cart in carts]
+    carts = [cart.encode('unicode_escape') for cart in carts]
     carts = [json.loads(cart) for cart in carts]
     session.close()
     return json.dumps(carts)
@@ -104,7 +108,11 @@ def index():
 @login_required
 def products():
     db_sess = db_session.create_session()
-    products = [json.loads(item.data) for item in db_sess.query(Product).all()]
+    products = [json.loads(item.data.replace("&nbsp;", " ")) for item in db_sess.query(Product).all()]
+    for elem in db_sess.query(Product).all():
+        elem.data = elem.data.replace("&nbsp;", " ")
+        if "&nbsp;" in elem.data:
+            print(1)
     return render_template("products.html", all_items=products)
 
 
@@ -121,10 +129,10 @@ def account():
     carts = session.query(History).filter(History.user_id == current_user.id).all()
     carts_v2 = [(json.dumps(cart.cart)) for cart in carts]
     session.close()
-    return render_template("account.html", username = load_user(current_user.id).get_username(), history = carts_v2)
+    return render_template("account.html", username=load_user(current_user.id).get_username(), history=carts_v2)
 
 
-@app.route('/changeUserPassword', methods = ['POST'])
+@app.route('/changeUserPassword', methods=['POST'])
 @login_required
 def change_user_password():
     password = request.json["password"]
@@ -141,7 +149,7 @@ def change_user_password():
     return response
 
 
-@app.route('/add',  methods=['POST', 'GET'])
+@app.route('/add', methods=['POST', 'GET'])
 @login_required
 def add():
     if request.method == 'GET':
@@ -153,7 +161,8 @@ def add():
     price = request.form.get("price")
     if (add_item(id, name, sku, quantity, price)):
         db_sess = db_session.create_session()
-        return render_template("products.html", all_items= [json.loads(item.data) for item in db_sess.query(Product).all()])
+        return render_template("products.html",
+                               all_items=[json.loads(item.data) for item in db_sess.query(Product).all()])
     else:
         return render_template("add.html")
 
@@ -164,9 +173,10 @@ def download_pdf():
     cart = get_tasks()
     products = cart['products']
     data = request.form
-    form_files_from_list(products, fio=data['FIO'],phone=data['phone'], email=data['email'], delcond=data['delivery-cond'], co_number=data["conum"], coef=float(data['coeff-button']))
+    form_files_from_list(products, fio=data['FIO'], phone=data['phone'], email=data['email'],
+                         delcond=data['delivery-cond'], co_number=data["conum"], coef=float(data['coeff-button']))
 
-    filename = f"КП{data['FIO']+str(datetime.now().date())}".replace(" ","").replace(".","")
+    filename = f"КП{data['FIO'] + str(datetime.now().date())}".replace(" ", "").replace(".", "")
     pdf_filename = f"{filename}.pdf"
 
     return_data = io.BytesIO()
@@ -186,9 +196,11 @@ def download_excel():
 
     data = request.form
     print(data)
-    form_files_from_list(products, fio=data['FIO'],phone=data['phone'], email=data['email'], delcond=data['delivery-cond'], co_number=data["conum"], coef=float(data['coeff-button']), is_form_pdf=False)
+    form_files_from_list(products, fio=data['FIO'], phone=data['phone'], email=data['email'],
+                         delcond=data['delivery-cond'], co_number=data["conum"], coef=float(data['coeff-button']),
+                         is_form_pdf=False)
 
-    filename = f"КП{data['FIO']+str(datetime.now().date())}".replace(" ","").replace(".","")
+    filename = f"КП{data['FIO'] + str(datetime.now().date())}".replace(" ", "").replace(".", "")
     csv_filename = f"{filename}.xlsx"
 
     return_data = io.BytesIO()
@@ -236,7 +248,8 @@ def search():
 def upload():
     if request.method == 'GET':
         return render_template('upload.html')
-    if ('fileUpload' not in request.files) or  (request.files['fileUpload'].filename == '') or (not allowed_file(request.files['fileUpload'].filename)):
+    if ('fileUpload' not in request.files) or (request.files['fileUpload'].filename == '') or (
+    not allowed_file(request.files['fileUpload'].filename)):
         return render_template('upload.html', message="Wrong file or no file")
     file = request.files['fileUpload']
     filename = secure_filename(file.filename)
@@ -244,6 +257,28 @@ def upload():
     parsing_file(filename)
     return render_template('upload.html', message="Success")
 
+
+@app.route('/load_from_api', methods=['GET'])
+@login_required
+def load_from_api() -> ResponseReturnValue:
+    url = os.getenv("URL")
+    api_key = os.getenv("API_KEY")
+    headers = {
+        'x-api-key': api_key
+    }
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        print('Successful connection to API:', len(response.json()['products']))
+
+        resp = response.json()
+
+        load_items_from_json(json.dumps(resp, ensure_ascii=False))
+        db_sess = db_session.create_session()
+        products = [json.loads(item.data.replace("&nbsp;", " ")) for item in db_sess.query(Product).all()]
+        return 'OK'
+    else:
+        print('Failed to connect to API:', response.status_code, response.text)
+        return 'FAIL'
 
 
 @app.errorhandler(404)
@@ -263,27 +298,7 @@ def main():
     app.run(host='0.0.0.0', port=port)
 
 
-def load_from_api():
-
-    url = 'https://namazlive.herokuapp.com/trade/products/list'
-    api_key = 'jiro_dreams_of_sushi'
-    headers = {
-        'x-api-key': api_key
-    }
-    response = requests.get(url, headers=headers)
-
-    if response.status_code == 200:
-        print('Success:', len(response.json()['products']))
-        # print(response.json())
-
-        resp = response.json()#.replace("null","0")
-        with open("apiresp.json", 'w', encoding='utf-8') as f:
-            json.dump(resp, f, ensure_ascii=False)
-        load_items_from_json()
-    else:
-        print('Failed:', response.status_code, response.text)
-
-
 if __name__ == '__main__':
-    load_from_api()
+    load_dotenv()
+    # load_from_api()
     main()

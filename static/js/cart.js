@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let coeff = Number(document.getElementById("coeff-button").value);
         myCart.totalSum=Math.round(sum*100)/100;
         saveCart(myCart);
-        document.getElementById("total-amount").innerText=sum*coeff;
+        document.getElementById("total-amount").innerText=Math.round(sum*coeff*100)/100;
     }
 }
 })
@@ -274,7 +274,7 @@ function removeItem(closest, id) {
     item2.remove();
     itemDivider.remove();
     updateTotal();
-    saveCart(cart);
+    saveCart(myCart);
     if (myCart.products.length === 0) {
         document.getElementById("clear-cart-button").style.display = "none";
         document.getElementById("no-items-in-cart").innerText = "Корзина пуста"
